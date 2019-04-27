@@ -47,8 +47,8 @@ def judge(settings, source='', tests=(), timeout=1, client=docker.from_env()):
             for thread in threads:
                 thread.join()
                 result.append(thread.return_value)
-            return result
-        return ['CE', compiler.output[1].decode()]
+            return [result, (compiler.output[1] or b'').decode()]
+        return [['CE'] * len(tests), compiler.output[1].decode()]
     finally:
         container.remove(force=True)
 
