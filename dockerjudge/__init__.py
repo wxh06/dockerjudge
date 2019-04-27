@@ -54,4 +54,4 @@ def judge(settings, source='', tests=(), timeout=1, client=docker.from_env()):
 
 if __name__ == '__main__':
     print(judge(ruamel.yaml.YAML().load(open('settings.yaml'))[sys.argv[1]][sys.argv[2]],
-          sys.stdin.read(), zip(sys.argv[3::2], sys.argv[4::2])))
+                sys.stdin.read(), zip(sys.argv[3::2], sys.argv[4::2])))
