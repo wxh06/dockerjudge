@@ -29,8 +29,7 @@ def judge(settings, language, compiler, source='', tests=[], timeout=1, client=d
         else:
             print(result.output[1].decode().rstrip())
     finally:
-        container.stop()
-        container.remove()
+        container.remove(force=True)
 
 if __name__ == '__main__':
     yaml = ruamel.yaml.YAML()
