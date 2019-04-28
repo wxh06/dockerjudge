@@ -36,7 +36,11 @@ def judge(settings, source='', tests=(), timeout=1, client=docker.from_env()):
                                       network_disabled=True, tty=True)
     try:
         container.exec_run(['sh', '-c', 'echo ' + shlex.quote(source) + ' > ' + settings['source']])
+        if 'before_compile' in settings:
+            container.exec_run(settings['before_compile'])
         compiler = container.exec_run(settings['compile'], demux=True)
+        if 'before_compile' in settings:
+            container.exec_run(settings['after_compile'])
         if not compiler.exit_code:
             threads = []
             for stdin, stdout in tests:
