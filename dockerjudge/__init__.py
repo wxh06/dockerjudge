@@ -18,15 +18,19 @@ class Thread(threading.Thread):
         finally:
             del self._target, self._args, self._kwargs
 
-def _judge(container, command, stdin='', stdout='', timeout=1):
+def _judge(container, commands, stdio, timeout=1):
     'Run each test case'
-    result = container.exec_run(['sh', '-c', 'echo ' + shlex.quote(stdin) + ' | timeout -k '
-                                 + (str(timeout) + ' ') * 2 + command], demux=True)
+    if commands[0]:
+        container.exec_run(commands[0])
+    result = container.exec_run(['sh', '-c', 'echo ' + shlex.quote(stdio[0]) + ' | timeout -k '
+                                 + (str(timeout) + ' ') * 2 + commands[1]], demux=True)
+    if commands[2]:
+        container.exec_run(commands[2])
     if result.exit_code == 124:
         return 'TLE'
     if result.exit_code:
         return 'RE'
-    if result.output[0].decode().rstrip() != stdout.rstrip():
+    if result.output[0].decode().rstrip() != stdio[1].rstrip():
         return 'WA'
     return 'AC'
 
@@ -45,7 +49,10 @@ def judge(settings, source='', tests=(), timeout=1, client=docker.from_env()):
             threads = []
             for stdin, stdout in tests:
                 threads.append(Thread(target=_judge,
-                                      args=(container, settings['judge'], stdin, stdout, timeout)))
+                                      args=(container, (settings.get('before_judge'),
+                                                        settings['judge'],
+                                                        settings.get('after_judge')),
+                                            (stdin, stdout), timeout)))
                 threads[-1].start()
             result = []
             for thread in threads:
