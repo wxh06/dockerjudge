@@ -15,8 +15,8 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires = [
         'docker[tls]>=3.7',
-        'ruamel.yaml<=0.15'
-    ]
+        'ruamel.yaml'
+    ],
     classifiers=[
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
