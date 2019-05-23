@@ -11,7 +11,7 @@ setuptools.setup(
     description="A Docker Based Online Judge Engine",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/wangxinhe2006/docker-judge",
+    url="https://github.com/wangxinhe2006/dockerjudge",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3.5",
