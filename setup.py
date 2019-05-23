@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="dockerjudge",
-    version="0.2",
+    version="0.3",
     author="汪心禾",
     author_email="wangxinhe06@gmail.com",
     description="A Docker Based Online Judge Engine",
@@ -13,6 +13,10 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/wangxinhe2006/dockerjudge",
     packages=setuptools.find_packages(),
+    install_requires = [
+        'docker[tls]>=3.7',
+        'ruamel.yaml<=0.15'
+    ]
     classifiers=[
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
