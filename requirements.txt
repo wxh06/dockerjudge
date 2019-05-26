@@ -1,2 +1,2 @@
-docker[tls]
+docker[tls]>=3.7
 ruamel.yaml

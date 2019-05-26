@@ -1,6 +1,6 @@
-# docker-judge
-[![Build Status](https://www.travis-ci.org/wangxinhe2006/docker-judge.svg)](https://www.travis-ci.org/wangxinhe2006/docker-judge)
-[![License](https://img.shields.io/github/license/wangxinhe2006/docker-judge.svg)](https://img.shields.io/github/license/wangxinhe2006/docker-judge.svg)
+# dockerjudge
+[![Build Status](https://www.travis-ci.org/wangxinhe2006/dockerjudge.svg)](https://www.travis-ci.org/wangxinhe2006/dockerjudge)
+[![License](https://img.shields.io/github/license/wangxinhe2006/dockerjudge.svg)](https://img.shields.io/github/license/wangxinhe2006/dockerjudge.svg)
 
 A Docker Based Online Judge Engine
 
