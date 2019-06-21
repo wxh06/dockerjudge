@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="dockerjudge",
-    version="0.3",
+    version="0.3.1",
     author="汪心禾",
     author_email="wangxinhe06@gmail.com",
     description="A Docker Based Online Judge Engine",

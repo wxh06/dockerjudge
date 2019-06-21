@@ -30,7 +30,7 @@ def _judge(container, commands, stdio, timeout=1):
         return 'TLE'
     if result.exit_code:
         return 'RE'
-    if result.output[0].decode().rstrip() != stdio[1].rstrip():
+    if (result.output[0] or b'').decode().rstrip() != stdio[1].rstrip():
         return 'WA'
     return 'AC'
 
