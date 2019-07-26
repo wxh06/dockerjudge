@@ -1,5 +1,7 @@
 'dockerjudge - A Docker Based Online Judge Engine'
 
+__version__ = '0.3.1'
+
 import shlex
 import sys
 import threading
