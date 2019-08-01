@@ -12,6 +12,7 @@ before_install:
   - pip install -U setuptools
 install:
   - pip install -r requirements.txt
-  - pip install pylint
+  - pip install pycodestyle pylint
 script:
+  - pycodestyle dockerjudge
   - pylint dockerjudge
