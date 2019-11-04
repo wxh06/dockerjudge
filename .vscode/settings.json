@@ -1,4 +1,4 @@
 {
-    "python.linting.pep8Enabled": true,
+    "python.linting.pycodestyleEnabled": true,
     "python.pythonPath": "venv/bin/python"
 }
