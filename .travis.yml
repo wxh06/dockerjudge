@@ -6,12 +6,17 @@ python:
   - "3.5-dev"
   - "3.6"
   - "3.6-dev"
+  - "3.7"
   - "3.7-dev"
+  - "3.8"
+  - "3.8-dev"
+  - "nightly"
 before_install:
   - pip install -U pip
   - pip install -U setuptools
 install:
   - pip install -r requirements.txt
-  - pip install pylint
+  - pip install pycodestyle pylint
 script:
+  - pycodestyle setup.py dockerjudge
   - pylint dockerjudge
