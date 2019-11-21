@@ -3,92 +3,92 @@ c:
         image: gcc:4.8
         source: a.c
         compile: gcc a.c
-        judge: ./a.out
+        judge: '%s/a.out'
     gcc-4.9:
         image: gcc:4.9
         source: a.c
         compile: gcc a.c
-        judge: ./a.out
+        judge: '%s/a.out'
     gcc-5:
         image: gcc:5
         source: a.c
         compile: gcc a.c
-        judge: ./a.out
+        judge: '%s/a.out'
     gcc:
         image: gcc
         source: a.c
         compile: gcc a.c
-        judge: ./a.out
+        judge: '%s/a.out'
 cpp:
     g++-4.8:
         image: gcc:4.8
         source: a.cpp
         compile: g++ a.cpp
-        judge: ./a.out
+        judge: '%s/a.out'
     g++-4.9:
         image: gcc:4.9
         source: a.cpp
         compile: g++ a.cpp
-        judge: ./a.out
+        judge: '%s/a.out'
     g++-5:
         image: gcc:5
         source: a.cpp
         compile: g++ a.cpp
-        judge: ./a.out
+        judge: '%s/a.out'
     g++:
         image: gcc
         source: a.cpp
         compile: g++ a.cpp
-        judge: ./a.out
+        judge: '%s/a.out'
 go:
     go1.11:
         image: golang:1.11
         source: main.go
         compile: go build main.go
-        judge: ./main
+        judge: '%s/main'
     go1.12:
         image: golang:1.12
         source: main.go
         compile: go build main.go
-        judge: ./main
+        judge: '%s/main'
     go1:
         image: golang:1
         source: main.go
         compile: go build main.go
-        judge: ./main
+        judge: '%s/main'
     go:
         image: golang
         source: main.go
         compile: go build main.go
-        judge: ./main
+        judge: '%s/main'
 python:
     python2.7:
         image: python:2.7
         source: __init__.py
         compile: python -m compileall -q __init__.py
-        judge: python __init__.py
+        judge: python %s/__init__.py
     python2:
         image: python:2
         source: __init__.py
         compile: python -m compileall -q __init__.py
-        judge: python __init__.py
+        judge: python %s/__init__.py
     python3.5:
         image: python:3.5
         source: __init__.py
         compile: python -m compileall -q __init__.py
-        judge: python __init__.py
+        judge: python %s/__init__.py
     python3.6:
         image: python:3.6
         source: __init__.py
         compile: python -m compileall -q __init__.py
-        judge: python __init__.py
+        judge: python %s/__init__.py
     python3.7:
         image: python3.7
         source: __init__.py
         compile: python -m compileall -q __init__.py
-        judge: python __init__.py
+        judge: python %s/__init__.py
     python3:
         image: python:3
         source: __init__.py
         compile: python -m compileall -q __init__.py
-        judge: python __init__.py
+        judge: python %s/__init__.py

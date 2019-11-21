@@ -16,7 +16,7 @@ before_install:
   - pip install -U setuptools
 install:
   - pip install -r requirements.txt
-  - pip install pycodestyle pylint
+  - pip install flake8
 script:
-  - pycodestyle setup.py dockerjudge
-  - pylint dockerjudge
+  - flake8 dockerjudge
+  - python3 -W ignore tests.py
