@@ -1,15 +1,31 @@
+import codecs
+import os.path
+import re
+
 import setuptools
 
-from dockerjudge import __version__
+
+def read(path):
+    with codecs.open(os.path.join(os.path.abspath(os.path.dirname(__file__)),
+                     path)) as fp:
+        return fp.read()
+
+
+def get_version(file_path):
+    versions = re.findall(r"^__version__ = ['\"]([^'\"]*)['\"]",
+                          read(file_path), re.M)
+    if versions:
+        return versions[-1]
+    raise RuntimeError('Unable to find version string.')
 
 
 setuptools.setup(
     name='dockerjudge',
-    version=__version__,
+    version=get_version('dockerjudge/__init__.py'),
     author='汪心禾',
     author_email='wangxinhe06@gmail.com',
     description='A Docker Based Online Judge Engine',
-    long_description=open('README.md').read(),
+    long_description=read('README.md'),
     long_description_content_type='text/markdown',
     url='https://github.com/wangxinhe2006/dockerjudge',
     packages=['dockerjudge'],

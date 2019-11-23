@@ -9,7 +9,7 @@ import threading
 import docker
 import ruamel.yaml
 
-__version__ = '0.5'
+__version__ = '0.5.1'
 
 
 class Thread(threading.Thread):
@@ -79,7 +79,7 @@ def judge(settings, source='', tests=[], timeout=1, iofn=(None, None),
         if 'before_compile' in settings:
             container.exec_run(settings['before_compile'])
         compiler = container.exec_run(settings['compile'], demux=True)
-        if 'before_compile' in settings:
+        if 'after_compile' in settings:
             container.exec_run(settings['after_compile'])
         if compiler.exit_code:
             result = [('CE', .0) for test in tests]
