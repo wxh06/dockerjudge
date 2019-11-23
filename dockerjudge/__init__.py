@@ -9,7 +9,7 @@ import threading
 import docker
 import ruamel.yaml
 
-__version__ = '0.4'
+__version__ = '0.5'
 
 
 class Thread(threading.Thread):
@@ -24,13 +24,33 @@ class Thread(threading.Thread):
             del self._target, self._args, self._kwargs
 
 
-def _judge(container, commands, stdio, timeout=1):
+def _judge(dir, container, commands, stdio, timeout, iofn):
     'Run each test case'
     if commands[0]:
         container.exec_run(commands[0])
-    result = container.exec_run(['bash', '-c', 'time echo {}|timeout -s KILL '
-                                 '{} {}'.format(shlex.quote(stdio[0]), timeout,
-                                                commands[1])], demux=True)
+    container.exec_run(['bash', '-c', 'mkdir {}'.format(dir)])
+    if iofn[0]:
+        container.exec_run(['bash', '-c', 'echo {}>'
+                            '{}/{}'.format(shlex.quote(stdio[0]),
+                                           dir, iofn[0])])
+        result = container.exec_run(['bash', '-c', 'cd {}&&time timeout -s '
+                                     'KILL {} {}<{}'.format(dir, timeout,
+                                                            commands[1] % '..',
+                                                            iofn[0])],
+                                    demux=True)
+    else:
+        result = container.exec_run(['bash', '-c', 'cd {}&&time echo {}|'
+                                     'timeout -s KILL {} '
+                                     '{}'.format(dir, shlex.quote(stdio[0]),
+                                                 timeout, commands[1] % '..')],
+                                    demux=True)
+    if iofn[1]:
+        cat = container.exec_run(['bash', '-c',
+                                  'cat {}/{}'.format(dir, iofn[1])],
+                                 demux=True)
+        output = cat.output[0]
+    else:
+        output = result.output[0]
     duration = re.search('real\t([0-9]+)m([0-9]+\\.[0-9]{3})s\n'
                          'user\t[0-9]+m[0-9]+\\.[0-9]{3}s\n'
                          'sys\t[0-9]+m[0-9]+\\.[0-9]{3}s\n$',
@@ -42,13 +62,15 @@ def _judge(container, commands, stdio, timeout=1):
         return ('TLE', duration)  # Time Limit Exceeded
     if result.exit_code:
         return ('RE', duration)  # Runtime Error
-    if (result.output[0] or b'').decode().rstrip() != stdio[1].rstrip():
+    if (output or b'').decode().rstrip() != stdio[1].rstrip():
         return ('WA', duration)  # Wrong Answer
     return ('AC', duration)  # Accepted
 
 
-def judge(settings, source='', tests=(), timeout=1, client=docker.from_env()):
+def judge(settings, source='', tests=[], timeout=1, iofn=(None, None),
+          client=docker.from_env()):
     'Main judge function'
+    tests = list(tests)
     container = client.containers.run(settings['image'], detach=True,
                                       network_disabled=True, tty=True)
     try:
@@ -63,12 +85,13 @@ def judge(settings, source='', tests=(), timeout=1, client=docker.from_env()):
             result = [('CE', .0) for test in tests]
         else:
             threads = []
-            for stdin, stdout in tests:
+            for i in range(len(tests)):
                 thread = Thread(target=_judge,
-                                args=(container, (settings.get('before_judge'),
-                                                  settings['judge'],
-                                                  settings.get('after_judge')),
-                                      (stdin, stdout), timeout))
+                                args=(i, container,
+                                      (settings.get('before_judge'),
+                                       settings['judge'],
+                                       settings.get('after_judge')),
+                                      tests[i], timeout, iofn))
                 thread.start()
                 threads.append(thread)
             result = []
