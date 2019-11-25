@@ -13,7 +13,7 @@ python:
   - "nightly"
 before_install:
   - pip install -U pip
-  - pip install -U setuptools
+  - pip install -U setuptools wheel
 install:
   - pip install -r requirements.txt
   - pip install flake8 coverage codecov
