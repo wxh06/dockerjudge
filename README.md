@@ -1,6 +1,6 @@
 # dockerjudge
 [![Build Status](https://www.travis-ci.org/wangxinhe2006/dockerjudge.svg)](https://www.travis-ci.org/wangxinhe2006/dockerjudge)
-[![CodeCov](https://codecov.io/gh/wangxinhe2006/dockerjudge/branch/master/graph/badge.svg)](https://codecov.io/gh/wangxinhe2006/dockerjudge)
+[![CodeCov](https://codecov.io/gh/wangxinhe2006/dockerjudge/graph/badge.svg)](https://codecov.io/gh/wangxinhe2006/dockerjudge)
 [![Python Version](https://img.shields.io/pypi/pyversions/dockerjudge.svg)](https://www.python.org/downloads/)
 [![GitHub pre-release](https://img.shields.io/github/release-pre/wangxinhe2006/dockerjudge.svg)](https://github.com/wangxinhe2006/dockerjudge/releases)
 [![PyPI](https://img.shields.io/pypi/v/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#history)
