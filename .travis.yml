@@ -13,10 +13,12 @@ python:
   - "nightly"
 before_install:
   - pip install -U pip
-  - pip install -U setuptools
+  - pip install -U setuptools wheel
 install:
   - pip install -r requirements.txt
-  - pip install flake8 coverage
+  - pip install flake8 coverage codecov
 script:
   - flake8 dockerjudge
-  - python3 -W ignore -m coverage run tests.py && coverage report -m
+  - python3 -W ignore -m coverage run tests.py
+after_success:
+  - codecov
