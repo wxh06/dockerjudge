@@ -27,7 +27,8 @@ class Thread(threading.Thread):
 def _judge(dir, container, commands, stdio, timeout, iofn):
     'Run each test case'
     if commands[0]:
-        container.exec_run(commands[0])
+        container.exec_run(['bash', '-c',
+                            'cd {}&&{}'.format(dir, commands[0] % '..')])
     container.exec_run(['bash', '-c', 'mkdir {}'.format(dir)])
     if iofn[0]:
         container.exec_run(['bash', '-c', 'echo {}>'
@@ -57,7 +58,8 @@ def _judge(dir, container, commands, stdio, timeout, iofn):
                          result.output[1].decode())
     duration = int(duration.group(1)) * 60 + float(duration.group(2))
     if commands[2]:
-        container.exec_run(commands[2])
+        container.exec_run(['bash', '-c',
+                            'cd {}&&{}'.format(dir, commands[2] % '..')])
     if result.exit_code == 137:
         return ('TLE', duration)  # Time Limit Exceeded
     if result.exit_code:
