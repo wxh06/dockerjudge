@@ -10,6 +10,6 @@
 A Docker Based Online Judge Engine
 
 # [License](LICENSE)
-Licensed under [the GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.html)
+Licensed under [the Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 
-[![agplv3-155x51.png](https://www.gnu.org/graphics/agplv3-155x51.png)](https://www.gnu.org/graphics/agplv3-155x51.png)
+[![Apache Software Foundation Logo (2016).svg](https://upload.wikimedia.org/wikipedia/commons/d/db/Apache_Software_Foundation_Logo_(2016).svg)](https://commons.wikimedia.org/wiki/File:Apache_Software_Foundation_Logo_(2016).svg)
