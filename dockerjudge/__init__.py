@@ -9,7 +9,7 @@ import threading
 import docker
 import ruamel.yaml
 
-__version__ = '0.5.2'
+__version__ = '0.5.3'
 
 
 class Thread(threading.Thread):
@@ -26,10 +26,10 @@ class Thread(threading.Thread):
 
 def _judge(dir, container, commands, stdio, timeout, iofn):
     'Run each test case'
+    container.exec_run(['bash', '-c', 'mkdir {}'.format(dir)])
     if commands[0]:
         container.exec_run(['bash', '-c',
                             'cd {}&&{}'.format(dir, commands[0] % '..')])
-    container.exec_run(['bash', '-c', 'mkdir {}'.format(dir)])
     if iofn[0]:
         container.exec_run(['bash', '-c', 'echo {}>'
                             '{}/{}'.format(shlex.quote(stdio[0]),

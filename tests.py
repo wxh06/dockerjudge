@@ -58,6 +58,23 @@ class TestDockerJudge(unittest.TestCase):
         self.assertEqual(result[0][0][0], 'TLE')
         self.assertFalse(result[1])
 
+    def test_before_judge(self):
+        result = judge({'image': 'gcc:4.8',
+                        'source': 'a.c',
+                        'compile': 'gcc a.c',
+                        'before_judge': 'rm %s/a.out',
+                        'judge': '%s/a.out'},
+                       r'#include <stdio.h>''\n'
+                       r'int main() {''\n'
+                       r'    long long a, b;''\n'
+                       r'    scanf("%lld %lld", &a, &b);''\n'
+                       r'    printf("%d\n", a / b);''\n'
+                       r'    return 0;''\n'
+                       r'}''\n',
+                       [('1 1', '1')])
+        self.assertEqual(result[0][0][0], 'RE')
+        self.assertFalse(result[1])
+
     def test_io(self):
         result = judge({'image': 'gcc:4.8',
                         'source': 'a.c',
