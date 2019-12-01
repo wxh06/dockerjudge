@@ -9,7 +9,7 @@ import threading
 import docker
 import ruamel.yaml
 
-__version__ = '0.5.3'
+__version__ = '0.6'
 
 
 class Thread(threading.Thread):
@@ -29,7 +29,7 @@ def _judge(dir, container, commands, stdio, timeout, iofn):
     container.exec_run(['bash', '-c', 'mkdir {}'.format(dir)])
     if commands[0]:
         container.exec_run(['bash', '-c',
-                            'cd {}&&{}'.format(dir, commands[0] % '..')])
+                            'cd {}&&{}'.format(dir, commands[0].format('..'))])
     if iofn[0]:
         container.exec_run(['bash', '-c', 'echo {}>'
                             '{}/{}'.format(shlex.quote(stdio[0]),
@@ -45,25 +45,27 @@ def _judge(dir, container, commands, stdio, timeout, iofn):
                                      '{}'.format(dir, shlex.quote(stdio[0]),
                                                  timeout, commands[1] % '..')],
                                     demux=True)
-    if iofn[1]:
-        cat = container.exec_run(['bash', '-c',
-                                  'cat {}/{}'.format(dir, iofn[1])],
-                                 demux=True)
-        output = cat.output[0]
-    else:
-        output = result.output[0]
+    if commands[2]:
+        container.exec_run(['bash', '-c',
+                            'cd {}&&{}'.format(dir, commands[2].format('..'))])
     duration = re.search('real\t([0-9]+)m([0-9]+\\.[0-9]{3})s\n'
                          'user\t[0-9]+m[0-9]+\\.[0-9]{3}s\n'
                          'sys\t[0-9]+m[0-9]+\\.[0-9]{3}s\n$',
                          result.output[1].decode())
     duration = int(duration.group(1)) * 60 + float(duration.group(2))
-    if commands[2]:
-        container.exec_run(['bash', '-c',
-                            'cd {}&&{}'.format(dir, commands[2] % '..')])
     if result.exit_code == 137:
         return ('TLE', duration)  # Time Limit Exceeded
     if result.exit_code:
         return ('RE', duration)  # Runtime Error
+    if iofn[1]:
+        cat = container.exec_run(['bash', '-c',
+                                  'cat {}/{}'.format(dir, iofn[1])],
+                                 demux=True)
+        if cat.exit_code:
+            return ('OFNF', duration)  # Output File Not Found
+        output = cat.output[0]
+    else:
+        output = result.output[0]
     if (output or b'').decode().rstrip() != stdio[1].rstrip():
         return ('WA', duration)  # Wrong Answer
     return ('AC', duration)  # Accepted

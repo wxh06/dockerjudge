@@ -62,7 +62,7 @@ class TestDockerJudge(unittest.TestCase):
         result = judge({'image': 'gcc:4.8',
                         'source': 'a.c',
                         'compile': 'gcc a.c',
-                        'before_judge': 'rm %s/a.out',
+                        'before_judge': 'rm {}/a.out',
                         'judge': '%s/a.out'},
                        r'#include <stdio.h>''\n'
                        r'int main() {''\n'
@@ -73,6 +73,26 @@ class TestDockerJudge(unittest.TestCase):
                        r'}''\n',
                        [('1 1', '1')])
         self.assertEqual(result[0][0][0], 'RE')
+        self.assertFalse(result[1])
+
+    def test_after_judge(self):
+        result = judge({'image': 'gcc:4.8',
+                        'source': 'a.c',
+                        'compile': 'gcc a.c',
+                        'judge': '%s/a.out',
+                        'after_judge': 'rm a.out'},
+                       r'#include <stdio.h>''\n'
+                       r'int main() {''\n'
+                       r'    freopen("a.out", "w", stdout);''\n'
+                       r'    long long a, b;''\n'
+                       r'    scanf("%lld %lld", &a, &b);''\n'
+                       r'    printf("%d\n", a / b);''\n'
+                       r'    return 0;''\n'
+                       r'}''\n',
+                       [('1 1', '1')],
+                       1,
+                       (None, 'a.out'))
+        self.assertEqual(result[0][0][0], 'OFNF')
         self.assertFalse(result[1])
 
     def test_io(self):
@@ -96,6 +116,28 @@ class TestDockerJudge(unittest.TestCase):
                        ('a.in', 'a.out'))
         self.assertEqual(result[0][0][0], 'AC')
         self.assertEqual(result[0][1][0], 'WA')
+        self.assertEqual(result[0][2][0], 'RE')
+        self.assertFalse(result[1])
+
+    def test_ofnf(self):
+        result = judge({'image': 'gcc:4.8',
+                        'source': 'a.c',
+                        'compile': 'gcc a.c',
+                        'judge': '%s/a.out'},
+                       r'#include <stdio.h>''\n'
+                       r'int main() {''\n'
+                       r'    long long a, b;''\n'
+                       r'    scanf("%lld %lld", &a, &b);''\n'
+                       r'    printf("%d\n", a / b);''\n'
+                       r'    return 0;''\n'
+                       r'}''\n',
+                       [('1 1', '1'),
+                        ('1 2', '0.5'),
+                        ('1 0', '')],
+                       1,
+                       (None, 'a.out'))
+        self.assertEqual(result[0][0][0], 'OFNF')
+        self.assertEqual(result[0][1][0], 'OFNF')
         self.assertEqual(result[0][2][0], 'RE')
         self.assertFalse(result[1])
 
