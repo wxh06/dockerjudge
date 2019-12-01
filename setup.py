@@ -38,8 +38,7 @@ setuptools.setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
-        'License :: OSI Approved :: '
-        'GNU Affero General Public License v3 or later (AGPLv3+)',
+        'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
     ],
 )
