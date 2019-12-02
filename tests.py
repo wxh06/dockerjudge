@@ -92,7 +92,7 @@ class TestDockerJudge(unittest.TestCase):
                        [('1 1', '1')],
                        1,
                        (None, 'a.out'))
-        self.assertEqual(result[0][0][0], 'OFNF')
+        self.assertEqual(result[0][0][0], 'ONF')
         self.assertFalse(result[1])
 
     def test_io(self):
@@ -119,7 +119,7 @@ class TestDockerJudge(unittest.TestCase):
         self.assertEqual(result[0][2][0], 'RE')
         self.assertFalse(result[1])
 
-    def test_ofnf(self):
+    def test_onf(self):
         result = judge({'image': 'gcc:4.8',
                         'source': 'a.c',
                         'compile': 'gcc a.c',
@@ -136,8 +136,8 @@ class TestDockerJudge(unittest.TestCase):
                         ('1 0', '')],
                        1,
                        (None, 'a.out'))
-        self.assertEqual(result[0][0][0], 'OFNF')
-        self.assertEqual(result[0][1][0], 'OFNF')
+        self.assertEqual(result[0][0][0], 'ONF')
+        self.assertEqual(result[0][1][0], 'ONF')
         self.assertEqual(result[0][2][0], 'RE')
         self.assertFalse(result[1])
 

@@ -9,7 +9,7 @@ import threading
 import docker
 import ruamel.yaml
 
-__version__ = '0.6'
+__version__ = '0.6.1'
 
 
 class Thread(threading.Thread):
@@ -62,7 +62,7 @@ def _judge(dir, container, commands, stdio, timeout, iofn):
                                   'cat {}/{}'.format(dir, iofn[1])],
                                  demux=True)
         if cat.exit_code:
-            return ('OFNF', duration)  # Output File Not Found
+            return ('ONF', duration)  # Output Not Found
         output = cat.output[0]
     else:
         output = result.output[0]
