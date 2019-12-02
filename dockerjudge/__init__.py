@@ -9,7 +9,7 @@ import threading
 import docker
 import ruamel.yaml
 
-__version__ = '0.6'
+__version__ = '0.6.1'
 
 
 class Thread(threading.Thread):
