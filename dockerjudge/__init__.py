@@ -80,11 +80,11 @@ def judge(settings, source='', tests=[], timeout=1, iofn=(None, None),
     try:
         container.exec_run(['bash', '-c', 'echo {} > {}'.format(
             shlex.quote(source), settings['source'])])
-        if 'before_compile' in settings:
-            container.exec_run(settings['before_compile'])
+        if 'before_compiling' in settings:
+            container.exec_run(settings['before_compiling'])
         compiler = container.exec_run(settings['compile'], demux=True)
-        if 'after_compile' in settings:
-            container.exec_run(settings['after_compile'])
+        if 'after_compiling' in settings:
+            container.exec_run(settings['after_compiling'])
         if compiler.exit_code:
             result = [('CE', .0) for test in tests]
         else:
@@ -92,9 +92,9 @@ def judge(settings, source='', tests=[], timeout=1, iofn=(None, None),
             for i in range(len(tests)):
                 thread = Thread(target=_judge,
                                 args=(i, container,
-                                      (settings.get('before_judge'),
+                                      (settings.get('before_judging'),
                                        settings['judge'],
-                                       settings.get('after_judge')),
+                                       settings.get('after_judging')),
                                       tests[i], timeout, iofn))
                 thread.start()
                 threads.append(thread)

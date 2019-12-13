@@ -58,11 +58,11 @@ class TestDockerJudge(unittest.TestCase):
         self.assertEqual(result[0][0][0], 'TLE')
         self.assertFalse(result[1])
 
-    def test_before_judge(self):
+    def test_before_judging(self):
         result = judge({'image': 'gcc:4.8',
                         'source': 'a.c',
                         'compile': 'gcc a.c',
-                        'before_judge': 'rm {}/a.out',
+                        'before_judging': 'rm {}/a.out',
                         'judge': '%s/a.out'},
                        r'#include <stdio.h>''\n'
                        r'int main() {''\n'
@@ -75,12 +75,12 @@ class TestDockerJudge(unittest.TestCase):
         self.assertEqual(result[0][0][0], 'RE')
         self.assertFalse(result[1])
 
-    def test_after_judge(self):
+    def test_after_judging(self):
         result = judge({'image': 'gcc:4.8',
                         'source': 'a.c',
                         'compile': 'gcc a.c',
                         'judge': '%s/a.out',
-                        'after_judge': 'rm a.out'},
+                        'after_judging': 'rm a.out'},
                        r'#include <stdio.h>''\n'
                        r'int main() {''\n'
                        r'    freopen("a.out", "w", stdout);''\n'
