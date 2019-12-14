@@ -9,40 +9,46 @@ import threading
 import docker
 import ruamel.yaml
 
-__version__ = '0.6.1'
+__version__ = '0.7'
 
 
 class Thread(threading.Thread):
     'Subclass of threading.Thread with return value'
-    return_value = 'UE'  # Unknown Error
+
+    def __init__(self, callback, *args, **kwargs):
+        self.return_value = 'UE'  # Unknown Error
+        self._callback = callback
+        super().__init__(*args, **kwargs)
 
     def run(self):
         try:
             if self._target:
                 self.return_value = self._target(*self._args, **self._kwargs)
+                if self._callback:
+                    self._callback(self._args[0], *self.return_value)
         finally:
             del self._target, self._args, self._kwargs
 
 
-def _judge(dir, container, commands, stdio, timeout, iofn):
+def _judge(dir, container, commands, ioput, timeout, iofile) -> (str, float):
     'Run each test case'
     container.exec_run(['bash', '-c', 'mkdir {}'.format(dir)])
     if commands[0]:
         container.exec_run(['bash', '-c',
                             'cd {}&&{}'.format(dir, commands[0].format('..'))])
-    if iofn[0]:
+    if iofile[0]:
         container.exec_run(['bash', '-c', 'echo {}>'
-                            '{}/{}'.format(shlex.quote(stdio[0]),
-                                           dir, iofn[0])])
+                            '{}/{}'.format(shlex.quote(ioput[0]),
+                                           dir, iofile[0])])
         result = container.exec_run(['bash', '-c', 'cd {}&&time timeout -s '
                                      'KILL {} {}<{}'.format(dir, timeout,
                                                             commands[1] % '..',
-                                                            iofn[0])],
+                                                            iofile[0])],
                                     demux=True)
     else:
         result = container.exec_run(['bash', '-c', 'cd {}&&time echo {}|'
                                      'timeout -s KILL {} '
-                                     '{}'.format(dir, shlex.quote(stdio[0]),
+                                     '{}'.format(dir, shlex.quote(ioput[0]),
                                                  timeout, commands[1] % '..')],
                                     demux=True)
     if commands[2]:
@@ -57,22 +63,22 @@ def _judge(dir, container, commands, stdio, timeout, iofn):
         return ('TLE', duration)  # Time Limit Exceeded
     if result.exit_code:
         return ('RE', duration)  # Runtime Error
-    if iofn[1]:
+    if iofile[1]:
         cat = container.exec_run(['bash', '-c',
-                                  'cat {}/{}'.format(dir, iofn[1])],
+                                  'cat {}/{}'.format(dir, iofile[1])],
                                  demux=True)
         if cat.exit_code:
             return ('ONF', duration)  # Output Not Found
         output = cat.output[0]
     else:
         output = result.output[0]
-    if (output or b'').decode().rstrip() != stdio[1].rstrip():
+    if (output or b'').decode().rstrip() != ioput[1].rstrip():
         return ('WA', duration)  # Wrong Answer
     return ('AC', duration)  # Accepted
 
 
-def judge(settings, source='', tests=[], timeout=1, iofn=(None, None),
-          client=docker.from_env()):
+def judge(settings, source='', tests=[], timeout=1, iofile=(None, None),
+          callback={}, client=docker.from_env()):
     'Main judge function'
     tests = list(tests)
     container = client.containers.run(settings['image'], detach=True,
@@ -80,11 +86,14 @@ def judge(settings, source='', tests=[], timeout=1, iofn=(None, None),
     try:
         container.exec_run(['bash', '-c', 'echo {} > {}'.format(
             shlex.quote(source), settings['source'])])
-        if 'before_compile' in settings:
-            container.exec_run(settings['before_compile'])
+        if 'before_compiling' in settings:
+            container.exec_run(settings['before_compiling'])
         compiler = container.exec_run(settings['compile'], demux=True)
-        if 'after_compile' in settings:
-            container.exec_run(settings['after_compile'])
+        if 'after_compiling' in settings:
+            container.exec_run(settings['after_compiling'])
+        if callback.get('compiling'):
+            callback['compiling'](compiler.exit_code,
+                                  (compiler.output[1] or b'').decode())
         if compiler.exit_code:
             result = [('CE', .0) for test in tests]
         else:
@@ -92,10 +101,11 @@ def judge(settings, source='', tests=[], timeout=1, iofn=(None, None),
             for i in range(len(tests)):
                 thread = Thread(target=_judge,
                                 args=(i, container,
-                                      (settings.get('before_judge'),
+                                      (settings.get('before_judging'),
                                        settings['judge'],
-                                       settings.get('after_judge')),
-                                      tests[i], timeout, iofn))
+                                       settings.get('after_judging')),
+                                      tests[i], timeout, iofile),
+                                callback=callback.get('judging'))
                 thread.start()
                 threads.append(thread)
             result = []
