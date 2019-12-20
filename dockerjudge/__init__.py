@@ -87,11 +87,7 @@ def judge(settings, source='', tests=[], timeout=1, iofile=(None, None),
     try:
         container.exec_run(['bash', '-c', 'echo {} > {}'.format(
             shlex.quote(source), settings['source'])])
-        if 'before_compiling' in settings:
-            container.exec_run(settings['before_compiling'])
         compiler = container.exec_run(settings['compile'], demux=True)
-        if 'after_compiling' in settings:
-            container.exec_run(settings['after_compiling'])
         if callback.get('compiling'):
             callback['compiling'](compiler.exit_code,
                                   (compiler.output[1] or b'').decode())
