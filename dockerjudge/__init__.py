@@ -22,12 +22,13 @@ class Thread(threading.Thread):
 
     def run(self):
         try:
-            if self._target:
-                self.return_value = self._target(*self._args, **self._kwargs)
-                if self._callback:
-                    self._callback(self._args[0], *self.return_value)
+            self.return_value = self._target(*self._args, **self._kwargs)
         finally:
-            del self._target, self._args, self._kwargs
+            try:
+                self._callback(self._args[0], *self.return_value)
+            except Exception:
+                pass
+            del self._target, self._args, self._kwargs, self._callback
 
 
 def _judge(dir, container, commands, ioput, timeout, iofile) -> (str, float):
