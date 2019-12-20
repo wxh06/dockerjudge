@@ -9,7 +9,7 @@ import threading
 import docker
 import ruamel.yaml
 
-__version__ = '0.7'
+__version__ = '0.7.1'
 
 
 class Thread(threading.Thread):
@@ -22,12 +22,13 @@ class Thread(threading.Thread):
 
     def run(self):
         try:
-            if self._target:
-                self.return_value = self._target(*self._args, **self._kwargs)
-                if self._callback:
-                    self._callback(self._args[0], *self.return_value)
+            self.return_value = self._target(*self._args, **self._kwargs)
         finally:
-            del self._target, self._args, self._kwargs
+            try:
+                self._callback(self._args[0], *self.return_value)
+            except Exception:
+                pass
+            del self._target, self._args, self._kwargs, self._callback
 
 
 def _judge(dir, container, commands, ioput, timeout, iofile) -> (str, float):
@@ -86,11 +87,7 @@ def judge(settings, source='', tests=[], timeout=1, iofile=(None, None),
     try:
         container.exec_run(['bash', '-c', 'echo {} > {}'.format(
             shlex.quote(source), settings['source'])])
-        if 'before_compiling' in settings:
-            container.exec_run(settings['before_compiling'])
         compiler = container.exec_run(settings['compile'], demux=True)
-        if 'after_compiling' in settings:
-            container.exec_run(settings['after_compiling'])
         if callback.get('compiling'):
             callback['compiling'](compiler.exit_code,
                                   (compiler.output[1] or b'').decode())

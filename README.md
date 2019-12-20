@@ -14,5 +14,5 @@
 A Docker Based Online Judge Engine
 
 # [License](LICENSE)
-Licensed under [the Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
-<a href="https://commons.wikimedia.org/wiki/File:Apache_Software_Foundation_Logo_(2016).svg"><img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Apache_Software_Foundation_Logo_(2016).svg" alt="Apache Software Foundation Logo (2016).svg" width="10%" align="right"></a>
+Licensed under [the **Apache License, Version 2.0**](https://www.apache.org/licenses/LICENSE-2.0)
+<a href="https://www.apache.org/foundation/press/kit/#wide"><img src="https://www.apache.org/foundation/press/kit/asf_logo_wide.svg" alt="Wide Apache Software Foundation Logo with Feather.svg" height="32" align="right"></a>
