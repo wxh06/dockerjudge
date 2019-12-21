@@ -13,6 +13,25 @@
 
 A Docker Based Online Judge Engine
 
-# [License](LICENSE)
+## Installation
+### From the [Python Package Index (PyPI)](https://pypi.org/)
+#### Via [pip](https://pip.pypa.io/)
+```sh
+pip install dockerjudge
+```
+
+#### Via [Esay install](https://setuptools.readthedocs.io/en/latest/easy_install.html) (deprecated)
+```sh
+easy_install dockerjudge
+```
+
+### From this [Git repository](https://github.com/wangxinhe2006/dockerjudge.git)
+```sh
+git clone https://github.com/wangxinhe2006/dockerjudge.git
+cd dockerjudge
+python3 setup.py install
+```
+
+## [License](LICENSE)
 Licensed under [the **Apache License, Version 2.0**](https://www.apache.org/licenses/LICENSE-2.0)
 <a href="https://www.apache.org/foundation/press/kit/#wide"><img src="https://www.apache.org/foundation/press/kit/asf_logo_wide.svg" alt="Wide Apache Software Foundation Logo with Feather.svg" height="32" align="right"></a>
