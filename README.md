@@ -15,6 +15,11 @@ A Docker Based Online Judge Engine
 
 ## Installation
 ### From the [Python Package Index (PyPI)](https://pypi.org/)
+[dockerjudge · PyPI](https://pypi.org/project/dockerjudge/)
+- [PyPI](https://pypi.org/simple/dockerjudge/)
+- [阿里巴巴开源镜像站 (Alibaba Open Source Mirror)](https://mirrors.aliyun.com/pypi/simple/dockerjudge/)
+- [清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://pypi.tuna.tsinghua.edu.cn/simple/dockerjudge/)
+
 #### Via [pip](https://pip.pypa.io/)
 ```sh
 pip install dockerjudge
@@ -25,7 +30,10 @@ pip install dockerjudge
 easy_install dockerjudge
 ```
 
-### From this [Git repository](https://github.com/wangxinhe2006/dockerjudge.git)
+### From [GitHub](https://github.com/)
+[wangxinhe2006/dockerjudge: A Docker Based Online Judge Engine](https://github.com/wangxinhe2006/dockerjudge)
+- HTTPS: `https://github.com/wangxinhe2006/dockerjudge.git`
+- SSH: `git@github.com:wangxinhe2006/dockerjudge.git`
 ```sh
 git clone https://github.com/wangxinhe2006/dockerjudge.git
 cd dockerjudge
