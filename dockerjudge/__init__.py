@@ -9,14 +9,14 @@ import threading
 import docker
 import ruamel.yaml
 
-__version__ = '0.7.1'
+__version__ = '0.7.2'
 
 
 class Thread(threading.Thread):
     'Subclass of threading.Thread with return value'
 
     def __init__(self, callback, *args, **kwargs):
-        self.return_value = 'UE'  # Unknown Error
+        self.return_value = ('UE', .0)  # Unknown Error
         self._callback = callback
         super().__init__(*args, **kwargs)
 
