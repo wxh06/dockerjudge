@@ -1,3 +1,4 @@
+from time import time
 import unittest
 
 from dockerjudge import judge
@@ -165,6 +166,25 @@ class TestDockerJudge(unittest.TestCase):
         self.assertEqual(result[0][0][0], 'AC')
         self.assertEqual(result[0][1][0], 'WA')
         self.assertEqual(result[0][2][0], 'RE')
+        self.assertFalse(result[1])
+
+    def test_split(self):
+        t = time()
+        result = judge({'image': 'gcc:4.8',
+                        'source': 'a.cpp',
+                        'compile': 'g++ a.cpp',
+                        'judge': '%s/a.out'},
+                       r'#include <stdio.h>''\n'
+                       r'int main() {''\n'
+                       r'    while (true)''\n'
+                       r'        ;''\n'
+                       r'}''\n',
+                       [('', '')] * 3,
+                       3, split=2)
+        self.assertEqual(result[0][0][0], 'TLE')
+        self.assertEqual(result[0][1][0], 'TLE')
+        self.assertEqual(result[0][2][0], 'TLE')
+        self.assertGreater(time() - t, 6)
         self.assertFalse(result[1])
 
 

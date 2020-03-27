@@ -3,13 +3,13 @@
 </p>
 
 # dockerjudge
-[![Build Status](https://www.travis-ci.org/wangxinhe2006/dockerjudge.svg)](https://www.travis-ci.org/wangxinhe2006/dockerjudge)
-[![CodeCov](https://codecov.io/gh/wangxinhe2006/dockerjudge/graph/badge.svg)](https://codecov.io/gh/wangxinhe2006/dockerjudge)
+[![Build Status](https://www.travis-ci.org/piterator-org/dockerjudge.svg)](https://www.travis-ci.org/piterator-org/dockerjudge)
+[![CodeCov](https://codecov.io/gh/piterator-org/dockerjudge/graph/badge.svg)](https://codecov.io/gh/piterator-org/dockerjudge)
 [![Python Version](https://img.shields.io/pypi/pyversions/dockerjudge.svg)](https://www.python.org/downloads/)
-[![GitHub pre-release](https://img.shields.io/github/release-pre/wangxinhe2006/dockerjudge.svg)](https://github.com/wangxinhe2006/dockerjudge/releases)
+[![GitHub pre-release](https://img.shields.io/github/release-pre/piterator-org/dockerjudge.svg)](https://github.com/piterator-org/dockerjudge/releases)
 [![PyPI](https://img.shields.io/pypi/v/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#history)
 [![Wheel](https://img.shields.io/pypi/wheel/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#files)
-[![License](https://img.shields.io/github/license/wangxinhe2006/dockerjudge.svg)](LICENSE)
+[![License](https://img.shields.io/github/license/piterator-org/dockerjudge.svg)](LICENSE)
 
 A Docker Based Online Judge Engine
 
@@ -31,11 +31,11 @@ easy_install dockerjudge
 ```
 
 ### From [GitHub](https://github.com/)
-[wangxinhe2006/dockerjudge: A Docker Based Online Judge Engine](https://github.com/wangxinhe2006/dockerjudge)
-- HTTPS: `https://github.com/wangxinhe2006/dockerjudge.git`
-- SSH: `git@github.com:wangxinhe2006/dockerjudge.git`
+[wangxinhe2006/dockerjudge: A Docker Based Online Judge Engine](https://github.com/piterator-org/dockerjudge)
+- HTTPS: `https://github.com/piterator-org/dockerjudge.git`
+- SSH: `git@github.com:piterator-org/dockerjudge.git`
 ```sh
-git clone https://github.com/wangxinhe2006/dockerjudge.git
+git clone https://github.com/piterator-org/dockerjudge.git
 cd dockerjudge
 python3 setup.py install
 ```
