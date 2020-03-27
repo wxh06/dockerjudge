@@ -1,5 +1,6 @@
 'dockerjudge - A Docker Based Online Judge Engine'
 
+import math
 from pprint import pprint
 import re
 import shlex
@@ -9,7 +10,7 @@ import threading
 import docker
 import ruamel.yaml
 
-__version__ = '0.7.2'
+__version__ = '0.8.0'
 
 
 class Thread(threading.Thread):
@@ -79,9 +80,11 @@ def _judge(dir, container, commands, ioput, timeout, iofile) -> (str, float):
 
 
 def judge(settings, source='', tests=[], timeout=1, iofile=(None, None),
-          callback={}, client=docker.from_env()):
+          callback={}, split=0, client=docker.from_env()):
     'Main judge function'
     tests = list(tests)
+    if not split:
+        split = len(tests)
     container = client.containers.run(settings['image'], detach=True,
                                       network_disabled=True, tty=True)
     try:
@@ -94,21 +97,22 @@ def judge(settings, source='', tests=[], timeout=1, iofile=(None, None),
         if compiler.exit_code:
             result = [('CE', .0) for test in tests]
         else:
-            threads = []
-            for i in range(len(tests)):
-                thread = Thread(target=_judge,
-                                args=(i, container,
-                                      (settings.get('before_judging'),
-                                       settings['judge'],
-                                       settings.get('after_judging')),
-                                      tests[i], timeout, iofile),
-                                callback=callback.get('judging'))
-                thread.start()
-                threads.append(thread)
             result = []
-            for thread in threads:
-                thread.join()
-                result.append(thread.return_value)
+            for i in range(math.ceil(len(tests) / split)):
+                threads = []
+                for j in range(i * split, min((i + 1) * split, len(tests))):
+                    thread = Thread(target=_judge,
+                                    args=(j, container,
+                                          (settings.get('before_judging'),
+                                           settings['judge'],
+                                           settings.get('after_judging')),
+                                          tests[j], timeout, iofile),
+                                    callback=callback.get('judging'))
+                    thread.start()
+                    threads.append(thread)
+                for thread in threads:
+                    thread.join()
+                    result.append(thread.return_value)
         return [result, (compiler.output[1] or b'').decode()]
     finally:
         container.remove(force=True)
