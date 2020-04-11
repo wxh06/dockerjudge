@@ -31,7 +31,7 @@ easy_install dockerjudge
 ```
 
 ### From [GitHub](https://github.com/)
-[wangxinhe2006/dockerjudge: A Docker Based Online Judge Engine](https://github.com/piterator-org/dockerjudge)
+[piterator-org/dockerjudge: A Docker Based Online Judge Engine](https://github.com/piterator-org/dockerjudge)
 - HTTPS: `https://github.com/piterator-org/dockerjudge.git`
 - SSH: `git@github.com:piterator-org/dockerjudge.git`
 ```sh
