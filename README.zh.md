@@ -20,12 +20,12 @@
 - [阿里巴巴开源镜像站](https://mirrors.aliyun.com/pypi/simple/dockerjudge/)
 - [清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://pypi.tuna.tsinghua.edu.cn/simple/dockerjudge/)
 
-#### 使用 [pip](https://pip.pypa.io/)
+#### 通过 [pip](https://pip.pypa.io/)
 ```sh
 pip install dockerjudge
 ```
 
-#### 使用 [Esay install](https://setuptools.readthedocs.io/en/latest/easy_install.html) (不建议)
+#### 通过 [Esay install](https://setuptools.readthedocs.io/en/latest/easy_install.html) (不建议)
 ```sh
 easy_install dockerjudge
 ```
