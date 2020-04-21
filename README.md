@@ -3,6 +3,8 @@
 </p>
 
 # dockerjudge
+[![Python package](https://github.com/piterator-org/dockerjudge/workflows/Python%20package/badge.svg)](https://github.com/piterator-org/dockerjudge/actions?query=workflow%3A%22Python+package%22)
+[![Upload Python Package](https://github.com/piterator-org/dockerjudge/workflows/Upload%20Python%20Package/badge.svg)](https://github.com/piterator-org/dockerjudge/actions?query=workflow%3A%22Upload+Python+Package%22)
 [![Build Status](https://www.travis-ci.org/piterator-org/dockerjudge.svg)](https://www.travis-ci.org/piterator-org/dockerjudge)
 [![CodeCov](https://codecov.io/gh/piterator-org/dockerjudge/graph/badge.svg)](https://codecov.io/gh/piterator-org/dockerjudge)
 [![Python Version](https://img.shields.io/pypi/pyversions/dockerjudge.svg)](https://www.python.org/downloads/)
