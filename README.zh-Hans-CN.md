@@ -13,7 +13,7 @@
 [![Wheel](https://img.shields.io/pypi/wheel/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#files)
 [![License](https://img.shields.io/github/license/piterator-org/dockerjudge.svg)](LICENSE)
 
-🎌 [English](README.md) | **大陆简体**
+🎌 [🇺🇸English](README.md) | **🇨🇳大陆简体**
 
 基于 Docker 的在线测评引擎
 

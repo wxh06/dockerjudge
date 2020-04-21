@@ -13,7 +13,7 @@
 [![Wheel](https://img.shields.io/pypi/wheel/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#files)
 [![License](https://img.shields.io/github/license/piterator-org/dockerjudge.svg)](LICENSE)
 
-🎌 **English** | [大陆简体](README.zh-Hans-CN.md)
+🎌 **🇺🇸English** | [🇨🇳大陆简体](README.zh-Hans-CN.md)
 
 A Docker Based Online Judge Engine
 
