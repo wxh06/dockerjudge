@@ -3,13 +3,15 @@
 </p>
 
 # dockerjudge
-[![构造状态](https://www.travis-ci.org/piterator-org/dockerjudge.svg)](https://www.travis-ci.org/piterator-org/dockerjudge)
+[![Python 包](https://github.com/piterator-org/dockerjudge/workflows/Python%20package/badge.svg)](https://github.com/piterator-org/dockerjudge/actions?query=workflow%3A%22Python+package%22)
+[![上传 Python 包](https://github.com/piterator-org/dockerjudge/workflows/Upload%20Python%20Package/badge.svg)](https://github.com/piterator-org/dockerjudge/actions?query=workflow%3A%22Upload+Python+Package%22)
+[![构建状态](https://www.travis-ci.org/piterator-org/dockerjudge.svg)](https://www.travis-ci.org/piterator-org/dockerjudge)
 [![CodeCov](https://codecov.io/gh/piterator-org/dockerjudge/graph/badge.svg)](https://codecov.io/gh/piterator-org/dockerjudge)
 [![Python 版本](https://img.shields.io/pypi/pyversions/dockerjudge.svg)](https://www.python.org/downloads/)
-[![GitHub 预发布](https://img.shields.io/github/release-pre/piterator-org/dockerjudge.svg)](https://github.com/piterator-org/dockerjudge/releases)
+[![GitHub pre-release](https://img.shields.io/github/release-pre/piterator-org/dockerjudge.svg)](https://github.com/piterator-org/dockerjudge/releases)
 [![PyPI](https://img.shields.io/pypi/v/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#history)
 [![Wheel](https://img.shields.io/pypi/wheel/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#files)
-[![开源协议](https://img.shields.io/github/license/piterator-org/dockerjudge.svg)](LICENSE)
+[![License](https://img.shields.io/github/license/piterator-org/dockerjudge.svg)](LICENSE)
 
 🎌 [English](README.md) | **大陆简体**
 
