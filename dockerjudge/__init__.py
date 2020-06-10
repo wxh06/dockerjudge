@@ -43,9 +43,13 @@ def _judge(dir, container, commands, ioput, timeout, iofile) -> (str, float):
                             '{}/{}'.format(shlex.quote(ioput[0]),
                                            dir, iofile[0])])
         result = container.exec_run(['bash', '-c', 'cd {}&&time timeout -s '
-                                     'KILL {} {}<{}'.format(dir, timeout,
-                                                            commands[1] % '..',
-                                                            iofile[0])],
+                                     'KILL {} sh -c {}<{}'.format(dir, timeout,
+                                                                  shlex.quote(
+                                                                      commands
+                                                                      [1]
+                                                                      % '..'
+                                                                  ),
+                                                                  iofile[0])],
                                     demux=True)
     else:
         result = container.exec_run(['bash', '-c', 'cd {}&&time echo {}|'
