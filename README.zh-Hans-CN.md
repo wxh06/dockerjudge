@@ -6,7 +6,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/28a2fdc5f6d8afd9c2d4/maintainability)](https://codeclimate.com/github/piterator-org/dockerjudge/maintainability)
 [![Python 包](https://github.com/piterator-org/dockerjudge/workflows/Python%20package/badge.svg)](https://github.com/piterator-org/dockerjudge/actions?query=workflow%3A%22Python+package%22)
 [![上传 Python 包](https://github.com/piterator-org/dockerjudge/workflows/Upload%20Python%20Package/badge.svg)](https://github.com/piterator-org/dockerjudge/actions?query=workflow%3A%22Upload+Python+Package%22)
-[![构建状态](https://www.travis-ci.org/piterator-org/dockerjudge.svg)](https://www.travis-ci.org/piterator-org/dockerjudge)
+[![构建状态](https://travis-ci.com/piterator-org/dockerjudge.svg)](https://travis-ci.com/piterator-org/dockerjudge)
 [![CodeCov](https://codecov.io/gh/piterator-org/dockerjudge/graph/badge.svg)](https://codecov.io/gh/piterator-org/dockerjudge)
 [![Python 版本](https://img.shields.io/pypi/pyversions/dockerjudge.svg)](https://www.python.org/downloads/)
 [![GitHub pre-release](https://img.shields.io/github/release-pre/piterator-org/dockerjudge.svg)](https://github.com/piterator-org/dockerjudge/releases)
