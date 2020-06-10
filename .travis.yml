@@ -21,5 +21,5 @@ install:
 script:
   - flake8 dockerjudge
   - python3 -W ignore -m coverage run tests.py
-after_success:
+after_script:
   - codecov
