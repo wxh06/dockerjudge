@@ -1,2 +1,3 @@
 [run]
 omit = */site-packages/*
+exclude_lines = if __name__ == (?:'|")__main__(?:'|")
