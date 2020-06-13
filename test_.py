@@ -78,6 +78,7 @@ class TestDockerJudge(unittest.TestCase):
         self.assertEqual(result[0][1][0], Status.RE)
         self.assertAlmostEqual(result[0][0][2], .5, 0)
         self.assertAlmostEqual(result[0][1][2], .0, 0)
+        self.assertFalse(result[1])
 
     def test_iofile(self):
         result = judge(
@@ -100,6 +101,7 @@ class TestDockerJudge(unittest.TestCase):
         self.assertEqual(result[0][1][0], Status.WA)
         self.assertEqual(result[0][2][0], Status.RE)
         self.assertTrue(result[0][2][1])
+        self.assertFalse(result[1])
 
     def test_onf(self):
         result = judge(
@@ -119,6 +121,36 @@ class TestDockerJudge(unittest.TestCase):
         self.assertEqual(result[0][0][0], Status.ONF)
         self.assertEqual(result[0][1][0], Status.RE)
         self.assertTrue(result[0][1][1])
+        self.assertFalse(result[1])
+
+    def test_callback(self):
+        def compiling_callback(code, err):
+            self.assertFalse(code)
+            self.assertFalse(err)
+
+        def judging_callback(id, status, stderr, duration):
+            statuses = [Status.AC, Status.WA, Status.RE]
+            self.assertEqual(status, statuses[id])
+
+        result = judge(
+            GCC('c', '4.9'),
+            b'''
+            #include <stdio.h>
+            int main() {
+                int a, b;
+                scanf("%d %d", &a, &b);
+                printf("%d", a / b);
+                return 0;
+            }
+            ''',
+            [(b'1 1', b'1'), (b'1 2', b'0.5'), (b'0 0', b'')],
+            {'callback': {'compile': compiling_callback,
+                          'judge': judging_callback}}
+        )
+        self.assertEqual(result[0][0][0], Status.AC)
+        self.assertEqual(result[0][1][0], Status.WA)
+        self.assertEqual(result[0][2][0], Status.RE)
+        self.assertFalse(result[1])
 
 
 if __name__ == '__main__':

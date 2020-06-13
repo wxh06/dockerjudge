@@ -36,6 +36,9 @@ def run(container, processor, source, tests, config):
     exec_run(container, processor.before_compile, f'{processor.workdir}/0')
     exec_result = container.exec_run(processor.compile,
                                      workdir=f'{processor.workdir}/0')
+    if 'compile' in config.get('callback', {}):
+        config['callback']['compile'](exec_result.exit_code,
+                                      exec_result.output)
     if exec_result.exit_code:
         return [[[Status.CE, exec_result.output, .0]] * len(tests),
                 exec_result.output]
@@ -47,7 +50,8 @@ def run(container, processor, source, tests, config):
         threads.append(
             Thread(
                 target=test_case.__init__,
-                args=(container, processor, i, test, config)
+                args=(container, processor, i, test, config),
+                callback=config.get('callback', {}).get('judge')
             )
         )
         threads[-1].start()
