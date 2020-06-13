@@ -28,9 +28,7 @@ class GCC(Processor):
         cpp = 'C++'
 
     def __init__(self, language=None, version=None,
-                 filenames: {'src': r'a.(c|cpp)',
-                             'bin': 'a.out'} = None,  # pylint: disable = C0326
-                 options=None):
+                 filenames=None, options=None):
         lang = (language if isinstance(language, self.Language)
                 else self.Language[language] if language in ['c', 'cpp']
                 else self.Language(language) if language in ['C', 'C++']
