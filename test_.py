@@ -72,12 +72,12 @@ class TestDockerJudge(unittest.TestCase):
             }
             ''',
             [(b'1 1', b'1'), (b'0 0', b'')],
-            {'limit': {'time': .1}}
+            {'limit': {'time': .5}}
         )
         self.assertEqual(result[0][0][0], Status.TLE)
         self.assertEqual(result[0][1][0], Status.RE)
-        self.assertAlmostEqual(result[0][0][2], .1, 1)
-        self.assertAlmostEqual(result[0][1][2], .0, 1)
+        self.assertAlmostEqual(result[0][0][2], .5, 0)
+        self.assertAlmostEqual(result[0][1][2], .0, 0)
 
     def test_iofile(self):
         result = judge(
