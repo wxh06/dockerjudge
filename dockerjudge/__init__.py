@@ -7,6 +7,7 @@ import docker
 from .dockerpy import exec_run, put_bin
 from .status import Status
 from . import test_case
+from .thread import Thread
 
 __version__ = '1.0.0'
 
@@ -41,6 +42,16 @@ def run(container, processor, source, tests, config):
     exec_run(container, processor.after_compile, f'{processor.workdir}/0')
 
     res = []
+    threads = []
     for i, test in zip(range(1, len(tests) + 1), tests):
-        res.append(test_case.__init__(container, processor, i, test, config))
+        threads.append(
+            Thread(
+                target=test_case.__init__,
+                args=(container, processor, i, test, config)
+            )
+        )
+        threads[-1].start()
+    for thread in threads:
+        thread.join()
+        res.append(thread.return_value)
     return [res, exec_result.output]
