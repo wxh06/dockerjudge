@@ -17,9 +17,11 @@ before_install:
   - pip install -U setuptools wheel
 install:
   - pip install -r requirements.txt
-  - pip install flake8 coverage codecov
+  - pip install flake8 pylint pytest-cov codecov
+  - docker pull gcc:4.9
 script:
   - flake8 dockerjudge
-  - python3 -W ignore -m coverage run tests.py
+  - pylint dockerjudge
+  - pytest --cov=.
 after_script:
   - codecov

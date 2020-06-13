@@ -1,5 +1,6 @@
 [run]
 omit = */site-packages/*
+       setup.py
 
 [report]
 exclude_lines = if __name__ == (?:'|")__main__(?:'|")
