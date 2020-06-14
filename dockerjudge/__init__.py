@@ -6,7 +6,6 @@ from pathlib import PurePosixPath
 import docker
 
 from .dockerpy import exec_run, put_bin
-from .status import Status
 from . import test_case
 from .thread import Thread
 
@@ -70,8 +69,6 @@ def run(container, processor, source, tests, config=None):
     config = config or {}
     exec_result = compile_source_code(container, processor, source, config)
     if exec_result.exit_code:
-        return [[[Status.CE, (None, None), .0]] * len(tests),
-                exec_result.output]
-
+        return test_case.get_ce_res(tests, exec_result)
     res = judge_test_cases(container, processor, tests, config)
     return [res, exec_result.output]
