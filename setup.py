@@ -7,7 +7,7 @@ import setuptools
 
 def read(path):
     with codecs.open(os.path.join(os.path.abspath(os.path.dirname(__file__)),
-                     path)) as fp:
+                                  path)) as fp:
         return fp.read()
 
 
@@ -31,7 +31,8 @@ setuptools.setup(
     project_urls={
         "Bug Tracker": "https://github.com/piterator-org/dockerjudge/issues",
         "Documentation": "https://github.com/piterator-org/dockerjudge#readme",
-        "Source Code": "https://github.com/piterator-org/dockerjudge/tree/master",
+        "Source Code":
+            "https://github.com/piterator-org/dockerjudge/tree/master",
     },
     packages=['dockerjudge'],
     install_requires=[
