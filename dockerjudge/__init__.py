@@ -1,5 +1,6 @@
 'dockerjudge - A Docker Based Online Judge Engine'
 
+from math import ceil
 from pathlib import PurePosixPath
 
 import docker
@@ -15,7 +16,6 @@ __version__ = '1.0.0'
 def judge(processor, source, tests, config=None,
           client=docker.from_env()):
     'Main function'
-    config = config or {}
     container = client.containers.run(processor.image, detach=True,
                                       network_disabled=True, tty=True)
     try:
@@ -24,8 +24,9 @@ def judge(processor, source, tests, config=None,
         container.remove(force=True)
 
 
-def run(container, processor, source, tests, config):
+def run(container, processor, source, tests, config=None):
     'Compile and judge'
+    config = config or {}
     container.exec_run(f"mkdir -p {processor.workdir}/0")
     put_bin(
         container,
@@ -45,17 +46,20 @@ def run(container, processor, source, tests, config):
     exec_run(container, processor.after_compile, f'{processor.workdir}/0')
 
     res = []
-    threads = []
-    for i, test in zip(range(1, len(tests) + 1), tests):
-        threads.append(
-            Thread(
-                target=test_case.__init__,
-                args=(container, processor, i, test, config),
-                callback=config.get('callback', {}).get('judge')
+    for i in range(ceil(len(tests) / config.get('threads', len(tests)))):
+        threads = []
+        for j in range(i * config.get('threads', len(tests)),
+                       min((i + 1) * config.get('threads', len(tests)),
+                           len(tests))):
+            threads.append(
+                Thread(
+                    target=test_case.__init__,
+                    args=(container, processor, j + 1, tests[j], config),
+                    callback=config.get('callback', {}).get('judge')
+                )
             )
-        )
-        threads[-1].start()
-    for thread in threads:
-        thread.join()
-        res.append(thread.return_value)
+            threads[-1].start()
+        for thread in threads:
+            thread.join()
+            res.append(thread.return_value)
     return [res, exec_result.output]
