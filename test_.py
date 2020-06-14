@@ -164,7 +164,7 @@ class TestDockerJudge(unittest.TestCase):
             }
             ''',
             [(b'', b'')] * 3,
-            {'limit': {'time': 5}, 'threads': 0}
+            {'limit': {'time': 5}, 'threads': 2}
         )
         self.assertEqual(result[0][0][0], Status.TLE)
         self.assertEqual(result[0][1][0], Status.TLE)
