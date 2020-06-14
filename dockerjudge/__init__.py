@@ -24,7 +24,7 @@ def judge(processor, source, tests, config=None,
         container.remove(force=True)
 
 
-def exec_compile(container, processor, source, config):
+def compile_source_code(container, processor, source, config):
     'Compile the source file'
     container.exec_run(f"mkdir -p {processor.workdir}/0")
     put_bin(
@@ -43,14 +43,8 @@ def exec_compile(container, processor, source, config):
     return exec_result
 
 
-def run(container, processor, source, tests, config=None):
-    'Compile and judge'
-    config = config or {}
-    exec_result = exec_compile(container, processor, source, config)
-    if exec_result.exit_code:
-        return [[[Status.CE, (None, None), .0]] * len(tests),
-                exec_result.output]
-
+def judge_test_cases(container, processor, tests, config):
+    'Judge test cases'
     res = []
     for i in range(ceil(len(tests) / (config.get('threads') or len(tests)))):
         threads = []
@@ -68,4 +62,16 @@ def run(container, processor, source, tests, config=None):
         for thread in threads:
             thread.join()
             res.append(thread.return_value)
+    return res
+
+
+def run(container, processor, source, tests, config=None):
+    'Compile and judge'
+    config = config or {}
+    exec_result = compile_source_code(container, processor, source, config)
+    if exec_result.exit_code:
+        return [[[Status.CE, (None, None), .0]] * len(tests),
+                exec_result.output]
+
+    res = judge_test_cases(container, processor, tests, config)
     return [res, exec_result.output]
