@@ -19,12 +19,12 @@ def __init__(container, processor, i, ioput, config):
     return res
 
 
-def _get_io_file_path(t, processor, i, config):
+def _get_io_file_path(ioro, processor, i, config):
     'Get the absolute path of input or output file'
     return PurePosixPath(
-        f"{processor.workdir}/{i}/{config['iofilename'][t]}"
-        if t in config.get('iofilename', {})
-        else f'{processor.workdir}/{i}.{t}'
+        f"{processor.workdir}/{i}/{config['iofilename'][ioro]}"
+        if ioro in config.get('iofilename', {})
+        else f'{processor.workdir}/{i}.{ioro}'
     )
 
 
