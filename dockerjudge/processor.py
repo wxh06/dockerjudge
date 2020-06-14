@@ -8,6 +8,10 @@ from pathlib import PurePosixPath
 class Processor():
     'Defines the operations of a multi-version programming language processor'
 
+    @staticmethod
+    def _get_image_tag(image, tag):
+        return image + (f':{tag}' if tag else '')
+
     image = None
     workdir = PurePosixPath('/dockerjudge')
     source = None
@@ -36,7 +40,7 @@ class GCC(Processor):
         fns = filenames or {}
         args = options or []
 
-        self.image = 'gcc' + (f':{version}' if version else '')
+        self.image = self._get_image_tag('gcc', version)
         self.source = fns.get('src', f'a.{lang.name}')
         self.compile = ([{self.Language.c: 'gcc',
                           self.Language.cpp: 'g++'}[lang],

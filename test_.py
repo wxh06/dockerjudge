@@ -9,6 +9,7 @@ from dockerjudge.status import Status
 class TestProcessor(unittest.TestCase):
 
     def test_GCC(self):
+        self.assertEqual(GCC(GCC.Language.c, 4.9).image, 'gcc:4.9')
         self.assertEqual(GCC(GCC.Language.c).source, GCC('c').source)
         self.assertEqual(GCC(GCC.Language.c).source, GCC('C').source)
         self.assertEqual(GCC(GCC.Language.cpp).source, GCC('cpp').source)
