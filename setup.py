@@ -27,11 +27,15 @@ setuptools.setup(
     description='A Docker Based Online Judge Engine',
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
-    url='https://github.com/wangxinhe2006/dockerjudge',
+    url='https://github.com/piterator-org/dockerjudge',
+    project_urls={
+        "Bug Tracker": "https://github.com/piterator-org/dockerjudge/issues",
+        "Documentation": "https://github.com/piterator-org/dockerjudge#readme",
+        "Source Code": "https://github.com/piterator-org/dockerjudge/tree/master",
+    },
     packages=['dockerjudge'],
     install_requires=[
-        'docker[tls]>=3.7',
-        'ruamel.yaml'
+        'docker[tls]>=3.7'
     ],
     classifiers=[
         'Programming Language :: Python :: 3',
