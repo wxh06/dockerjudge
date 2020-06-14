@@ -55,6 +55,5 @@ def judge(container, processor, i, ioput, config):
                          _get_io_file_path('out', processor, i, config))
     except NotFound:
         return Status.ONF, stderr, duration
-    if output.rstrip() == ioput[1].rstrip():
-        return Status.AC, stderr, duration
-    return Status.WA, stderr, duration
+    return (Status.AC if output.rstrip() == ioput[1].rstrip() else Status.WA,
+            stderr, duration)
