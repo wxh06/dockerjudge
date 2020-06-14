@@ -32,8 +32,9 @@ class GCC(Processor):
         cpp = 'C++'
 
     def _get_language(self, language):
-        return (language if isinstance(language, self.Language)
-                else self.Language[language] if language in ['c', 'cpp']
+        if isinstance(language, self.Language):
+            return language
+        return (self.Language[language] if language in ['c', 'cpp']
                 else self.Language(language) if language in ['C', 'C++']
                 else self.Language.cpp)
 
@@ -51,5 +52,4 @@ class GCC(Processor):
                         + (['-o', fns['bin']]
                            if fns.get('bin') else []) + args)
         self.after_compile = ['rm', self.source]
-        # self.before_judge = 'ls'
         self.judge = f"./{fns.get('bin', 'a.out')}"
