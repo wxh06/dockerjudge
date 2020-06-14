@@ -1,9 +1,8 @@
 language: python
+cache: pip
 services:
   - docker
 python:
-  - "3.5"
-  - "3.5-dev"
   - "3.6"
   - "3.6-dev"
   - "3.7"
@@ -11,15 +10,17 @@ python:
   - "3.8"
   - "3.8-dev"
   - "3.9-dev"
-  - "nightly"
+  # - "nightly"
 before_install:
   - pip install -U pip
   - pip install -U setuptools wheel
 install:
-  - pip install -r requirements.txt
-  - pip install flake8 coverage codecov
+  - pip install -Ur requirements.txt
+  - pip install -U flake8 pylint pytest-cov codecov
+  - docker pull gcc:4.9
 script:
   - flake8 dockerjudge
-  - python3 -W ignore -m coverage run tests.py
+  - pylint dockerjudge
+  - pytest --cov=.
 after_script:
   - codecov
