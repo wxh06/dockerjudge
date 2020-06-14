@@ -9,7 +9,7 @@ from dockerjudge.status import Status
 class TestProcessor(unittest.TestCase):
 
     def test_GCC(self):
-        self.assertEqual(GCC(GCC.Language.c, 4.9).image, 'gcc:4.9')
+        self.assertEqual(GCC(GCC.Language.c, 4.8).image, 'gcc:4.8')
         self.assertEqual(GCC(GCC.Language.c).source, GCC('c').source)
         self.assertEqual(GCC(GCC.Language.c).source, GCC('C').source)
         self.assertEqual(GCC(GCC.Language.cpp).source, GCC('cpp').source)
@@ -22,7 +22,7 @@ class TestDockerJudge(unittest.TestCase):
 
     def test_judge(self):
         result = judge(
-            GCC('c', '4.9'),
+            GCC('c', '4.8'),
             b'''
             #include <stdio.h>
             int main() {
@@ -41,7 +41,7 @@ class TestDockerJudge(unittest.TestCase):
 
     def test_CE(self):
         result = judge(
-            GCC('c', '4.9'),
+            GCC('c', '4.8'),
             b'''
             #include <cstdio>
             int main() {
@@ -61,7 +61,7 @@ class TestDockerJudge(unittest.TestCase):
 
     def test_TLE(self):
         result = judge(
-            GCC('cpp', '4.9'),
+            GCC('cpp', '4.8'),
             b'''
             #include <cstdio>
             int main() {
@@ -83,7 +83,7 @@ class TestDockerJudge(unittest.TestCase):
 
     def test_iofile(self):
         result = judge(
-            GCC('c', '4.9'),
+            GCC('c', '4.8'),
             b'''
             #include <stdio.h>
             int main() {
@@ -106,7 +106,7 @@ class TestDockerJudge(unittest.TestCase):
 
     def test_ONF(self):
         result = judge(
-            GCC('c', '4.9'),
+            GCC('c', '4.8'),
             b'''
             #include <stdio.h>
             int main() {
@@ -134,7 +134,7 @@ class TestDockerJudge(unittest.TestCase):
             self.assertEqual(status, statuses[id])
 
         result = judge(
-            GCC('c', '4.9'),
+            GCC('c', '4.8'),
             b'''
             #include <stdio.h>
             int main() {
@@ -156,7 +156,7 @@ class TestDockerJudge(unittest.TestCase):
     def test_threads(self):
         t = time()
         result = judge(
-            GCC('cpp', '4.9'),
+            GCC('cpp', '4.8'),
             b'''
             int main() {
                 while (true)

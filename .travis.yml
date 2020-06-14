@@ -17,7 +17,7 @@ before_install:
 install:
   - pip install -Ur requirements.txt
   - pip install -U flake8 pylint pytest-cov codecov
-  - docker pull gcc:4.9
+  - docker pull gcc:4.8
 script:
   - flake8 dockerjudge
   - pylint dockerjudge
