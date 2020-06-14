@@ -19,5 +19,7 @@ class Thread(threading.Thread):
         finally:
             try:
                 self._callback(self._args[2] - 1, *self.return_value)
+            except TypeError:
+                pass
             finally:
                 del self._target, self._args, self._kwargs, self._callback

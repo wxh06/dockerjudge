@@ -46,10 +46,10 @@ def run(container, processor, source, tests, config=None):
     exec_run(container, processor.after_compile, f'{processor.workdir}/0')
 
     res = []
-    for i in range(ceil(len(tests) / config.get('threads', len(tests)))):
+    for i in range(ceil(len(tests) / (config.get('threads') or len(tests)))):
         threads = []
-        for j in range(i * config.get('threads', len(tests)),
-                       min((i + 1) * config.get('threads', len(tests)),
+        for j in range(i * (config.get('threads') or len(tests)),
+                       min((i + 1) * (config.get('threads') or len(tests)),
                            len(tests))):
             threads.append(
                 Thread(

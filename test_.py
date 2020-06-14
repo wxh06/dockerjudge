@@ -104,7 +104,7 @@ class TestDockerJudge(unittest.TestCase):
         self.assertTrue(result[0][2][1])
         self.assertFalse(result[1])
 
-    def test_onf(self):
+    def test_ONF(self):
         result = judge(
             GCC('c', '4.9'),
             b'''
@@ -152,6 +152,28 @@ class TestDockerJudge(unittest.TestCase):
         self.assertEqual(result[0][1][0], Status.WA)
         self.assertEqual(result[0][2][0], Status.RE)
         self.assertFalse(result[1])
+
+    def test_threads(self):
+        t = time()
+        result = judge(
+            GCC('cpp', '4.9'),
+            b'''
+            int main() {
+                while (true)
+                    ;
+            }
+            ''',
+            [(b'', b'')] * 3,
+            {'limit': {'time': 5}, 'threads': 0}
+        )
+        self.assertEqual(result[0][0][0], Status.TLE)
+        self.assertEqual(result[0][1][0], Status.TLE)
+        self.assertEqual(result[0][2][0], Status.TLE)
+        self.assertAlmostEqual(result[0][0][2], 5, 0)
+        self.assertAlmostEqual(result[0][1][2], 5, 0)
+        self.assertAlmostEqual(result[0][2][2], 5, 0)
+        self.assertFalse(result[1])
+        self.assertGreater(time() - t, 10)
 
 
 if __name__ == '__main__':
