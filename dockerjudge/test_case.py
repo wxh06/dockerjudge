@@ -19,17 +19,18 @@ def __init__(container, processor, i, ioput, config):
     return res
 
 
+def _get_io_file_path(t, processor, i, config):
+    'Get the absolute path of input or output file'
+    return PurePosixPath(
+        f"{processor.workdir}/{i}/{config['iofilename'][t]}"
+        if t in config.get('iofilename', {})
+        else f'{processor.workdir}/{i}.{t}'
+    )
+
+
 def judge(container, processor, i, ioput, config):
     'Judge one of the test cases'
-    put_bin(
-        container,
-        PurePosixPath(
-            f"{processor.workdir}/{i}/{config['iofilename']['in']}"
-            if 'in' in config.get('iofilename', {})
-            else f'{processor.workdir}/{i}.in'
-        ),
-        ioput[0]
-    )
+    put_bin(container, _get_io_file_path('in', processor, i, config), ioput[0])
     res = container.exec_run(
         'bash -c ' + shlex.quote(
             "TIMEFORMAT=$'\\n%3lR' && time timeout -sKILL "
@@ -50,14 +51,8 @@ def judge(container, processor, i, ioput, config):
     if res.exit_code:
         return Status.RE, stderr, duration
     try:
-        output = get_bin(
-            container,
-            PurePosixPath(
-                f"{processor.workdir}/{i}/{config['iofilename']['out']}"
-                if 'out' in config.get('iofilename', {})
-                else f'{processor.workdir}/{i}.out'
-            )
-        )
+        output = get_bin(container,
+                         _get_io_file_path('out', processor, i, config))
     except NotFound:
         return Status.ONF, stderr, duration
     if output.rstrip() == ioput[1].rstrip():
