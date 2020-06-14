@@ -47,13 +47,13 @@ def judge(container, processor, i, ioput, config):
     stderr = res.output[1][:duration.span()[0]]
     duration = int(duration.group(1)) * 60 + float(duration.group(2))
     if res.exit_code == 137:
-        return Status.TLE, stderr, duration
+        return Status.TLE, (None, stderr), duration
     if res.exit_code:
-        return Status.RE, stderr, duration
+        return Status.RE, (None, stderr), duration
     try:
         output = get_bin(container,
                          _get_io_file_path('out', processor, i, config))
     except NotFound:
-        return Status.ONF, stderr, duration
+        return Status.ONF, (None, stderr), duration
     return (Status.AC if output.rstrip() == ioput[1].rstrip() else Status.WA,
-            stderr, duration)
+            (output, stderr), duration)

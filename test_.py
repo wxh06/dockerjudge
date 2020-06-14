@@ -2,7 +2,7 @@ from time import time
 import unittest
 
 from dockerjudge import judge
-from dockerjudge.processor import GCC
+from dockerjudge.processor import GCC, Python
 from dockerjudge.status import Status
 
 
@@ -24,53 +24,52 @@ class TestDockerJudge(unittest.TestCase):
         result = judge(
             GCC('c', '4.8'),
             b'''
-            #include <stdio.h>
-            int main() {
-                int a, b;
-                scanf("%d %d", &a, &b);
-                printf("%d", a / b);
-                return 0;
-            }
+                #include <stdio.h>
+                int main() {
+                    int a, b;
+                    scanf("%d %d", &a, &b);
+                    printf("%d", a / b);
+                    return 0;
+                }
             ''',
             [(b'1 1', b'1'), (b'1 2', b'0.5'), (b'0 0', b'')]
         )
         self.assertEqual(result[0][0][0], Status.AC)
         self.assertEqual(result[0][1][0], Status.WA)
         self.assertEqual(result[0][2][0], Status.RE)
-        self.assertTrue(result[0][2][1])
+        self.assertIsNotNone(result[0][2][1][1])
+        self.assertIsNone(result[1])
 
     def test_CE(self):
         result = judge(
             GCC('c', '4.8'),
             b'''
-            #include <cstdio>
-            int main() {
-                int a, b;
-                scanf("%d %d", &a, &b);
-                printf("%d", a / b);
-                return 0;
-            }
+                #include <cstdio>
+                int main() {
+                    int a, b;
+                    scanf("%d %d", &a, &b);
+                    printf("%d", a / b);
+                    return 0;
+                }
             ''',
             [(b'1 1', b'1'), (b'1 2', b'0.5')]
         )
         self.assertEqual(result[0][0][0], Status.CE)
         self.assertEqual(result[0][1][0], Status.CE)
-        self.assertTrue(result[1])
-        self.assertEqual(result[1], result[0][0][1])
-        self.assertEqual(result[0][0][1], result[0][1][1])
+        self.assertIsNotNone(result[1])
 
     def test_TLE(self):
         result = judge(
             GCC('cpp', '4.8'),
             b'''
-            #include <cstdio>
-            int main() {
-                int a, b;
-                scanf("%d %d", &a, &b);
-                printf("%d", a / b);
-                while (true)
-                    ;
-            }
+                #include <cstdio>
+                int main() {
+                    int a, b;
+                    scanf("%d %d", &a, &b);
+                    printf("%d", a / b);
+                    while (true)
+                        ;
+                }
             ''',
             [(b'1 1', b'1'), (b'0 0', b'')],
             {'limit': {'time': .5}}
@@ -79,21 +78,21 @@ class TestDockerJudge(unittest.TestCase):
         self.assertEqual(result[0][1][0], Status.RE)
         self.assertAlmostEqual(result[0][0][2], .5, 0)
         self.assertAlmostEqual(result[0][1][2], .0, 0)
-        self.assertFalse(result[1])
+        self.assertIsNone(result[1])
 
     def test_iofile(self):
         result = judge(
             GCC('c', '4.8'),
             b'''
-            #include <stdio.h>
-            int main() {
-                freopen("in.txt", "r", stdin);
-                freopen("out.txt", "w", stdout);
-                int a, b;
-                scanf("%d %d", &a, &b);
-                printf("%d", a / b);
-                return 0;
-            }
+                #include <stdio.h>
+                int main() {
+                    freopen("in.txt", "r", stdin);
+                    freopen("out.txt", "w", stdout);
+                    int a, b;
+                    scanf("%d %d", &a, &b);
+                    printf("%d", a / b);
+                    return 0;
+                }
             ''',
             [(b'1 1', b'1'), (b'1 2', b'0.5'), (b'0 0', b'')],
             {'iofilename': {'in': 'in.txt', 'out': 'out.txt'}}
@@ -101,33 +100,33 @@ class TestDockerJudge(unittest.TestCase):
         self.assertEqual(result[0][0][0], Status.AC)
         self.assertEqual(result[0][1][0], Status.WA)
         self.assertEqual(result[0][2][0], Status.RE)
-        self.assertTrue(result[0][2][1])
-        self.assertFalse(result[1])
+        self.assertIsNotNone(result[0][2][1][1])
+        self.assertIsNone(result[1])
 
     def test_ONF(self):
         result = judge(
             GCC('c', '4.8'),
             b'''
-            #include <stdio.h>
-            int main() {
-                int a, b;
-                scanf("%d %d", &a, &b);
-                printf("%d", a / b);
-                return 0;
-            }
+                #include <stdio.h>
+                int main() {
+                    int a, b;
+                    scanf("%d %d", &a, &b);
+                    printf("%d", a / b);
+                    return 0;
+                }
             ''',
             [(b'1 1', b'1'), (b'0 0', b'')],
             {'iofilename': {'out': 'out.txt'}}
         )
         self.assertEqual(result[0][0][0], Status.ONF)
         self.assertEqual(result[0][1][0], Status.RE)
-        self.assertTrue(result[0][1][1])
-        self.assertFalse(result[1])
+        self.assertIsNotNone(result[0][1][1][1])
+        self.assertIsNone(result[1])
 
     def test_callback(self):
-        def compiling_callback(code, err):
+        def compiling_callback(code, stderr):
             self.assertFalse(code)
-            self.assertFalse(err)
+            self.assertIsNone(stderr)
 
         def judging_callback(id, status, stderr, duration):
             statuses = [Status.AC, Status.WA, Status.RE]
@@ -136,13 +135,13 @@ class TestDockerJudge(unittest.TestCase):
         result = judge(
             GCC('c', '4.8'),
             b'''
-            #include <stdio.h>
-            int main() {
-                int a, b;
-                scanf("%d %d", &a, &b);
-                printf("%d", a / b);
-                return 0;
-            }
+                #include <stdio.h>
+                int main() {
+                    int a, b;
+                    scanf("%d %d", &a, &b);
+                    printf("%d", a / b);
+                    return 0;
+                }
             ''',
             [(b'1 1', b'1'), (b'1 2', b'0.5'), (b'0 0', b'')],
             {'callback': {'compile': compiling_callback,
@@ -151,7 +150,7 @@ class TestDockerJudge(unittest.TestCase):
         self.assertEqual(result[0][0][0], Status.AC)
         self.assertEqual(result[0][1][0], Status.WA)
         self.assertEqual(result[0][2][0], Status.RE)
-        self.assertFalse(result[1])
+        self.assertIsNone(result[1])
 
     def test_threads(self):
         t = time()
@@ -172,8 +171,23 @@ class TestDockerJudge(unittest.TestCase):
         self.assertAlmostEqual(result[0][0][2], 5, 0)
         self.assertAlmostEqual(result[0][1][2], 5, 0)
         self.assertAlmostEqual(result[0][2][2], 5, 0)
-        self.assertFalse(result[1])
+        self.assertIsNone(result[1])
         self.assertGreater(time() - t, 10)
+
+
+class TestPython(unittest.TestCase):
+
+    def test_python3(self):
+        result = judge(
+            Python('3'),
+            b'a, b = [int(i) for i in input().split()]; print(a / b)',
+            [(b'1 1', b'1'), (b'1 2', b'0.5'), (b'0 0', b'')]
+        )
+        print(result)
+        self.assertEqual(result[0][0][0], Status.WA)
+        self.assertEqual(result[0][1][0], Status.AC)
+        self.assertEqual(result[0][2][0], Status.RE)
+        self.assertIsNotNone(result[0][2][1][1])
 
 
 if __name__ == '__main__':

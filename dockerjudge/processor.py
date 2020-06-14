@@ -53,3 +53,13 @@ class GCC(Processor):
                            if fns.get('bin') else []) + args)
         self.after_compile = ['rm', self.source]
         self.judge = f"./{fns.get('bin', 'a.out')}"
+
+
+class Python(Processor):
+    'CPython'
+
+    def __init__(self, version=None):
+        self.image = self._get_image_with_tag('python', version)
+        self.source = '__init__.py'
+        self.compile = ['python', '-m', 'compileall', '.']
+        self.judge = f'python {self.source}'

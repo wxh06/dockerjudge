@@ -35,14 +35,14 @@ def run(container, processor, source, tests, config=None):
     )
 
     exec_run(container, processor.before_compile, f'{processor.workdir}/0')
-    exec_result = container.exec_run(processor.compile,
+    exec_result = container.exec_run(processor.compile, demux=True,
                                      workdir=f'{processor.workdir}/0')
     if 'compile' in config.get('callback', {}):
         config['callback']['compile'](exec_result.exit_code,
-                                      exec_result.output)
+                                      exec_result.output[1])
     if exec_result.exit_code:
-        return [[[Status.CE, exec_result.output, .0]] * len(tests),
-                exec_result.output]
+        return [[[Status.CE, (None, None), .0]] * len(tests),
+                exec_result.output[1]]
     exec_run(container, processor.after_compile, f'{processor.workdir}/0')
 
     res = []
@@ -62,4 +62,4 @@ def run(container, processor, source, tests, config=None):
         for thread in threads:
             thread.join()
             res.append(thread.return_value)
-    return [res, exec_result.output]
+    return [res, exec_result.output[1]]
