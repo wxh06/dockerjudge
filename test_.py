@@ -177,6 +177,18 @@ class TestDockerJudge(unittest.TestCase):
 
 class TestPython(unittest.TestCase):
 
+    def test_python2(self):
+        result = judge(
+            Python('2'),
+            b'a, b = [int(i) for i in raw_input().split()]; print a / b',
+            [(b'1 1', b'1'), (b'1 2', b'0.5'), (b'0 0', b'')]
+        )
+        print(result)
+        self.assertEqual(result[0][0][0], Status.AC)
+        self.assertEqual(result[0][1][0], Status.WA)
+        self.assertEqual(result[0][2][0], Status.RE)
+        self.assertIsNotNone(result[0][2][1][1])
+
     def test_python3(self):
         result = judge(
             Python('3'),
