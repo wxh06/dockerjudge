@@ -24,9 +24,8 @@ def judge(processor, source, tests, config=None,
         container.remove(force=True)
 
 
-def run(container, processor, source, tests, config=None):
-    'Compile and judge'
-    config = config or {}
+def exec_compile(container, processor, source, config):
+    'Compile the source file'
     container.exec_run(f"mkdir -p {processor.workdir}/0")
     put_bin(
         container,
@@ -40,10 +39,17 @@ def run(container, processor, source, tests, config=None):
     if 'compile' in config.get('callback', {}):
         config['callback']['compile'](exec_result.exit_code,
                                       exec_result.output)
+    exec_run(container, processor.after_compile, f'{processor.workdir}/0')
+    return exec_result
+
+
+def run(container, processor, source, tests, config=None):
+    'Compile and judge'
+    config = config or {}
+    exec_result = exec_compile(container, processor, source, config)
     if exec_result.exit_code:
         return [[[Status.CE, (None, None), .0]] * len(tests),
                 exec_result.output]
-    exec_run(container, processor.after_compile, f'{processor.workdir}/0')
 
     res = []
     for i in range(ceil(len(tests) / (config.get('threads') or len(tests)))):
