@@ -1,4 +1,5 @@
 language: python
+cache: pip
 services:
   - docker
 python:
@@ -14,8 +15,8 @@ before_install:
   - pip install -U pip
   - pip install -U setuptools wheel
 install:
-  - pip install -r requirements.txt
-  - pip install flake8 pylint pytest-cov codecov
+  - pip install -Ur requirements.txt
+  - pip install -U flake8 pylint pytest-cov codecov
   - docker pull gcc:4.9
 script:
   - flake8 dockerjudge
