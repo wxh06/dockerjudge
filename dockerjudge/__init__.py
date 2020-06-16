@@ -10,7 +10,7 @@ from .status import Status
 from . import test_case
 from .thread import Thread
 
-__version__ = '1.0.0'
+__version__ = '1.1.0'
 
 
 def judge(processor, source, tests, config=None,
