@@ -22,6 +22,7 @@ install:
   - docker pull python:2
   - docker pull golang:1
   - docker pull openjdk
+  - docker pull node:12
 script:
   - flake8 dockerjudge
   - pylint dockerjudge

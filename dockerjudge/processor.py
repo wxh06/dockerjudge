@@ -90,4 +90,14 @@ class OpenJDK(Processor):
         self.source = 'Main.java'
         self.compile = ['javac', self.source]
         self.after_compile = ['rm', self.source]
-        self.judge = f'java Main'
+        self.judge = 'java Main'
+
+
+class Node(Processor):
+    'Node.js®'
+
+    def __init__(self, version=None):
+        self.image = self._get_image_with_tag('node', version)
+        self.source = 'index.js'
+        self.compile = ['node', '-c', self.source]
+        self.judge = f'node {self.source}'
