@@ -25,7 +25,7 @@
   - [`node`](https://nodejs.org/en/download/)
 - [Go](https://golang.org/)
   - [`go`](https://golang.org/dl/)
-- [Java](https://www.java.com/)
+- [Java](https://www.oracle.com/java/)
   - [OpenJDK](https://openjdk.java.net/)
 
 ## Installation

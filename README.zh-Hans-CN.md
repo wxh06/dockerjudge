@@ -25,7 +25,7 @@
   - [`node`](https://nodejs.org/zh-cn/download/)
 - [Go](https://golang.google.cn/)
   - [`go`](https://golang.google.cn/dl/)
-- [Java](https://www.java.com/)
+- [Java](https://www.oracle.com/cn/java/)
   - [OpenJDK](https://openjdk.java.net/)
 
 ## 安装
