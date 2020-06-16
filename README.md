@@ -16,7 +16,17 @@
 
 🎌 **🇺🇸 English** | [🇨🇳 大陆简体](README.zh-Hans-CN.md)
 
-A Docker Based Online Judge Engine
+**A Docker based online judge engine**, which supports 5+ programming language processors:
+- [C](https://en.wikipedia.org/wiki/C_(programming_language))/[C++](https://en.wikipedia.org/wiki/C%2B%2B)
+  - [GCC (The GNU Compiler Collection)](https://gcc.gnu.org/)
+- [Python](https://www.python.org/)
+  - [CPython](https://www.python.org/downloads/)
+- [Node.js](https://nodejs.org/en/)
+  - [`node`](https://nodejs.org/en/download/)
+- [Go](https://golang.org/)
+  - [`go`](https://golang.org/dl/)
+- [Java](https://www.java.com/)
+  - [OpenJDK](https://openjdk.java.net/)
 
 ## Installation
 ### From the [Python Package Index (PyPI)](https://pypi.org/)
