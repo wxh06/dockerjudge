@@ -76,7 +76,7 @@ class Go(Processor):
         self.source = fns.get('src', 'main.go')
         self.compile = (['go', 'build']
                         + (['-o', fns['bin']]
-                        if fns.get('bin') else []) + args
+                           if fns.get('bin') else []) + args
                         + [self.source])
         self.after_compile = ['rm', self.source]
         self.judge = f"./{fns.get('bin', 'main')}"
