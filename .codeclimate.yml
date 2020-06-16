@@ -1,7 +1,14 @@
 version: "2"
-plugins:
-  pep8:
-    enabled: true
+
+checks:
+  argument-count:
+    config:
+      threshold: 5
+
 exclude_patterns:
   - "test_*.py"
   - "*_test.py"
+
+plugins:
+  pep8:
+    enabled: true
