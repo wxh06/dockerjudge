@@ -19,11 +19,6 @@ def __init__(container, processor, i, ioput, config):
     return res
 
 
-def get_ce_res(tests, exec_result):
-    'Returns the test case results after CE'
-    return [[[Status.CE, (None, None), .0]] * len(tests), exec_result.output]
-
-
 def _get_io_file_path(ioro, processor, i, config):
     'Get the absolute path of input or output file'
     return PurePosixPath(
