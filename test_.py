@@ -2,7 +2,7 @@ from time import time
 import unittest
 
 from dockerjudge import judge
-from dockerjudge.processor import GCC, Python
+from dockerjudge.processor import GCC, Go, Python
 from dockerjudge.status import Status
 
 
@@ -10,12 +10,19 @@ class TestProcessor(unittest.TestCase):
 
     def test_GCC(self):
         self.assertEqual(GCC(GCC.Language.c, 4.8).image, 'gcc:4.8')
+        self.assertEqual(GCC(GCC.Language.c, '4.8').image, 'gcc:4.8')
         self.assertEqual(GCC(GCC.Language.c).source, GCC('c').source)
         self.assertEqual(GCC(GCC.Language.c).source, GCC('C').source)
         self.assertEqual(GCC(GCC.Language.cpp).source, GCC('cpp').source)
         self.assertEqual(GCC(GCC.Language.cpp).source, GCC('C++').source)
         self.assertEqual(GCC(GCC.Language.c).compile[0], 'gcc')
         self.assertEqual(GCC(GCC.Language.cpp).compile[0], 'g++')
+
+    def test_Go(self):
+        self.assertEqual(Go(1).image, Go('1').image)
+        self.assertEqual(Go('1').image, 'golang:1')
+        self.assertEqual(Go(None, {'src': 'golang.go'}).source, 'golang.go')
+        self.assertEqual(Go(None, {'bin': 'golang'}).judge, './golang')
 
 
 class TestDockerJudge(unittest.TestCase):
@@ -216,6 +223,26 @@ class TestPython(unittest.TestCase):
         self.assertFalse(result[0][0][1][1])
         self.assertFalse(result[0][1][1][0])
         self.assertFalse(result[0][1][1][1])
+
+
+class TestGoLang(unittest.TestCase):
+
+    def test_golang(self):
+        result = judge(
+            Go(1),
+            br'''
+                package main
+
+                import "fmt"
+
+                func main() {
+                    fmt.Printf("hello, world\n")
+                }
+            ''',
+            [(b'', b'hello, world')]
+        )
+        print(result)
+        self.assertEqual(result[0][0][0], Status.AC)
 
 
 if __name__ == '__main__':

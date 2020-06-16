@@ -63,3 +63,20 @@ class Python(Processor):
         self.source = '__init__.py'
         self.compile = ['python', '-m', 'compileall', '.']
         self.judge = f'python {self.source}'
+
+
+class Go(Processor):
+    'The Go Programming Language'
+
+    def __init__(self, version=None, filenames=None, options=None):
+        fns = filenames or {}
+        args = options or []
+
+        self.image = self._get_image_with_tag('golang', version)
+        self.source = fns.get('src', 'main.go')
+        self.compile = (['go', 'build']
+                        + (['-o', fns['bin']]
+                        if fns.get('bin') else []) + args
+                        + [self.source])
+        self.after_compile = ['rm', self.source]
+        self.judge = f"./{fns.get('bin', 'main')}"
