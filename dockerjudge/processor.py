@@ -80,3 +80,14 @@ class Go(Processor):
                         + [self.source])
         self.after_compile = ['rm', self.source]
         self.judge = f"./{fns.get('bin', 'main')}"
+
+
+class OpenJDK(Processor):
+    'Open Java Development Kit'
+
+    def __init__(self, version=None):
+        self.image = self._get_image_with_tag('openjdk', version)
+        self.source = 'Main.java'
+        self.compile = ['javac', self.source]
+        self.after_compile = ['rm', self.source]
+        self.judge = f'java Main'

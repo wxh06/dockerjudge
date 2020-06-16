@@ -2,7 +2,7 @@ from time import time
 import unittest
 
 from dockerjudge import judge
-from dockerjudge.processor import GCC, Go, Python
+from dockerjudge.processor import GCC, Go, OpenJDK, Python
 from dockerjudge.status import Status
 
 
@@ -241,7 +241,23 @@ class TestGoLang(unittest.TestCase):
             ''',
             [(b'', b'hello, world')]
         )
-        print(result)
+        self.assertEqual(result[0][0][0], Status.AC)
+
+
+class TestJava(unittest.TestCase):
+
+    def test_openjdk(self):
+        result = judge(
+            OpenJDK(),
+            br'''
+                public class Main {
+                    public static void main(String[] args) {
+                        System.out.println("Hello, world!");
+                    }
+                }
+            ''',
+            [(b'', b'Hello, world!')]
+        )
         self.assertEqual(result[0][0][0], Status.AC)
 
 
