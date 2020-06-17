@@ -18,15 +18,17 @@
 
 **基于 Docker 的在线测评引擎**，支持 5+ 个编程语言处理程序：
 - [C](https://zh.wikipedia.org/zh-cn/C语言))/[C++](https://zh.wikipedia.org/zh-cn/C%2B%2B)
-  - [GCC (The GNU Compiler Collection)](https://gcc.gnu.org/)
+  - [x] [GCC (The GNU Compiler Collection)](https://gcc.gnu.org/)
+  - [ ] [LLVM Clang](https://clang.llvm.org/)
 - [Python](https://www.python.org/)
-  - [CPython](https://www.python.org/downloads/)
+  - [x] [CPython](https://www.python.org/downloads/)
 - [Node.js](https://nodejs.org/zh-cn/)
-  - [`node`](https://nodejs.org/zh-cn/download/)
+  - [x] [`node`](https://nodejs.org/zh-cn/download/)
 - [Go](https://golang.google.cn/)
-  - [`go`](https://golang.google.cn/dl/)
+  - [x] [`go`](https://golang.google.cn/dl/)
+  - [ ] [`gccgo` (GCC)](https://golang.google.cn/doc/install/gccgo)
 - [Java](https://www.oracle.com/cn/java/)
-  - [OpenJDK](https://openjdk.java.net/)
+  - [x] [OpenJDK](https://openjdk.java.net/)
 
 ## 安装
 ### 从 [Python 包索引 (PyPI)](https://pypi.org/)
