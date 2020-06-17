@@ -16,7 +16,7 @@
 
 🎌 **🇺🇸 English** | [🇨🇳 大陆简体](README.zh_Hans_CN.md)
 
-**A Docker based online judge engine**, which supports 5+ programming language processors:
+**A [Docker](https://www.docker.com/) based online judge engine**, which supports 5+ programming language processors:
 - [C](https://en.wikipedia.org/wiki/C_(programming_language))/[C++](https://en.wikipedia.org/wiki/C%2B%2B)
   - [x] [GCC (The GNU Compiler Collection)](https://gcc.gnu.org/)
   - [ ] [LLVM Clang](https://clang.llvm.org/)
@@ -42,7 +42,7 @@
 pip install dockerjudge
 ```
 
-#### Via [Esay install](https://setuptools.readthedocs.io/en/latest/easy_install.html) (deprecated)
+#### Via [Easy install](https://setuptools.readthedocs.io/en/latest/easy_install.html) (deprecated)
 ```sh
 easy_install dockerjudge
 ```
