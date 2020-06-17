@@ -26,7 +26,7 @@
   - [x] [`node`](https://nodejs.org/zh-cn/download/)
 - [Go](https://golang.google.cn/)
   - [x] [`go`](https://golang.google.cn/dl/)
-  - [ ] [`gccgo` (GCC)](https://golang.google.cn/doc/install/gccgo)
+  - [x] [`gccgo` (GCC)](https://golang.google.cn/doc/install/gccgo)
 - [Java](https://www.oracle.com/cn/java/)
   - [x] [OpenJDK](https://openjdk.java.net/)
 

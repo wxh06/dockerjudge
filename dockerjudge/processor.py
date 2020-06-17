@@ -24,18 +24,19 @@ class Processor():
 
 
 class GCC(Processor):
-    'GNU project C and C++ compiler'
+    'GNU project C, C++ and Go compiler'
 
     class Language(Enum):
-        'C or C++'
+        'Programming language, C, C++ or Go'
         c = 'C'
         cpp = 'C++'
+        go = 'Go'
 
     def _get_language(self, language):
         if isinstance(language, self.Language):
             return language
-        return (self.Language[language] if language in ['c', 'cpp']
-                else self.Language(language) if language in ['C', 'C++']
+        return (self.Language[language] if language in ['c', 'cpp', 'go']
+                else self.Language(language) if language in ['C', 'C++', 'Go']
                 else self.Language.cpp)
 
     def __init__(self, language=None, version=None,
@@ -47,7 +48,8 @@ class GCC(Processor):
         self.image = self._get_image_with_tag('gcc', version)
         self.source = fns.get('src', f'a.{lang.name}')
         self.compile = ([{self.Language.c: 'gcc',
-                          self.Language.cpp: 'g++'}[lang],
+                          self.Language.cpp: 'g++',
+                          self.Language.go: 'gccgo'}[lang],
                          self.source]
                         + (['-o', fns['bin']]
                            if fns.get('bin') else []) + args)

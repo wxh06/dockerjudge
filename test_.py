@@ -227,7 +227,7 @@ class TestPython(unittest.TestCase):
 
 class TestGoLang(unittest.TestCase):
 
-    def test_golang(self):
+    def test_go(self):
         result = judge(
             Go(1),
             br'''
@@ -241,6 +241,21 @@ class TestGoLang(unittest.TestCase):
             ''',
             [(b'', b'hello, world')]
         )
+        self.assertEqual(result[0][0][0], Status.AC)
+
+    def test_gccgo(self):
+        result = judge(
+            GCC('go', 4.9),
+            b'package main\n'
+
+            b'import "fmt"\n'
+
+            b'func main() {\n'
+            br'    fmt.Printf("hello, world\n")'b'\n'
+            b'}\n',
+            [(b'', b'hello, world\n')]
+        )
+        print(result)
         self.assertEqual(result[0][0][0], Status.AC)
 
 

@@ -17,12 +17,13 @@ before_install:
 install:
   - pip install -Ur requirements.txt
   - pip install -U flake8 pylint pytest-cov codecov
-  - docker pull gcc:4.8
-  - docker pull python:3
-  - docker pull python:2
-  - docker pull golang:1
-  - docker pull openjdk
-  - docker pull node:12
+  - docker pull gcc:4.8  # For gcc & g++
+  - docker pull gcc:4.9  # For gccgo
+  - docker pull golang:1  # For go
+  - docker pull python:3  # For python3
+  - docker pull python:2  # For python2
+  - docker pull node:12  # For node
+  - docker pull openjdk  # For javac and java
 script:
   - flake8 dockerjudge
   - pylint dockerjudge
