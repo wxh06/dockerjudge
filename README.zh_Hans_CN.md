@@ -17,7 +17,7 @@
 🎌 [🇺🇸 English](README.md) | **🇨🇳 大陆简体**
 
 **基于 Docker 的在线测评引擎**，支持 5+ 个编程语言处理程序：
-- [C](https://zh.wikipedia.org/zh-cn/C语言))/[C++](https://zh.wikipedia.org/zh-cn/C%2B%2B)
+- [C](https://zh.wikipedia.org/zh-cn/C语言)/[C++](https://zh.wikipedia.org/zh-cn/C%2B%2B)
   - [x] [GCC (The GNU Compiler Collection)](https://gcc.gnu.org/)
   - [ ] [LLVM Clang](https://clang.llvm.org/)
 - [Python](https://www.python.org/)

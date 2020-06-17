@@ -14,7 +14,7 @@
 [![Wheel](https://img.shields.io/pypi/wheel/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#files)
 [![License](https://img.shields.io/github/license/piterator-org/dockerjudge.svg)](LICENSE)
 
-🎌 **🇺🇸 English** | [🇨🇳 大陆简体](README.zh-Hans-CN.md)
+🎌 **🇺🇸 English** | [🇨🇳 大陆简体](README.zh_Hans_CN.md)
 
 **A Docker based online judge engine**, which supports 5+ programming language processors:
 - [C](https://en.wikipedia.org/wiki/C_(programming_language))/[C++](https://en.wikipedia.org/wiki/C%2B%2B)
