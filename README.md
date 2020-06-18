@@ -19,7 +19,7 @@
 **A [Docker](https://www.docker.com/) based online judge engine**, which supports 5+ programming language processors:
 - [C](https://en.wikipedia.org/wiki/C_(programming_language))/[C++](https://en.wikipedia.org/wiki/C%2B%2B)
   - [x] [GCC (The GNU Compiler Collection)](https://gcc.gnu.org/)
-  - [ ] [LLVM Clang](https://clang.llvm.org/)
+  - [x] [LLVM Clang](https://clang.llvm.org/)
 - [Python](https://www.python.org/)
   - [x] [CPython](https://www.python.org/downloads/)
 - [Node.js](https://nodejs.org/en/)

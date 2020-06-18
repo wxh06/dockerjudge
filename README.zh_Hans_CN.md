@@ -19,7 +19,7 @@
 **基于 [Docker](https://www.docker.com/) 的在线测评引擎**，支持 5+ 个编程语言处理程序：
 - [C](https://zh.wikipedia.org/zh-cn/C语言)/[C++](https://zh.wikipedia.org/zh-cn/C%2B%2B)
   - [x] [GCC (The GNU Compiler Collection)](https://gcc.gnu.org/)
-  - [ ] [LLVM Clang](https://clang.llvm.org/)
+  - [x] [LLVM Clang](https://clang.llvm.org/)
 - [Python](https://www.python.org/)
   - [x] [CPython](https://www.python.org/downloads/)
 - [Node.js](https://nodejs.org/zh-cn/)

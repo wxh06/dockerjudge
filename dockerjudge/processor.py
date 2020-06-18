@@ -23,25 +23,38 @@ class Processor():
     after_judge = None
 
 
+class _Language(Enum):
+    'Get programming language from enum'
+
+    @classmethod
+    def __get_language(cls, language, default=None):
+        if isinstance(language, cls):
+            return language
+        try:
+            return cls[language]
+        except KeyError:
+            try:
+                return cls(language)
+            except ValueError:
+                return cls.__get_language(default)
+
+
 class GCC(Processor):
     'GNU project C, C++ and Go compiler'
 
-    class Language(Enum):
+    class Language(_Language):
         'Programming language, C, C++ or Go'
         c = 'C'
         cpp = 'C++'
         go = 'Go'
 
-    def _get_language(self, language):
-        if isinstance(language, self.Language):
-            return language
-        return (self.Language[language] if language in ['c', 'cpp', 'go']
-                else self.Language(language) if language in ['C', 'C++', 'Go']
-                else self.Language.cpp)
+        @classmethod
+        def _get_language(cls, language):
+            return super().__get_language(language, cls.cpp)
 
     def __init__(self, language=None, version=None,
                  filenames=None, options=None):
-        lang = self._get_language(language)
+        lang = self.Language._get_language(language)
         fns = filenames or {}
         args = options or []
 
@@ -50,6 +63,35 @@ class GCC(Processor):
         self.compile = ([{self.Language.c: 'gcc',
                           self.Language.cpp: 'g++',
                           self.Language.go: 'gccgo'}[lang],
+                         self.source]
+                        + (['-o', fns['bin']]
+                           if fns.get('bin') else []) + args)
+        self.after_compile = ['rm', self.source]
+        self.judge = f"./{fns.get('bin', 'a.out')}"
+
+
+class Clang(Processor):
+    'Clang C Language Family Frontend for LLVM'
+
+    class Language(_Language):
+        'Programming language, C (c) or C++ (cpp)'
+        c = 'C'
+        cpp = 'C++'
+
+        @classmethod
+        def _get_language(cls, language):
+            return super().__get_language(language, cls.cpp)
+
+    def __init__(self, language=None, version=None,
+                 filenames=None, options=None):
+        lang = self.Language._get_language(language)
+        fns = filenames or {}
+        args = options or []
+
+        self.image = 'clangbuiltlinux/ubuntu' + f':llvm{version}-latest'
+        self.source = fns.get('src', f'a.{lang.name}')
+        self.compile = ([{self.Language.c: 'clang',
+                          self.Language.cpp: 'clang++'}[lang] + f'-{version}',
                          self.source]
                         + (['-o', fns['bin']]
                            if fns.get('bin') else []) + args)

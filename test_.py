@@ -2,7 +2,7 @@ from time import time
 import unittest
 
 from dockerjudge import judge
-from dockerjudge.processor import GCC, Go, Node, OpenJDK, Python
+from dockerjudge.processor import Clang, GCC, Go, Node, OpenJDK, Python
 from dockerjudge.status import Status
 
 
@@ -187,6 +187,29 @@ class TestDockerJudge(unittest.TestCase):
         self.assertAlmostEqual(result[0][2][2], 5, 0)
         self.assertFalse(result[1])
         self.assertGreater(time() - t, 10)
+
+
+class TestLlvmClang(unittest.TestCase):
+
+    def test_llvm_clang(self):
+        result = judge(
+            Clang('c', 11),
+            b'''
+                #include <stdio.h>
+                int main() {
+                    int a, b;
+                    scanf("%d %d", &a, &b);
+                    printf("%d", a / b);
+                    return 0;
+                }
+            ''',
+            [(b'1 1', b'1'), (b'1 2', b'0.5'), (b'0 0', b'')]
+        )
+        self.assertEqual(result[0][0][0], Status.AC)
+        self.assertEqual(result[0][1][0], Status.WA)
+        self.assertEqual(result[0][2][0], Status.RE)
+        self.assertTrue(result[0][2][1][1])
+        self.assertFalse(result[1])
 
 
 class TestPython(unittest.TestCase):
