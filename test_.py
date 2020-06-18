@@ -15,6 +15,7 @@ class TestProcessor(unittest.TestCase):
         self.assertEqual(GCC(GCC.Language.c).source, GCC('C').source)
         self.assertEqual(GCC(GCC.Language.cpp).source, GCC('cpp').source)
         self.assertEqual(GCC(GCC.Language.cpp).source, GCC('C++').source)
+        self.assertEqual(GCC(GCC.Language.cpp).source, GCC('c++').source)
         self.assertEqual(GCC(GCC.Language.go).source, GCC('go').source)
         self.assertEqual(GCC(GCC.Language.go).source, GCC('Go').source)
         self.assertEqual(GCC(GCC.Language.c).compile[0], 'gcc')
@@ -191,7 +192,28 @@ class TestDockerJudge(unittest.TestCase):
 
 class TestLlvmClang(unittest.TestCase):
 
-    def test_llvm_clang(self):
+    def test_llvm_clang_10(self):
+        result = judge(
+            Clang('c', 10),
+            b'''
+                #include <stdio.h>
+                int main() {
+                    int a, b;
+                    scanf("%d %d", &a, &b);
+                    printf("%d", a / b);
+                    return 0;
+                }
+            ''',
+            [(b'1 1', b'1'), (b'1 2', b'0.5'), (b'0 0', b'')]
+        )
+        self.assertEqual(result[0][0][0], Status.AC)
+        self.assertEqual(result[0][1][0], Status.WA)
+        self.assertEqual(result[0][2][0], Status.RE)
+        self.assertTrue(result[0][2][1][1])
+        self.assertFalse(result[1])
+
+
+    def test_llvm_clang_11(self):
         result = judge(
             Clang('c', 11),
             b'''
