@@ -36,7 +36,7 @@ setuptools.setup(
     },
     packages=['dockerjudge'],
     install_requires=[
-        'docker[tls]>=3.7'
+        'docker>=3.7'
     ],
     classifiers=[
         'Programming Language :: Python :: 3',
