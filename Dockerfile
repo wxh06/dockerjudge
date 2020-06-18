@@ -1,4 +1,4 @@
-FROM docker
+FROM docker:dind
 
 LABEL maintainer="汪心禾 <wangxinhe06@gmail.com>"
 
