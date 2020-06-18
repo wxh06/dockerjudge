@@ -255,7 +255,6 @@ class TestGoLang(unittest.TestCase):
             b'}\n',
             [(b'', b'hello, world\n')]
         )
-        print(result)
         self.assertEqual(result[0][0][0], Status.AC)
 
 
