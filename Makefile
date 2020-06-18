@@ -1,4 +1,7 @@
-build: clean
+build: clean-build
+	python3 setup.py build
+
+dist: clean
 	python3 setup.py sdist bdist_wheel
 
 install: build
@@ -21,6 +24,10 @@ clean-dist:
 
 clean-egg-info:
 	rm -rf dockerjudge.egg-info
+
+
+pip:
+	pip install -Ur requirements.txt
 
 
 test: 
