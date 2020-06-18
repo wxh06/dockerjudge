@@ -54,7 +54,9 @@ easy_install dockerjudge
 ```sh
 git clone https://github.com/piterator-org/dockerjudge.git
 cd dockerjudge
-python3 setup.py install
+
+make  # python3 setup.py build
+sudo make install  # python3 setup.py install
 ```
 
 ## [License](LICENSE)
