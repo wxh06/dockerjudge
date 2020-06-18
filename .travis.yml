@@ -25,8 +25,7 @@ install:
   - docker pull node:12  # For node
   - docker pull openjdk  # For javac and java
 script:
-  - flake8 dockerjudge
-  - pylint dockerjudge
-  - pytest --cov=.
+  - make lint
+  - make pytest
 after_script:
   - codecov

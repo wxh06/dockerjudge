@@ -1,0 +1,39 @@
+build: clean
+	python3 setup.py sdist bdist_wheel
+
+install: build
+	python3 setup.py install
+
+compileall: clean-pycache
+	python3 -m compileall dockerjudge
+
+
+clean: clean-build clean-dist clean-egg-info
+
+clean-pycache:
+	rm -rf dockerjudge/__pycache__
+
+clean-build:
+	rm -rf build
+
+clean-dist:
+	rm -rf dist
+
+clean-egg-info:
+	rm -rf dockerjudge.egg-info
+
+
+test: 
+	python3 -W ignore test_.py
+
+pytest:
+	pytest --cov=dockerjudge
+
+
+lint: flake8 pylint
+
+flake8:
+	flake8 dockerjudge
+
+pylint:
+	pylint dockerjudge
