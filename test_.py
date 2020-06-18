@@ -15,8 +15,11 @@ class TestProcessor(unittest.TestCase):
         self.assertEqual(GCC(GCC.Language.c).source, GCC('C').source)
         self.assertEqual(GCC(GCC.Language.cpp).source, GCC('cpp').source)
         self.assertEqual(GCC(GCC.Language.cpp).source, GCC('C++').source)
+        self.assertEqual(GCC(GCC.Language.go).source, GCC('go').source)
+        self.assertEqual(GCC(GCC.Language.go).source, GCC('Go').source)
         self.assertEqual(GCC(GCC.Language.c).compile[0], 'gcc')
         self.assertEqual(GCC(GCC.Language.cpp).compile[0], 'g++')
+        self.assertEqual(GCC(GCC.Language.go).compile[0], 'gccgo')
 
     def test_Go(self):
         self.assertEqual(Go(1).image, Go('1').image)
