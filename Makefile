@@ -30,7 +30,7 @@ pip:
 	pip install -Ur requirements.txt
 
 
-test: 
+test:
 	python3 -W ignore test_.py
 
 pytest:
