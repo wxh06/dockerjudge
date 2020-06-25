@@ -212,7 +212,7 @@ sudo make install  # python3 setup.py install
 ]
 >>>
 >>> judge(
-...     Clang(  # 除了 GCC，亦支持 LLVM Clang（参数与 GCC 相同）
+...     Clang(  # 除了 GCC，还支持 LLVM Clang（参数与 GCC 相同）
 ...         Clang.Language.c,  # 仅支持 C 与 C++
 ...         11  # **必须**提供 LLVM CLang 的版本号！
 ...     ),
