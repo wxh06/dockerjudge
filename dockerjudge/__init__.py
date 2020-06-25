@@ -16,8 +16,11 @@ __version__ = '1.1.4'
 def judge(processor, source, tests, config=None,
           client=docker.from_env()):
     'Main function'
-    container = client.containers.run(processor.image, detach=True,
-                                      network_disabled=True, tty=True)
+    config = config or {}
+    container = client.containers.run(
+        processor.image, detach=True, tty=True,
+        network_disabled=not config.get('network')
+    )
     try:
         return run(container, processor, source, tests, config)
     finally:
@@ -67,7 +70,6 @@ def judge_test_cases(container, processor, tests, config):
 
 def run(container, processor, source, tests, config=None):
     'Compile and judge'
-    config = config or {}
     config.setdefault('callback', {})
     exec_result = compile_source_code(container, processor, source, config)
     if exec_result.exit_code:
