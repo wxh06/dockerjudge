@@ -1,3 +1,6 @@
+'Test dockerjudge'
+# pylint: disable = C0103, C0115, C0116
+
 from time import time
 import unittest
 
@@ -143,7 +146,8 @@ class TestDockerJudge(unittest.TestCase):
             self.assertFalse(code)
             self.assertFalse(stderr)
 
-        def judging_callback(id, status, stderr, duration):
+        def judging_callback(id, status,  # pylint: disable = W0622
+                             stderr, duration):  # pylint: disable = W0613
             statuses = [Status.AC, Status.WA, Status.RE]
             self.assertEqual(status, statuses[id])
 
@@ -211,7 +215,6 @@ class TestLlvmClang(unittest.TestCase):
         self.assertEqual(result[0][2][0], Status.RE)
         self.assertTrue(result[0][2][1][1])
         self.assertFalse(result[1])
-
 
     def test_llvm_clang_11(self):
         result = judge(

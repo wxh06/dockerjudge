@@ -15,7 +15,7 @@ before_install:
   - pip install -U pip
   - pip install -U setuptools wheel
 install:
-  - pip install -Ur requirements.txt
+  - make pip
   - pip install -U flake8 pylint pytest-cov codecov
   - docker pull gcc:4.8  # For gcc & g++
   - docker pull gcc:4.9  # For gccgo
@@ -26,6 +26,7 @@ install:
   - docker pull openjdk  # For javac and java
   - docker pull clangbuiltlinux/ubuntu:llvm10-latest  # For clang-10 & clang++-10
   - docker pull clangbuiltlinux/ubuntu:llvm11-latest  # For clang-11 & clang++-11
+  - docker pull bash  # For bash
 script:
   - make lint
   - make pytest
