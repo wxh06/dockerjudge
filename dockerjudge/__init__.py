@@ -71,7 +71,7 @@ def run(container, processor, source, tests, config=None):
     config.setdefault('callback', {})
     exec_result = compile_source_code(container, processor, source, config)
     if exec_result.exit_code:
-        return [[[Status.CE, (None, None), .0]] * len(tests),
+        return [[(Status.CE, (None, None), .0)] * len(tests),
                 exec_result.output]
 
     res = judge_test_cases(container, processor, tests, config)
