@@ -27,7 +27,7 @@ clean-egg-info:
 
 
 pip:
-	pip install -Ur requirements.txt
+	python3 -m pip install -Ur requirements.txt
 
 
 test:
