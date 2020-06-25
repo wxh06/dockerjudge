@@ -40,7 +40,7 @@ pytest:
 lint: flake8 pylint
 
 flake8:
-	flake8 dockerjudge test_*.py *_test.py
+	flake8 dockerjudge test_*.py
 
 pylint:
-	pylint dockerjudge test_*.py *_test.py
+	pylint dockerjudge test_*.py
