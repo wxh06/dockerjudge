@@ -30,6 +30,7 @@
 - [Java](https://www.oracle.com/java/)
   - [x] [OpenJDK](https://openjdk.java.net/)
 
+
 ## Installation
 ### From the [Python Package Index (PyPI)](https://pypi.org/)
 [dockerjudge · PyPI](https://pypi.org/project/dockerjudge/)
@@ -55,9 +56,144 @@ easy_install dockerjudge
 git clone https://github.com/piterator-org/dockerjudge.git
 cd dockerjudge
 
-make  # python3 setup.py build
+make pip && make  # python3 -m pip install -Ur requirements.txt && python3 setup.py build
 sudo make install  # python3 setup.py install
 ```
+
+
+## Usage
+```python
+>>> from dockerjudge import judge
+>>> from dockerjudge.processor import GCC
+>>>
+>>> judge(
+...     GCC(GCC.Language.c),  # or `GCC('c')` / `GCC('C')`, which means compile the source code in the C programming language with `gcc` command
+...     b'''
+...         #include <stdio.h>
+...         int main() {
+...             int a, b;
+...             scanf("%d %d", &a, &b);
+...             printf("%d", a / b);
+...             return 0;
+...         }
+...     ''',
+...     [
+...         (b'1 1', b'1'),  # AC
+...         (b'1 2', b'0.5'),  # WA
+...         (b'0 0', b'')  # RE
+...     ]
+... )
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'1', b''), 0.001),
+        (<Status.WA: 'Wrong Answer'>, (b'0', b''), 0.001),
+        (<Status.RE: 'Runtime Error'>, (None, b'Floating point exception (core dumped)\n'), 0.01)
+    ],
+    b''
+]
+>>>
+>>> judge(GCC(GCC.Language.c), b'', [(b'', b'')])  # CE
+[
+    [
+        (<Status.CE: 'Compilation Error'>, (None, None), 0.0)
+    ],
+    b"/usr/bin/ld: /usr/lib/x86_64-linux-gnu/crt1.o: in function `_start':\n(.text+0x20): undefined reference to `main'\ncollect2: error: ld returned 1 exit status\n"
+]
+>>>
+>>> judge(
+...     GCC(GCC.Language.cpp),  # or `GCC('cpp')` / `GCC('C++')`, which means compile the source code in the C++ programming language with `g++` command
+...     b'''
+...         #include <cstdio>
+...         int main() {
+...             printf("Hello, world!");
+...             while (true)
+...                 ;
+...         }
+...     ''',
+...     [
+...         (b'', b'Hello, world!')  # TLE
+...     ],
+...     {
+...         'limit': {
+...             'time': .1
+...         }
+...     }
+... )
+[
+    [
+        (<Status.TLE: 'Time Limit Exceeded'>, (None, b'bash: line 1:    35 Killed                  timeout -sKILL 0.1 sh -c ./a.out > /dockerjudge/1.out < /dockerjudge/1.in\n'), 0.100)
+    ],
+    b''
+]
+>>>
+>>> judge(
+...     GCC(
+...         GCC.Language.c,
+...         'latest',  # The GCC version number, such as `4`, `4.8`, etc.
+...         {'bin': 'a'}  # The binary filename, which passes to `gcc`'s `-o` option
+...     ),
+...     b'''
+...         #include <stdio.h>
+...         int main() {
+...             int a, b;
+...             freopen("a.in", "r", stdin);  // Open `a.in` as stdin
+...             scanf("%d %d", &a, &b);  // Scan from `a.in`
+...             freopen("a.out", "w", stdout);  // Open `a.out` as stdout
+...             printf("%d", a / b);  // Print to `a.out`
+...             return 0;
+...         }
+...     ''',
+...     [
+...         (b'1 1', b'1'),  # AC
+...         (b'1 2', b'0.5'),  # WA
+...         (b'0 0', b'')  # RE
+...     ],
+...     {
+...         'iofilename': {
+...             'in': 'a.in',
+...             'out': 'a.out'
+...         }
+...     }
+... )
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'1', b''), 0.001),
+        (<Status.WA: 'Wrong Answer'>, (b'0', b''), 0.001),
+        (<Status.RE: 'Runtime Error'>, (None, b'Floating point exception (core dumped)\n'), 0.001)
+    ],
+    b''
+]
+>>>
+>>> judge(
+...     GCC(GCC.Language.c, filenames={'bin': 'a'}),
+...     b'''
+...         #include <stdio.h>
+...         int main() {
+...             int a, b;
+...             scanf("%d %d", &a, &b);
+...             printf("%d", a / b);
+...             return 0;
+...         }
+...     ''',
+...     [
+...         (b'1 1', b'1'),
+...         (b'0 0', b'')
+...     ],
+...     {
+...         'iofilename': {
+...             'out': 'a.out'  # ONF
+...         }
+...     }
+... )
+[
+    [
+        (<Status.ONF: 'Output Not Found'>, (None, b''), 0.001),
+        (<Status.RE: 'Runtime Error'>, (None, b'Floating point exception (core dumped)\n'), 0.001)
+    ],
+    b''
+]
+```
+
 
 ## [License](LICENSE)
 Licensed under [the **Apache License, Version 2.0**](https://www.apache.org/licenses/LICENSE-2.0)
