@@ -64,7 +64,7 @@ sudo make install  # python3 setup.py install
 ## 用法示例
 ```python
 >>> from dockerjudge import judge
->>> from dockerjudge.processor import GCC
+>>> from dockerjudge.processor import GCC, Clang
 >>>
 >>> judge(
 ...     GCC(GCC.Language.c),  # 或 `GCC('c')` / `GCC('C')`，意为用 `gcc` 命令编译 C 语言源码
@@ -189,6 +189,81 @@ sudo make install  # python3 setup.py install
     [
         (<Status.ONF: 'Output Not Found'>, (None, b''), 0.001),
         (<Status.RE: 'Runtime Error'>, (None, b'Floating point exception (core dumped)\n'), 0.001)
+    ],
+    b''
+]
+>>>
+>>> judge(  # BTW, GCC starting from 4.9 also supports Go, named `gccgo`
+...     GCC(GCC.Language.go),
+...     b'package main\n'
+...     b''
+...     b'import "fmt"\n'
+...     b''
+...     b'func main() {\n'
+...     br'    fmt.Printf("hello, world\n")'b'\n'
+...     b'}\n',
+...     [(b'', b'hello, world')]
+... )
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'hello, world\n', b''), 0.02)
+    ],
+    b''
+]
+>>>
+>>> judge(
+...     Clang(  # 除了 GCC，亦支持 LLVM Clang（参数与 GCC 相同）
+...         Clang.Language.c,  # 仅支持 C 与 C++
+...         11  # **必须**提供 LLVM CLang 的版本号！
+...     ),
+...     b'',  # CE
+...     [
+...         (b'', b'')
+...     ]
+... )
+[
+    [
+        (<Status.CE: 'Compilation Error'>, (None, None), 0.0)
+    ],
+    b"/usr/bin/ld: /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o: in function `_start':\n'
+    b"(.text+0x24): undefined reference to `main'\n"
+    b'clang: error: linker command failed with exit code 1 (use -v to see invocation)\n'
+]
+>>>
+>>> # 亦支持其它编程语言
+>>> judge(Python(3), b"print('Hello, world!')", [(b'', b'Hello, world!')])  # Python
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello, world!\n', b''), 0.05)
+    ],
+    b"Listing '.'...\n"
+    b"Compiling './__init__.py'...\n"
+]
+>>>
+>>> judge(Node(12), b'console.log("Hello World")', [(b'', b'Hello World')])  # Node.js
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello World\n', b''), 0.05)
+    ],
+    b''
+]
+>>>
+>>> judge(  # Java / OpenJDK
+...     OpenJDK(), #  默认的源代码文件名是 `Main.java`，即 public class 名称应该为 `Main`
+...     b'''
+...         public class Main {
+...             public static void main(String[] args) {
+...                 System.out.println("Hello, world!");
+...             }
+...         }
+...     ''',
+...     [
+...         (b'', b'Hello, world!')
+...     ]
+... )
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello, world!\n', b''), 0.1)
     ],
     b''
 ]

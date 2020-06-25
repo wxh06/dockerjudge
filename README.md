@@ -64,7 +64,7 @@ sudo make install  # python3 setup.py install
 ## Usage
 ```python
 >>> from dockerjudge import judge
->>> from dockerjudge.processor import GCC
+>>> from dockerjudge.processor import GCC, Clang, Python, Node, OpenJDK
 >>>
 >>> judge(
 ...     GCC(GCC.Language.c),  # or `GCC('c')` / `GCC('C')`, which means compile the source code in the C programming language with `gcc` command
@@ -189,6 +189,81 @@ sudo make install  # python3 setup.py install
     [
         (<Status.ONF: 'Output Not Found'>, (None, b''), 0.001),
         (<Status.RE: 'Runtime Error'>, (None, b'Floating point exception (core dumped)\n'), 0.001)
+    ],
+    b''
+]
+>>>
+>>> judge(  # BTW, GCC starting from 4.9 also supports Go, named `gccgo`
+...     GCC(GCC.Language.go),
+...     b'package main\n'
+...     b''
+...     b'import "fmt"\n'
+...     b''
+...     b'func main() {\n'
+...     br'    fmt.Printf("hello, world\n")'b'\n'
+...     b'}\n',
+...     [(b'', b'hello, world')]
+... )
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'hello, world\n', b''), 0.02)
+    ],
+    b''
+]
+>>>
+>>> judge(
+...     Clang(  # Besides GCC, LLVM Clang is also supported (The same arguments as GCC's)
+...         Clang.Language.c,  # Only C and C++ supported
+...         11  # The version number of LLVM CLang is **required**!
+...     ),
+...     b'',  # CE
+...     [
+...         (b'', b'')
+...     ]
+... )
+[
+    [
+        (<Status.CE: 'Compilation Error'>, (None, None), 0.0)
+    ],
+    b"/usr/bin/ld: /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o: in function `_start':\n'
+    b"(.text+0x24): undefined reference to `main'\n"
+    b'clang: error: linker command failed with exit code 1 (use -v to see invocation)\n'
+]
+>>>
+>>> # Other programming languages are also supported
+>>> judge(Python(3), b"print('Hello, world!')", [(b'', b'Hello, world!')])  # Python
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello, world!\n', b''), 0.05)
+    ],
+    b"Listing '.'...\n"
+    b"Compiling './__init__.py'...\n"
+]
+>>>
+>>> judge(Node(12), b'console.log("Hello World")', [(b'', b'Hello World')])  # Node.js
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello World\n', b''), 0.05)
+    ],
+    b''
+]
+>>>
+>>> judge(  # Java / OpenJDK
+...     OpenJDK(), #  The default public class name is `Main`
+...     b'''
+...         public class Main {
+...             public static void main(String[] args) {
+...                 System.out.println("Hello, world!");
+...             }
+...         }
+...     ''',
+...     [
+...         (b'', b'Hello, world!')
+...     ]
+... )
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello, world!\n', b''), 0.1)
     ],
     b''
 ]
