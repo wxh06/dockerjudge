@@ -147,6 +147,18 @@ class OpenJDK(Processor):
         self.judge = 'java Main'
 
 
+class PyPy(Processor):
+    'PyPy'
+
+    def __init__(self, version=None):
+        pypy = 'pypy' if str(version).startswith('2') else 'pypy3'
+
+        self.image = self._get_image_with_tag('pypy', version)
+        self.source = '__init__.py'
+        self.compile = [pypy, '-m', 'compileall', '.']
+        self.judge = f'{pypy} {self.source}'
+
+
 class Python(Processor):
     'CPython'
 

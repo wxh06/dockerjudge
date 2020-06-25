@@ -5,7 +5,8 @@ from time import time
 import unittest
 
 from dockerjudge import judge
-from dockerjudge.processor import Clang, GCC, Go, Node, OpenJDK, Python, Bash
+from dockerjudge.processor import (Bash, Clang, GCC, Go, Node, OpenJDK,
+                                   PyPy, Python)
 from dockerjudge.status import Status
 
 
@@ -30,6 +31,10 @@ class TestProcessor(unittest.TestCase):
         self.assertEqual(Go('1').image, 'golang:1')
         self.assertEqual(Go(None, {'src': 'golang.go'}).source, 'golang.go')
         self.assertEqual(Go(None, {'bin': 'golang'}).judge, './golang')
+
+    def test_PyPy(self):
+        self.assertEqual(PyPy().compile, PyPy(3).compile)
+        self.assertEqual(PyPy().judge, PyPy(3).judge)
 
 
 class TestDockerJudge(unittest.TestCase):
@@ -274,6 +279,28 @@ class TestPython(unittest.TestCase):
         self.assertFalse(result[0][0][1][1])
         self.assertFalse(result[0][1][1][0])
         self.assertFalse(result[0][1][1][1])
+
+    def test_pypy(self):
+        result = judge(
+            PyPy(2),
+            b'a, b = [int(i) for i in raw_input().split()]; print a / b',
+            [(b'1 1', b'1'), (b'1 2', b'0.5'), (b'0 0', b'')]
+        )
+        self.assertEqual(result[0][0][0], Status.AC)
+        self.assertEqual(result[0][1][0], Status.WA)
+        self.assertEqual(result[0][2][0], Status.RE)
+        self.assertTrue(result[0][2][1][1])
+
+    def test_pypy3(self):
+        result = judge(
+            PyPy(3),
+            b'a, b = [int(i) for i in input().split()]; print(a / b)',
+            [(b'1 1', b'1'), (b'1 2', b'0.5'), (b'0 0', b'')]
+        )
+        self.assertEqual(result[0][0][0], Status.WA)
+        self.assertEqual(result[0][1][0], Status.AC)
+        self.assertEqual(result[0][2][0], Status.RE)
+        self.assertTrue(result[0][2][1][1])
 
 
 class TestGoLang(unittest.TestCase):

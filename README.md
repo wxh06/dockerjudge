@@ -31,6 +31,7 @@
   - [`node`](https://nodejs.org/en/download/)
 - [Python](https://www.python.org/)
   - [CPython](https://www.python.org/downloads/)
+  - [PyPy](https://www.pypy.org/)
 
 
 ## Installation
@@ -241,10 +242,18 @@ sudo make install  # python3 setup.py install
     b''
 ]
 >>>
->>> judge(Python(3), b"print('Hello, world!')", [(b'', b'Hello, world!')])  # Python
+>>> judge(Python(3), b"print('Hello, world!')", [(b'', b'Hello, world!')])  # Python 3
 [
     [
         (<Status.AC: 'Accepted'>, (b'Hello, world!\n', b''), 0.05)
+    ],
+    b"Listing '.'...\n"
+    b"Compiling './__init__.py'...\n"
+]
+>>> judge(PyPy(), b"print('Hello, world!')", [(b'', b'Hello, world!')])  # PyPy 3
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello, world!\n', b''), 0.075)
     ],
     b"Listing '.'...\n"
     b"Compiling './__init__.py'...\n"
