@@ -39,6 +39,35 @@ class _Language(Enum):
                 return cls.__get_language(default)
 
 
+class Clang(Processor):
+    'Clang C Language Family Frontend for LLVM'
+
+    class Language(_Language):
+        'Programming language, C (c) or C++ (cpp)'
+        c = 'C'
+        cpp = 'C++'
+
+        @classmethod
+        def _get_language(cls, language):
+            return super().__get_language(language, cls.cpp)
+
+    def __init__(self, language=None, version=None,
+                 filenames=None, options=None):
+        lang = self.Language._get_language(language)
+        fns = filenames or {}
+        args = options or []
+
+        self.image = 'clangbuiltlinux/ubuntu' + f':llvm{version}-latest'
+        self.source = fns.get('src', f'a.{lang.name}')
+        self.compile = ([{self.Language.c: 'clang',
+                          self.Language.cpp: 'clang++'}[lang] + f'-{version}',
+                         self.source]
+                        + (['-o', fns['bin']]
+                           if fns.get('bin') else []) + args)
+        self.after_compile = ['rm', self.source]
+        self.judge = f"./{fns.get('bin', 'a.out')}"
+
+
 class GCC(Processor):
     'GNU project C, C++ and Go compiler'
 
@@ -70,45 +99,6 @@ class GCC(Processor):
         self.judge = f"./{fns.get('bin', 'a.out')}"
 
 
-class Clang(Processor):
-    'Clang C Language Family Frontend for LLVM'
-
-    class Language(_Language):
-        'Programming language, C (c) or C++ (cpp)'
-        c = 'C'
-        cpp = 'C++'
-
-        @classmethod
-        def _get_language(cls, language):
-            return super().__get_language(language, cls.cpp)
-
-    def __init__(self, language=None, version=None,
-                 filenames=None, options=None):
-        lang = self.Language._get_language(language)
-        fns = filenames or {}
-        args = options or []
-
-        self.image = 'clangbuiltlinux/ubuntu' + f':llvm{version}-latest'
-        self.source = fns.get('src', f'a.{lang.name}')
-        self.compile = ([{self.Language.c: 'clang',
-                          self.Language.cpp: 'clang++'}[lang] + f'-{version}',
-                         self.source]
-                        + (['-o', fns['bin']]
-                           if fns.get('bin') else []) + args)
-        self.after_compile = ['rm', self.source]
-        self.judge = f"./{fns.get('bin', 'a.out')}"
-
-
-class Python(Processor):
-    'CPython'
-
-    def __init__(self, version=None):
-        self.image = self._get_image_with_tag('python', version)
-        self.source = '__init__.py'
-        self.compile = ['python', '-m', 'compileall', '.']
-        self.judge = f'python {self.source}'
-
-
 class Go(Processor):
     'The Go Programming Language'
 
@@ -126,6 +116,16 @@ class Go(Processor):
         self.judge = f"./{fns.get('bin', 'main')}"
 
 
+class Node(Processor):
+    'Node.js®'
+
+    def __init__(self, version=None):
+        self.image = self._get_image_with_tag('node', version)
+        self.source = 'index.js'
+        self.compile = ['node', '-c', self.source]
+        self.judge = f'node {self.source}'
+
+
 class OpenJDK(Processor):
     'Open Java Development Kit'
 
@@ -137,11 +137,11 @@ class OpenJDK(Processor):
         self.judge = 'java Main'
 
 
-class Node(Processor):
-    'Node.js®'
+class Python(Processor):
+    'CPython'
 
     def __init__(self, version=None):
-        self.image = self._get_image_with_tag('node', version)
-        self.source = 'index.js'
-        self.compile = ['node', '-c', self.source]
-        self.judge = f'node {self.source}'
+        self.image = self._get_image_with_tag('python', version)
+        self.source = '__init__.py'
+        self.compile = ['python', '-m', 'compileall', '.']
+        self.judge = f'python {self.source}'
