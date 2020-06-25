@@ -193,7 +193,7 @@ sudo make install  # python3 setup.py install
     b''
 ]
 >>>
->>> judge(  # BTW, GCC starting from 4.9 also supports Go, named `gccgo`
+>>> judge(  # BTW，从 4.9 开始 GCC 还支持 Go，叫 `gccgo`
 ...     GCC(GCC.Language.go),
 ...     b'package main\n'
 ...     b''
