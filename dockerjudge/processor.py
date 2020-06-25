@@ -39,6 +39,16 @@ class _Language(Enum):
                 return cls.__get_language(default)
 
 
+class Bash(Processor):
+    "Bash is the GNU Project's Bourne Again SHell"
+
+    def __init__(self, version=None):
+        self.image = self._get_image_with_tag('bash', version)
+        self.source = 'bash.sh'
+        self.compile = ['bash', '-n', self.source]
+        self.judge = f'sh {self.source}'
+
+
 class Clang(Processor):
     'Clang C Language Family Frontend for LLVM'
 

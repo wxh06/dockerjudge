@@ -2,7 +2,7 @@ from time import time
 import unittest
 
 from dockerjudge import judge
-from dockerjudge.processor import Clang, GCC, Go, Node, OpenJDK, Python
+from dockerjudge.processor import Clang, GCC, Go, Node, OpenJDK, Python, Bash
 from dockerjudge.status import Status
 
 
@@ -330,6 +330,17 @@ class TestNode(unittest.TestCase):
             Node(12),
             b'console.log("Hello World")',
             [(b'', b'Hello World')]
+        )
+        self.assertEqual(result[0][0][0], Status.AC)
+
+
+class TestShell(unittest.TestCase):
+
+    def test_bash(self):
+        result = judge(
+            Bash(),
+            b'echo Hello, world!',
+            [(b'', b'Hello, world!')]
         )
         self.assertEqual(result[0][0][0], Status.AC)
 
