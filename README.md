@@ -17,18 +17,20 @@
 🎌 **🇺🇸 English** | [🇨🇳 大陆简体](README.zh_Hans_CN.md)
 
 **A [Docker](https://www.docker.com/) based online judge engine**, which supports 5+ programming language processors:
+- [Shell](https://en.wikipedia.org/wiki/Unix_shell)
+  - [Bash (**B**ourne-**A**gain **sh**ell)](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
 - [C](https://en.wikipedia.org/wiki/C_(programming_language))/[C++](https://en.wikipedia.org/wiki/C%2B%2B)
-  - [x] [GCC (The GNU Compiler Collection)](https://gcc.gnu.org/)
-  - [x] [LLVM Clang](https://clang.llvm.org/)
-- [Python](https://www.python.org/)
-  - [x] [CPython](https://www.python.org/downloads/)
-- [Node.js](https://nodejs.org/en/)
-  - [x] [`node`](https://nodejs.org/en/download/)
+  - [GCC (The **G**NU **C**ompiler **C**ollection)](https://gcc.gnu.org/)
+  - [LLVM Clang](https://clang.llvm.org/)
 - [Go](https://golang.org/)
-  - [x] [`go`](https://golang.org/dl/)
-  - [x] [`gccgo` (GCC)](https://golang.org/doc/install/gccgo)
+  - [`go`](https://golang.org/dl/)
+  - [`gccgo` (GCC)](https://golang.org/doc/install/gccgo)
 - [Java](https://www.oracle.com/java/)
-  - [x] [OpenJDK](https://openjdk.java.net/)
+  - [OpenJDK](https://openjdk.java.net/)
+- [Node.js](https://nodejs.org/en/)
+  - [`node`](https://nodejs.org/en/download/)
+- [Python](https://www.python.org/)
+  - [CPython](https://www.python.org/downloads/)
 
 
 ## Installation
@@ -231,6 +233,14 @@ sudo make install  # python3 setup.py install
 ]
 >>>
 >>> # Other programming languages are also supported
+>>> judge(Bash(), b'echo Hello, world!', [(b'', b'Hello, world!')])  # Bash
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello, world!\n', b''), 0.001)
+    ],
+    b''
+]
+>>>
 >>> judge(Python(3), b"print('Hello, world!')", [(b'', b'Hello, world!')])  # Python
 [
     [

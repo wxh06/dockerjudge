@@ -17,18 +17,20 @@
 🎌 [🇺🇸 English](README.md) | **🇨🇳 大陆简体**
 
 **基于 [Docker](https://www.docker.com/) 的在线测评引擎**，支持 5+ 个编程语言处理程序：
+- [Shell](https://zh.wikipedia.org/zh-cn/Unix_shell)
+  - [Bash (**B**ourne-**A**gain **sh**ell)](https://zh.wikipedia.org/zh-cn/Bash)
 - [C](https://zh.wikipedia.org/zh-cn/C语言)/[C++](https://zh.wikipedia.org/zh-cn/C%2B%2B)
-  - [x] [GCC (The GNU Compiler Collection)](https://gcc.gnu.org/)
-  - [x] [LLVM Clang](https://clang.llvm.org/)
-- [Python](https://www.python.org/)
-  - [x] [CPython](https://www.python.org/downloads/)
-- [Node.js](https://nodejs.org/zh-cn/)
-  - [x] [`node`](https://nodejs.org/zh-cn/download/)
+  - [GCC (The **G**NU **C**ompiler **C**ollection)](https://gcc.gnu.org/)
+  - [LLVM Clang](https://clang.llvm.org/)
 - [Go](https://golang.google.cn/)
-  - [x] [`go`](https://golang.google.cn/dl/)
-  - [x] [`gccgo` (GCC)](https://golang.google.cn/doc/install/gccgo)
+  - [`go`](https://golang.google.cn/dl/)
+  - [`gccgo` (GCC)](https://golang.google.cn/doc/install/gccgo)
 - [Java](https://www.oracle.com/cn/java/)
-  - [x] [OpenJDK](https://openjdk.java.net/)
+  - [OpenJDK](https://openjdk.java.net/)
+- [Node.js](https://nodejs.org/zh-cn/)
+  - [`node`](https://nodejs.org/zh-cn/download/)
+- [Python](https://www.python.org/)
+  - [CPython](https://www.python.org/downloads/)
 
 
 ## 安装
@@ -231,6 +233,14 @@ sudo make install  # python3 setup.py install
 ]
 >>>
 >>> # 亦支持其它编程语言
+>>> judge(Bash(), b'echo Hello, world!', [(b'', b'Hello, world!')])  # Bash
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello, world!\n', b''), 0.001)
+    ],
+    b''
+]
+>>>
 >>> judge(Python(3), b"print('Hello, world!')", [(b'', b'Hello, world!')])  # Python
 [
     [
