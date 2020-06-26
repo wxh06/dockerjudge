@@ -3,6 +3,7 @@
 
 from enum import Enum
 from pathlib import PurePosixPath
+import shlex
 
 
 class Processor():
@@ -72,8 +73,10 @@ class Clang(Processor):
         self.compile = ([{self.Language.c: 'clang',
                           self.Language.cpp: 'clang++'}[lang] + f'-{version}',
                          self.source]
-                        + (['-o', fns['bin']]
-                           if fns.get('bin') else []) + args)
+                        + (['-o', fns['bin']] if fns.get('bin')
+                           else [])
+                        + (shlex.split(args) if isinstance(args, str)
+                           else args))
         self.after_compile = ['rm', self.source]
         self.judge = f"./{fns.get('bin', 'a.out')}"
 
@@ -103,8 +106,10 @@ class GCC(Processor):
                           self.Language.cpp: 'g++',
                           self.Language.go: 'gccgo'}[lang],
                          self.source]
-                        + (['-o', fns['bin']]
-                           if fns.get('bin') else []) + args)
+                        + (['-o', fns['bin']] if fns.get('bin')
+                           else [])
+                        + (shlex.split(args) if isinstance(args, str)
+                           else args))
         self.after_compile = ['rm', self.source]
         self.judge = f"./{fns.get('bin', 'a.out')}"
 
