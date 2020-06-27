@@ -47,7 +47,7 @@ class Bash(Processor):
         self.image = self._get_image_with_tag('bash', version)
         self.source = 'bash.sh'
         self.compile = ['bash', '-n', self.source]
-        self.judge = f'sh {self.source}'
+        self.judge = f'bash {self.source}'
 
 
 class Clang(Processor):
