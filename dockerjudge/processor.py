@@ -152,6 +152,16 @@ class OpenJDK(Processor):
         self.judge = 'java Main'
 
 
+class PHP(Processor):
+    'PHP'
+
+    def __init__(self, version=None):
+        self.image = self._get_image_with_tag('php', version)
+        self.source = 'index.php'
+        self.compile = ['php', '-l', self.source]
+        self.judge = f'php {self.source}'
+
+
 class PyPy(Processor):
     'PyPy'
 

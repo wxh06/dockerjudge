@@ -29,6 +29,8 @@
   - [OpenJDK](https://openjdk.java.net/)
 - [Node.js](https://nodejs.org/zh-cn/)
   - [`node`](https://nodejs.org/zh-cn/download/)
+- [PHP](https://www.php.net/)
+  - [`php`](https://www.php.net/downloads)
 - [Python](https://www.python.org/)
   - [CPython](https://www.python.org/downloads/)
   - [PyPy](https://www.pypy.org/)
@@ -285,6 +287,14 @@ sudo make install  # python3 setup.py install
         (<Status.AC: 'Accepted'>, (b'Hello, world!\n', b''), 0.1)
     ],
     b''
+]
+>>>
+>>> judge(PHP(), b'<?php echo "Hello, world!";', [(b'', b'Hello, world!')])  # PHP
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello, world!', b''), 0.05)
+    ],
+    b'No syntax errors detected in index.php\n'
 ]
 ```
 

@@ -375,5 +375,16 @@ class TestShell(unittest.TestCase):
         self.assertEqual(result[0][0][0], Status.AC)
 
 
+class TestPHP(unittest.TestCase):
+
+    def test_php(self):
+        result = judge(
+            PHP(),
+            b'<?php echo "Hello, world!";',
+            [(b'', b'Hello, world!')]
+        )
+        self.assertEqual(result[0][0][0], Status.AC)
+
+
 if __name__ == '__main__':
     unittest.main()
