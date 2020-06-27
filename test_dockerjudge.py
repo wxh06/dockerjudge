@@ -36,6 +36,10 @@ class TestProcessor(unittest.TestCase):
         self.assertEqual(PyPy().compile, PyPy(3).compile)
         self.assertEqual(PyPy().judge, PyPy(3).judge)
 
+    def test_mono(self):
+        self.assertTrue(Mono(Mono.Language.csharp).source.endswith('.cs'))
+        self.assertEqual(Mono().source, Mono(Mono.Language.csharp).source)
+
 
 class TestDockerJudge(unittest.TestCase):
 
