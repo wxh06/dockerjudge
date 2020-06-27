@@ -6,7 +6,7 @@ import unittest
 
 from dockerjudge import judge
 from dockerjudge.processor import (Bash, Clang, GCC, Go, Node, OpenJDK,
-                                   PyPy, Python)
+                                   PHP, PyPy, Python)
 from dockerjudge.status import Status
 
 
