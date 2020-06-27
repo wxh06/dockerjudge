@@ -5,7 +5,7 @@ from time import time
 import unittest
 
 from dockerjudge import judge
-from dockerjudge.processor import (Bash, Clang, GCC, Go, Node, OpenJDK,
+from dockerjudge.processor import (Bash, Clang, GCC, Go, Mono, Node, OpenJDK,
                                    PHP, PyPy, Python, Ruby)
 from dockerjudge.status import Status
 
@@ -394,6 +394,35 @@ class TestRuby(unittest.TestCase):
             b'print "Hello, world!";',
             [(b'', b'Hello, world!')]
         )
+        self.assertEqual(result[0][0][0], Status.AC)
+
+
+class TestDotNet(unittest.TestCase):
+
+    def test_csharp(self):
+        result = judge(Mono(Mono.Language.csharp), b'''
+            using System;
+
+            public class HelloWorld
+            {
+                public static void Main(string[] args)
+                {
+                    Console.WriteLine ("Hello Mono World");
+                }
+            }
+        ''', [(b'', b'Hello Mono World')])
+        self.assertEqual(result[0][0][0], Status.AC)
+
+    def test_vb(self):
+        result = judge(Mono(Mono.Language.vb), b'''
+            Imports System
+
+            Module HelloWorld
+                Sub Main()
+                    Console.WriteLine("Hello World!")
+                End Sub
+            End Module
+        ''', [(b'', b'Hello World!')])
         self.assertEqual(result[0][0][0], Status.AC)
 
 

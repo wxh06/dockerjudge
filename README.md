@@ -22,6 +22,8 @@
 - [C](https://en.wikipedia.org/wiki/C_(programming_language))/[C++](https://en.wikipedia.org/wiki/C%2B%2B)
   - [GCC (The **G**NU **C**ompiler **C**ollection)](https://gcc.gnu.org/)
   - [LLVM Clang](https://clang.llvm.org/)
+- [.NET](https://docs.microsoft.com/en-us/dotnet/) ([C#](https://docs.microsoft.com/en-us/dotnet/csharp/) & [Visual Basic](https://docs.microsoft.com/en-us/dotnet/visual-basic/))
+  - [Mono](https://www.mono-project.com/)
 - [Go](https://golang.org/)
   - [`go`](https://golang.org/dl/)
   - [`gccgo` (GCC)](https://golang.org/doc/install/gccgo)
@@ -36,6 +38,7 @@
   - [PyPy](https://www.pypy.org/)
 - [Ruby](https://www.ruby-lang.org/en/)
   - [`ruby`](https://www.ruby-lang.org/en/downloads/)
+
 
 ## Installation
 ### From the [Python Package Index (PyPI)](https://pypi.org/)
@@ -70,7 +73,7 @@ sudo make install  # python3 setup.py install
 ## Usage
 ```python
 >>> from dockerjudge import judge
->>> from dockerjudge.processor import GCC, Clang, Python, Node, OpenJDK
+>>> from dockerjudge.processor import GCC, Clang, Bash, Python, Node, OpenJDK, PHP, Ruby, Mono
 >>>
 >>> judge(
 ...     GCC(GCC.Language.c),  # or `GCC('c')` / `GCC('C')`, which means compile the source code in the C programming language with `gcc` command
@@ -304,6 +307,58 @@ sudo make install  # python3 setup.py install
         (<Status.AC: 'Accepted'>, (b'Hello, world!', b''), 0.05)
     ],
     b'Syntax OK\n'
+]
+>>>
+>>> judge(
+...     Mono(Mono.Language.csharp),  # C# (Mono)
+...     b'''
+...         using System;
+... 
+...         public class HelloWorld
+...         {
+...             public static void Main(string[] args)
+...             {
+...                 Console.WriteLine ("Hello Mono World");
+...             }
+...         }
+...     ''',
+...     [
+...         (b'', b'Hello Mono World')
+...     ]
+... )
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello Mono World\n', b''), 0.02)
+    ],
+    b'Microsoft (R) Visual C# Compiler version 3.5.0-beta1-19606-04 (d2bd58c6)\n'
+    b'Copyright (C) Microsoft Corporation. All rights reserved.\n'
+    b'\n'
+]
+>>> judge(
+...     Mono(Mono.Language.vb),  # Visual Basic (Mono)
+...     b'''
+...         Imports System
+... 
+...         Module HelloWorld
+...             Sub Main()
+...                 Console.WriteLine("Hello World!")
+...             End Sub
+...         End Module
+...     ''',
+...     [
+...         (b'', b'Hello World!')
+...     ]
+... )
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello World!\n', b''), 0.024)
+    ],
+    b'Visual Basic.Net Compiler version 0.0.0.5943 (Mono 4.7 - tarball)\n'
+    b'Copyright (C) 2004-2010 Rolf Bjarne Kvinge. All rights reserved.\n'
+    b'\n'
+    b"Assembly 'mono, Version=0.0, Culture=neutral, PublicKeyToken=null' saved successfully to '/dockerjudge/0/mono.exe'.\r\n"
+    b'Compilation successful\r\n'
+    b'Compilation took 00:00:00.0000000\n'
 ]
 ```
 

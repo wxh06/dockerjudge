@@ -131,6 +131,32 @@ class Go(Processor):
         self.judge = f"./{fns.get('bin', 'main')}"
 
 
+class Mono(Processor):
+    'Mono'
+
+    class Language(_Language):
+        'Programming language, C# or Visual Basic'
+        vb = 'Visual Basic'
+        csharp = 'C#'
+
+        @classmethod
+        def _get_language(cls, language):
+            return super().__get_language(language, cls.csharp)
+
+    def __init__(self, language=None, version=None):
+        lang = self.Language._get_language(language)
+
+        self.image = self._get_image_with_tag('mono', version)
+        self.source = f'''mono.{
+            {self.Language.csharp: 'cs', self.Language.vb: 'vb'}[lang]
+        }'''
+        self.compile = [{self.Language.csharp: 'csc',
+                         self.Language.vb: 'vbnc'}[lang],
+                        self.source]
+        self.after_compile = ['rm', self.source]
+        self.judge = 'mono mono.exe'
+
+
 class Node(Processor):
     'Node.js®'
 
