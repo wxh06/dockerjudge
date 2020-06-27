@@ -38,7 +38,8 @@ pytest:
 
 
 docker-pull:
-	sh docker-pull.sh
+	chmod +x docker-pull.sh
+	./docker-pull.sh
 
 
 lint: flake8 pylint
