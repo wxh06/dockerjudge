@@ -37,6 +37,10 @@ pytest:
 	pytest --cov=dockerjudge
 
 
+docker-pull:
+	sh docker-pull.sh
+
+
 lint: flake8 pylint
 
 flake8:
