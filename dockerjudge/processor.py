@@ -182,3 +182,13 @@ class Python(Processor):
         self.source = '__init__.py'
         self.compile = ['python', '-m', 'compileall', '.']
         self.judge = f'python {self.source}'
+
+
+class Ruby(Processor):
+    'Ruby'
+
+    def __init__(self, version=None):
+        self.image = self._get_image_with_tag('ruby', version)
+        self.source = 'ruby.rb'
+        self.compile = ['ruby', '-wc', self.source]
+        self.judge = f'ruby {self.source}'

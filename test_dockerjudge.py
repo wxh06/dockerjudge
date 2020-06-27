@@ -6,7 +6,7 @@ import unittest
 
 from dockerjudge import judge
 from dockerjudge.processor import (Bash, Clang, GCC, Go, Node, OpenJDK,
-                                   PHP, PyPy, Python)
+                                   PHP, PyPy, Python, Ruby)
 from dockerjudge.status import Status
 
 
@@ -381,6 +381,17 @@ class TestPHP(unittest.TestCase):
         result = judge(
             PHP(),
             b'<?php echo "Hello, world!";',
+            [(b'', b'Hello, world!')]
+        )
+        self.assertEqual(result[0][0][0], Status.AC)
+
+
+class TestRuby(unittest.TestCase):
+
+    def test_ruby(self):
+        result = judge(
+            Ruby(),
+            b'print "Hello, world!";',
             [(b'', b'Hello, world!')]
         )
         self.assertEqual(result[0][0][0], Status.AC)

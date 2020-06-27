@@ -34,7 +34,8 @@
 - [Python](https://www.python.org/)
   - [CPython](https://www.python.org/downloads/)
   - [PyPy](https://www.pypy.org/)
-
+- [Ruby](https://www.ruby-lang.org/en/)
+  - [`ruby`](https://www.ruby-lang.org/en/downloads/)
 
 ## Installation
 ### From the [Python Package Index (PyPI)](https://pypi.org/)
@@ -295,6 +296,14 @@ sudo make install  # python3 setup.py install
         (<Status.AC: 'Accepted'>, (b'Hello, world!', b''), 0.05)
     ],
     b'No syntax errors detected in index.php\n'
+]
+>>>
+>>> judge(Ruby(), b'print "Hello, world!";', [(b'', b'Hello, world!')])  # Ruby
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello, world!', b''), 0.05)
+    ],
+    b'Syntax OK\n'
 ]
 ```
 
