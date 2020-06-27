@@ -32,4 +32,4 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        docker pull openjdk && pytest --cov=.
+        docker pull openjdk && docker pull php && docker pull ruby && pytest --cov=.
