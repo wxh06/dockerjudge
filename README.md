@@ -16,7 +16,7 @@
 
 🎌 **🇺🇸 English** | [🇨🇳 大陆简体](README.zh_Hans_CN.md)
 
-**A [Docker](https://www.docker.com/) based online judge engine**, which supports 5+ programming language processors:
+**A [Docker](https://www.docker.com/) based online judge engine**, which supports 10+ programming language processors:
 - [Shell](https://en.wikipedia.org/wiki/Unix_shell)
   - [Bash (**B**ourne-**A**gain **sh**ell)](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
 - [C](https://en.wikipedia.org/wiki/C_(programming_language))/[C++](https://en.wikipedia.org/wiki/C%2B%2B)

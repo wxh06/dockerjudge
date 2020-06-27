@@ -16,7 +16,7 @@
 
 🎌 [🇺🇸 English](README.md) | **🇨🇳 大陆简体**
 
-**基于 [Docker](https://www.docker.com/) 的在线测评引擎**，支持 5+ 个编程语言处理程序：
+**基于 [Docker](https://www.docker.com/) 的在线测评引擎**，支持 10+ 个编程语言处理程序：
 - [Shell](https://zh.wikipedia.org/zh-cn/Unix_shell)
   - [Bash (**B**ourne-**A**gain **sh**ell)](https://zh.wikipedia.org/zh-cn/Bash)
 - [C](https://zh.wikipedia.org/zh-cn/C语言)/[C++](https://zh.wikipedia.org/zh-cn/C%2B%2B)
