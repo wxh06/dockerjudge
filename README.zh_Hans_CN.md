@@ -1,5 +1,9 @@
 <p align="center">
-  <a href="https://github.com/piterator-org"><img src="https://static.piterator.com/logo.min.svg" alt="Piterator" width="20%"></a>
+  <a href="https://github.com/piterator-org">
+    <img src="https://static.piterator.com/piterator/logo.svg" alt="Piterator" width="20%">
+    <br>
+    由 <strong>Piterator</strong> 团队用 &lt;3 制作
+  </a>
 </p>
 
 # dockerjudge
