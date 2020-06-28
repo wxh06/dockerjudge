@@ -6,7 +6,7 @@ import unittest
 
 from dockerjudge import judge
 from dockerjudge.processor import (Bash, Clang, GCC, Go, Mono, Node, OpenJDK,
-                                   PHP, PyPy, Python, Ruby)
+                                   PHP, PyPy, Python, Ruby, Swift)
 from dockerjudge.status import Status
 
 
@@ -427,6 +427,17 @@ class TestDotNet(unittest.TestCase):
                 End Sub
             End Module
         ''', [(b'', b'Hello World!')])
+        self.assertEqual(result[0][0][0], Status.AC)
+
+
+class TestSwift(unittest.TestCase):
+
+    def test_swiftc(self):
+        result = judge(
+            Swift(),
+            b'print("Hello, world!")',
+            [(b'', b'Hello, world!')]
+        )
         self.assertEqual(result[0][0][0], Status.AC)
 
 

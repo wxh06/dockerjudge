@@ -218,3 +218,13 @@ class Ruby(Processor):
         self.source = 'ruby.rb'
         self.compile = ['ruby', '-wc', self.source]
         self.judge = f'ruby {self.source}'
+
+
+class Swift(Processor):
+    'Swift'
+
+    def __init__(self, version=None):
+        self.image = self._get_image_with_tag('swift', version)
+        self.source = 'main.swift'
+        self.compile = ['swiftc', self.source]
+        self.judge = './main'

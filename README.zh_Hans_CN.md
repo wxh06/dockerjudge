@@ -42,6 +42,8 @@
   - [PyPy](https://www.pypy.org/)
 - [Ruby](https://www.ruby-lang.org/zh_cn/)
   - [`ruby`](https://www.ruby-lang.org/zh_cn/downloads/)
+- [Swift](https://swift.org/)
+  - [`swiftc`](https://swift.org/swift-compiler/)
 
 
 ## 安装
@@ -77,7 +79,7 @@ sudo make install  # python3 setup.py install
 ## 用法示例
 ```python
 >>> from dockerjudge import judge
->>> from dockerjudge.processor import GCC, Clang, Bash, Python, Node, OpenJDK, PHP, Ruby, Mono
+>>> from dockerjudge.processor import GCC, Clang, Bash, Python, Node, OpenJDK, PHP, Ruby, Mono, Swift
 >>>
 >>> judge(
 ...     GCC(GCC.Language.c),  # 或 `GCC('c')` / `GCC('C')`，意为用 `gcc` 命令编译 C 语言源码
@@ -363,6 +365,14 @@ sudo make install  # python3 setup.py install
     b"Assembly 'mono, Version=0.0, Culture=neutral, PublicKeyToken=null' saved successfully to '/dockerjudge/0/mono.exe'.\r\n"
     b'Compilation successful\r\n'
     b'Compilation took 00:00:00.0000000\n'
+]
+>>>
+>>> judge(Swift(), b'print("Hello, world!")', [(b'', b'Hello, world!')])  # Swift
+[
+    [
+        (<Status.AC: 'Accepted'>, (b'Hello, world!\n', b''), 0.2)
+    ],
+    b''
 ]
 ```
 

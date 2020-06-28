@@ -15,3 +15,4 @@ docker pull pypy:3  # For pypy3
 docker pull python:2  # For python2
 docker pull python:3  # For python3
 docker pull ruby  # For ruby
+docker pull swift  # For swiftc
