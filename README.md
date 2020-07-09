@@ -20,7 +20,7 @@
 
 🎌 **🇺🇸 English** | [🇨🇳 大陆简体](README.zh_Hans_CN.md)
 
-**A [Docker](https://www.docker.com/) based online judge engine**, which supports 10+ programming language processors:
+**A LXC based online judge engine**, which supports [10+ programming language processors](#supported-processors):
 - [Shell](https://en.wikipedia.org/wiki/Unix_shell)
   - [Bash (**B**ourne-**A**gain **sh**ell)](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
 - [C](https://en.wikipedia.org/wiki/C_(programming_language))/[C++](https://en.wikipedia.org/wiki/C%2B%2B)
@@ -46,24 +46,54 @@
   - [`swiftc`](https://swift.org/swift-compiler/)
 
 
+## Supported processors
+Processor | Language(s)* | Required [Docker Image](https://hub.docker.com/)
+--------- | ------------ | ---------------------
+`Bash` | Shell | [`bash`](https://hub.docker.com/_/bash)
+`Clang` | <ul><li>C (`c`)</li><li>**C++ (`cpp`)**</li></ul> | [`clangbuiltlinux/ubuntu`](https://hub.docker.com/r/clangbuiltlinux/ubuntu)
+`GCC` | <ul><li>C (`c`)</li><li>**C++ (`cpp`)**</li><li>Go (`go`)</li></ul> | [`gcc`](https://hub.docker.com/_/gcc)
+`Go` | Go | [`golang`](https://hub.docker.com/_/golang)
+`Mono` | <ul><li>Visual Basic (`vb`)</li><li>**C# (`csharp`)**</li></ul> | [`mono`](https://hub.docker.com/_/mono)
+`Node` | Node.js | [`node`](https://hub.docker.com/_/node)
+`OpenJDK` | Java | [`openjdk`](https://hub.docker.com/_/openjdk)
+`PHP` | PHP | [`php`](https://hub.docker.com/_/php)
+`PyPy` | Python | [`pypy`](https://hub.docker.com/_/pypy)
+`Python`| Python | [`python`](https://hub.docker.com/_/python)
+`Ruby` | Ruby | [`ruby`](https://hub.docker.com/_/ruby)
+`Swift` | Swift | [`swift`](https://hub.docker.com/_/swift)
+
+**\*** The `language` argumnets of the processors which support multiple languages should be provided, or the `source` will be judged in the default language (usually C++ or C#, emboldened in the table).
+
+
 ## Installation
-### From the [Python Package Index (PyPI)](https://pypi.org/)
+### Docker
+To run `dockerjudge`, [Docker Engine](https://www.docker.com/) is required.
+
+#### Install using the convenience script (for servers)
+```sh
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+See [Install Docker Engine \| Docker Documentation](https://docs.docker.com/engine/install/) for more information.
+
+### Package
+#### From the [Python Package Index (PyPI)](https://pypi.org/)
 [dockerjudge · PyPI](https://pypi.org/project/dockerjudge/)
 - [PyPI](https://pypi.org/simple/dockerjudge/)
 - [阿里巴巴开源镜像站 (Alibaba Open Source Mirror)](https://mirrors.aliyun.com/pypi/simple/dockerjudge/)
 - [清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://pypi.tuna.tsinghua.edu.cn/simple/dockerjudge/)
 
-#### Via [pip](https://pip.pypa.io/)
+##### Via [pip](https://pip.pypa.io/)
 ```sh
 pip install dockerjudge
 ```
 
-#### Via [Easy install](https://setuptools.readthedocs.io/en/latest/easy_install.html) (deprecated)
+##### Via [Easy install](https://setuptools.readthedocs.io/en/latest/easy_install.html) (deprecated)
 ```sh
 easy_install dockerjudge
 ```
 
-### From [GitHub](https://github.com/)
+#### From [GitHub](https://github.com/)
 [wxh06/dockerjudge: A Docker Based Online Judge Engine](https://github.com/wxh06/dockerjudge)
 - HTTPS: `https://github.com/wxh06/dockerjudge.git`
 - SSH: `git@github.com:wxh06/dockerjudge.git`
