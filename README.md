@@ -47,7 +47,7 @@
 
 
 ## Supported processors
-Processor | Language(s)* | Required [Docker Image](https://hub.docker.com/)
+Processor | Language(s)\* | Required [Docker Image](https://hub.docker.com/)
 --------- | ------------ | ---------------------
 `Bash` | Shell | [`bash`](https://hub.docker.com/_/bash)
 `Clang` | <ul><li>C (`c`)</li><li>**C++ (`cpp`)**</li></ul> | [`clangbuiltlinux/ubuntu`](https://hub.docker.com/r/clangbuiltlinux/ubuntu)
