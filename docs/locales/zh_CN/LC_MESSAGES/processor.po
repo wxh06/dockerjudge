@@ -1,0 +1,371 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, 汪心禾
+# This file is distributed under the same license as the dockerjudge
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: dockerjudge \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-10 23:22+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../processor.rst:2
+msgid ":mod:`dockerjudge.processor` - Processors"
+msgstr ":mod:`dockerjudge.processor` —— 处理程序"
+
+#: dockerjudge.processor:1 of
+msgid "Processors"
+msgstr "处理程序"
+
+#: dockerjudge.processor:4 of
+msgid "Processor"
+msgstr "处理程序"
+
+#: dockerjudge.processor:4 of
+msgid "Language(s) [*]_"
+msgstr "语言 [*]_"
+
+#: dockerjudge.processor:4 of
+msgid "Required `Docker image <https:// hub.docker.com>`_"
+msgstr "必要的 `Docker 镜像 <https://hub.docker.com/>`_"
+
+#: dockerjudge.processor:8 of
+msgid ":func:`~dockerjudge.processor.Bash`"
+msgstr ":func:`~dockerjudge.processor.Bash`"
+
+#: dockerjudge.processor:8 of
+msgid "Shell"
+msgstr "Shell"
+
+#: dockerjudge.processor:8 of
+msgid "|bash|_"
+msgstr "|bash|_"
+
+#: dockerjudge.processor:10 of
+msgid ":func:`~dockerjudge.processor.Clang`"
+msgstr ":func:`~dockerjudge.processor.Clang`"
+
+#: dockerjudge.processor:10 dockerjudge.processor:14 of
+msgid "C (``c``)"
+msgstr "C（``c``）"
+
+#: dockerjudge.processor:11 dockerjudge.processor:16 of
+msgid "**C++** (``cpp``)"
+msgstr "**C++**\\ （``cpp``）"
+
+#: dockerjudge.processor:10 of
+#, fuzzy
+msgid "|clang|_"
+msgstr "|golang|_"
+
+#: dockerjudge.processor:14 of
+msgid ":func:`~dockerjudge.processor.GCC`"
+msgstr ":func:`~dockerjudge.processor.GCC`"
+
+#: dockerjudge.processor:18 of
+msgid "Go (``go``)"
+msgstr "Go（``go``）"
+
+#: dockerjudge.processor:14 of
+msgid "|gcc|_"
+msgstr "|gcc|_"
+
+#: dockerjudge.processor:21 of
+msgid ":func:`~dockerjudge.processor.Go`"
+msgstr ":func:`~dockerjudge.processor.Go`"
+
+#: dockerjudge.processor:21 dockerjudge.processor.GCC.Language of
+msgid "Go"
+msgstr "Go"
+
+#: dockerjudge.processor:21 of
+msgid "|golang|_"
+msgstr "|golang|_"
+
+#: dockerjudge.processor:23 of
+msgid ":func:`~dockerjudge.processor.Mono`"
+msgstr ":func:`~dockerjudge.processor.Mono`"
+
+#: dockerjudge.processor:23 of
+msgid "Visual Basic (``vb``)"
+msgstr "Visual Basic（``vb``）"
+
+#: dockerjudge.processor:25 of
+msgid "**C#** (``csharp``)"
+msgstr "**C#**\\ （``csharp``）"
+
+#: dockerjudge.processor:23 of
+msgid "|mono|_"
+msgstr "|mono|_"
+
+#: dockerjudge.processor:28 of
+msgid ":func:`~dockerjudge.processor.Node`"
+msgstr ":func:`~dockerjudge.processor.Node`"
+
+#: dockerjudge.processor:28 of
+msgid "Node.js"
+msgstr "Node.js"
+
+#: dockerjudge.processor:28 of
+msgid "|node|_"
+msgstr "|node|_"
+
+#: dockerjudge.processor:30 of
+msgid ":func:`~dockerjudge.processor.OpenJDK`"
+msgstr ":func:`~dockerjudge.processor.OpenJDK`"
+
+#: dockerjudge.processor:30 of
+msgid "Java"
+msgstr "Java"
+
+#: dockerjudge.processor:30 of
+msgid "|openjdk|_"
+msgstr "|openjdk|_"
+
+#: dockerjudge.processor:32 of
+msgid ":func:`~dockerjudge.processor.PHP`"
+msgstr ":func:`~dockerjudge.processor.PHP`"
+
+#: dockerjudge.processor:32 of
+msgid "PHP"
+msgstr "PHP"
+
+#: dockerjudge.processor:32 of
+msgid "|php|_"
+msgstr "|php|_"
+
+#: dockerjudge.processor:34 of
+msgid ":func:`~dockerjudge.processor.PyPy`"
+msgstr ":func:`~dockerjudge.processor.PyPy`"
+
+#: dockerjudge.processor:34 dockerjudge.processor:36 of
+msgid "Python"
+msgstr "Python"
+
+#: dockerjudge.processor:34 of
+msgid "|pypy|_"
+msgstr "|pypy|_"
+
+#: dockerjudge.processor:36 of
+msgid ":func:`~dockerjudge.processor.Python`"
+msgstr ":func:`~dockerjudge.processor.Python`"
+
+#: dockerjudge.processor:36 of
+msgid "|python|_"
+msgstr "|python|_"
+
+#: dockerjudge.processor:38 of
+msgid ":func:`~dockerjudge.processor.Ruby`"
+msgstr ":func:`~dockerjudge.processor.Ruby`"
+
+#: dockerjudge.processor:38 of
+msgid "Ruby"
+msgstr "Ruby"
+
+#: dockerjudge.processor:38 of
+msgid "|ruby|_"
+msgstr "|ruby|_"
+
+#: dockerjudge.processor:40 of
+msgid ":func:`~dockerjudge.processor.Swift`"
+msgstr ":func:`~dockerjudge.processor.Swift`"
+
+#: dockerjudge.processor:40 of
+msgid "Swift"
+msgstr "Swift"
+
+#: dockerjudge.processor:40 of
+msgid "|swift|_"
+msgstr "|swift|_"
+
+#: dockerjudge.processor:59 of
+msgid "Emboldened language by default."
+msgstr "默认为加粗的语言。"
+
+#: dockerjudge.processor.Bash:1 of
+msgid "Bash is the GNU Project's Bourne Again SHell"
+msgstr "Bash 是 GNU 项目的 Bourne Again SHell"
+
+#: dockerjudge.processor.Bash dockerjudge.processor.Clang
+#: dockerjudge.processor.GCC dockerjudge.processor.Go
+#: dockerjudge.processor.Mono of
+msgid "Parameters"
+msgstr "参数"
+
+#: dockerjudge.processor.Bash:3 of
+msgid "Tag name of Docker image |bash|_"
+msgstr "Docker 镜像 |bash|_ 的标签名"
+
+#: dockerjudge.processor.Clang:1 of
+msgid "Clang C Language Family Frontend for LLVM"
+msgstr "LLVM 的 Clang C 语言家族前端"
+
+#: dockerjudge.processor.Clang:3 of
+msgid ""
+"Programming panguage (``C``\\ /\\ `c` or ``C++``\\ /\\ ``cpp``), `C++` by"
+" default"
+msgstr "编程语言（``C``\\ /\\ `c` 或 ``C++``\\ /\\ ``cpp``），默认为 `C++`"
+
+#: dockerjudge.processor.Clang:6 of
+#, fuzzy
+msgid "Tag name of Docker image |clang|_"
+msgstr "Docker 镜像 |golang|_ 的标签名"
+
+#: dockerjudge.processor.Clang:8 dockerjudge.processor.GCC:9 of
+msgid ""
+"Filenames of source code and binary file, C++ default: ``{'src': 'a.cpp',"
+" 'bin': None}``"
+msgstr "源代码及二进制文件名，C++ 默认：``{'src': 'a.cpp', 'bin': None}``"
+
+#: dockerjudge.processor.Clang:11 dockerjudge.processor.GCC:12 of
+msgid "Compiler options"
+msgstr "编译器选项"
+
+#: dockerjudge.processor.Clang.Language:1 of
+msgid "Programming language, `C` (``c``) or `C++` (``cpp``)"
+msgstr "编程语言，`C`\\ （``c``）或 `C++`\\ （``cpp``）"
+
+#: dockerjudge.processor.Clang.Language dockerjudge.processor.GCC.Language of
+msgid "C"
+msgstr "C"
+
+#: dockerjudge.processor.Clang.Language:3 of
+msgid "``Clang.Language.c``, ``Clang.Language['c']`` or ``Clang.Language('C')``"
+msgstr "``Clang.Language.c``、``Clang.Language['c']`` 或 ``Clang.Language('C')``"
+
+#: dockerjudge.processor.Clang.Language dockerjudge.processor.GCC.Language of
+msgid "C++"
+msgstr "C++"
+
+#: dockerjudge.processor.Clang.Language:5 of
+msgid ""
+"``Clang.Language.cpp``, ``Clang.Language['cpp']`` or "
+"``Clang.Language('C++')``"
+msgstr ""
+"``Clang.Language.cpp``、``Clang.Language['cpp']`` 或 "
+"``Clang.Language('C++')``"
+
+#: dockerjudge.processor.GCC:1 of
+msgid "GNU project C, C++ and Go compiler"
+msgstr "GNU 项目 C、C++ 与 Go 编译器"
+
+#: dockerjudge.processor.GCC:3 of
+msgid ""
+"Programming panguage (``C``\\ /\\ ``c``, ``C++``\\ /\\ ``cpp`` or "
+"``Go``\\ /\\ ``go``), `C++` by default"
+msgstr ""
+"编程语言（``C``\\ /\\ ``c``、``C++``\\ /\\ ``cpp`` 或 ``Go``\\ /\\ ``go``），默认为 "
+"`C++`"
+
+#: dockerjudge.processor.GCC:7 of
+msgid "Tag name of Docker image |gcc|_"
+msgstr "Docker 镜像 |gcc|_ 的标签名"
+
+#: dockerjudge.processor.GCC.Language:1 of
+msgid "Programming language, `C` (``c``), `C++` (``cpp``) or `Go` (``go``)"
+msgstr "编程语言，`C`\\ （``c``）、`C++`\\ （``cpp``）或 `Go`\\ （``go``）"
+
+#: dockerjudge.processor.GCC.Language:3 of
+msgid "``GCC.Language.c``, ``GCC.Language['c']`` or ``GCC.Language('C')``"
+msgstr "``GCC.Language.c``、``GCC.Language['c']`` 或 ``GCC.Language('C')``"
+
+#: dockerjudge.processor.GCC.Language:5 of
+msgid "``GCC.Language.cpp``, ``GCC.Language['cpp']`` or ``GCC.Language('C++')``"
+msgstr "``GCC.Language.cpp``、``GCC.Language['cpp']`` 或 ``GCC.Language('C++')``"
+
+#: dockerjudge.processor.GCC.Language:7 of
+msgid "``GCC.Language.go``, ``GCC.Language['go']`` or ``GCC.Language('Go')``"
+msgstr "``GCC.Language.go``、``GCC.Language['go']`` 或 ``GCC.Language('Go')``"
+
+#: dockerjudge.processor.Go:1 of
+msgid "The Go Programming Language"
+msgstr "Go 编程语言"
+
+#: dockerjudge.processor.Go:3 of
+msgid "Tag name of Docker image |golang|_"
+msgstr "Docker 镜像 |golang|_ 的标签名"
+
+#: dockerjudge.processor.Go:5 of
+msgid ""
+"Filenames of source code and binary file, default: ``{'src': 'main.go', "
+"'bin': None}``"
+msgstr "源代码及二进制文件名，默认：``{'src': 'main.go', 'bin': None}``"
+
+#: dockerjudge.processor.Mono:1 of
+msgid ""
+"**Mono** is a software platform designed to allow developers to easily "
+"create cross platform applications part of the `.NET Foundation`_."
+msgstr ""
+
+#: dockerjudge.processor.Mono:5 of
+msgid ""
+"Sponsored by Microsoft_, Mono is an open source implementation of "
+"Microsoft's .NET Framework based on the ECMA_ standards for `C#`_ and the"
+" `Common Language Runtime`_."
+msgstr ""
+
+#: dockerjudge.processor.Mono:10 of
+msgid ""
+"Programming panguage (``Visual Basic``\\ /\\ ``vb`` or ``C#``\\ /\\ "
+"``csharp``), C# by default"
+msgstr "编程语言（``Visual Basic``\\ /\\ ``vb`` or ``C#``\\ /\\ ``csharp``），默认为 `C#`"
+
+#: dockerjudge.processor.Mono:14 of
+msgid "Tag name of Docker image |mono|_"
+msgstr "Docker 镜像 |mono|_ 的标签名"
+
+#: dockerjudge.processor.Mono.Language:1 of
+msgid "Programming language, `Visual Basic` (``vb``) or `C#` (``csharp``)"
+msgstr "编程语言，`Visual Basic`\\ （``vb``）或 `C#`\\ （``csharp``）"
+
+#: dockerjudge.processor.Mono.Language of
+msgid "Visual Basic"
+msgstr "Visual Basic"
+
+#: dockerjudge.processor.Mono.Language:3 of
+msgid ""
+"``GCC.Language.vb``, ``GCC.Language['vb']`` or ``GCC.Language('Visual "
+"Basic')``"
+msgstr ""
+"``GCC.Language.vb``、``GCC.Language['vb']`` 或 ``GCC.Language('Visual "
+"Basic')``"
+
+#: dockerjudge.processor.Mono.Language of
+msgid "C#"
+msgstr "C#"
+
+#: dockerjudge.processor.Mono.Language:5 of
+msgid ""
+"``GCC.Language.csharp``, ``GCC.Language['csharp']`` or "
+"``GCC.Language('C#')``"
+msgstr ""
+"``GCC.Language.csharp``、``GCC.Language['csharp']`` 或 "
+"``GCC.Language('C#')``"
+
+#: dockerjudge.processor.Node:1 of
+msgid "Node.js®"
+msgstr "Node.js®"
+
+#: dockerjudge.processor.OpenJDK:1 of
+msgid "Open Java Development Kit"
+msgstr "开放 Java 开发包"
+
+#: dockerjudge.processor.Python:1 of
+msgid "CPython"
+msgstr "CPython"
+
+#~ msgid "|clangbuiltlinux/ubuntu|_"
+#~ msgstr "|clangbuiltlinux/ubuntu|_"
+
+#~ msgid "Tag name of Docker image |clangbuiltlinux/ubuntu|_"
+#~ msgstr "Docker 镜像 |clangbuiltlinux/ubuntu|_ 的标签名"
+

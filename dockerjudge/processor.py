@@ -1,4 +1,63 @@
-'Processors'
+"""Processors
+
++--------------------------------------+--------------+-----------------+
+| Processor                            | Language(s)  |Required `Docker |
+|                                      | [*]_         |image <https://  |
+|                                      |              |hub.docker.com>`_|
++======================================+==============+=================+
+| :func:`~dockerjudge.processor.Bash`  | Shell        | |bash|_         |
++--------------------------------------+--------------+-----------------+
+| :func:`~dockerjudge.processor.Clang` | - C (``c``)  | |clang|_        |
+|                                      | - **C++**    |                 |
+|                                      |   (``cpp``)  |                 |
++--------------------------------------+--------------+-----------------+
+| :func:`~dockerjudge.processor.GCC`   | - C          | |gcc|_          |
+|                                      |   (``c``)    |                 |
+|                                      | - **C++**    |                 |
+|                                      |   (``cpp``)  |                 |
+|                                      | - Go         |                 |
+|                                      |   (``go``)   |                 |
++--------------------------------------+--------------+-----------------+
+| :func:`~dockerjudge.processor.Go`    | Go           | |golang|_       |
++--------------------------------------+--------------+-----------------+
+| :func:`~dockerjudge.processor.Mono`  |- Visual Basic| |mono|_         |
+|                                      |  (``vb``)    |                 |
+|                                      |- **C#**      |                 |
+|                                      |  (``csharp``)|                 |
++--------------------------------------+--------------+-----------------+
+| :func:`~dockerjudge.processor.Node`  | Node.js      | |node|_         |
++--------------------------------------+--------------+-----------------+
+|:func:`~dockerjudge.processor.OpenJDK`| Java         | |openjdk|_      |
++--------------------------------------+--------------+-----------------+
+| :func:`~dockerjudge.processor.PHP`   | PHP          | |php|_          |
++--------------------------------------+--------------+-----------------+
+| :func:`~dockerjudge.processor.PyPy`  | Python       | |pypy|_         |
++--------------------------------------+--------------+-----------------+
+| :func:`~dockerjudge.processor.Python`| Python       | |python|_       |
++--------------------------------------+--------------+-----------------+
+| :func:`~dockerjudge.processor.Ruby`  | Ruby         | |ruby|_         |
++--------------------------------------+--------------+-----------------+
+| :func:`~dockerjudge.processor.Swift` | Swift        | |swift|_        |
++--------------------------------------+--------------+-----------------+
+
+.. https://docutils.sourceforge.io/FAQ.html#is-nested-inline-markup-possible
+.. |node| replace:: `node`
+.. _node: https://hub.docker.com/_/node
+.. |openjdk| replace:: `openjdk`
+.. _openjdk: https://hub.docker.com/_/openjdk
+.. |php| replace:: `php`
+.. _php: https://hub.docker.com/_/php
+.. |pypy| replace:: `pypy`
+.. _pypy: https://hub.docker.com/_/pypy
+.. |python| replace:: `python`
+.. _python: https://hub.docker.com/_/python
+.. |ruby| replace:: `ruby`
+.. _ruby: https://hub.docker.com/_/ruby
+.. |swift| replace:: `swift`
+.. _swift: https://hub.docker.com/_/swift
+
+.. [*] Emboldened language by default.
+"""
 # pylint: disable = missing-function-docstring, too-few-public-methods
 
 from enum import Enum
@@ -41,7 +100,14 @@ class _Language(Enum):
 
 
 class Bash(Processor):
-    "Bash is the GNU Project's Bourne Again SHell"
+    """Bash is the GNU Project's Bourne Again SHell
+
+    :param version: Tag name of Docker image |bash|_
+    :type version: `str`, `int` or `float`
+
+    .. |bash| replace:: `bash`
+    .. _bash: https://hub.docker.com/_/bash
+    """
 
     def __init__(self, version=None):
         self.image = self._get_image_with_tag('bash', version)
@@ -51,10 +117,31 @@ class Bash(Processor):
 
 
 class Clang(Processor):
-    'Clang C Language Family Frontend for LLVM'
+    """Clang C Language Family Frontend for LLVM
+
+    :param language: Programming panguage
+        (``C``\\ /\\ `c` or ``C++``\\ /\\ ``cpp``), `C++` by default
+    :type language: :class:`dockerjudge.processor.Clang.Language` or `str`
+    :param version: Tag name of Docker image |clang|_
+    :type version: `str`, `int` or `float`
+    :param filenames: Filenames of source code and binary file,
+        C++ default: ``{'src': 'a.cpp', 'bin': None}``
+    :type filenames: `dict`
+    :param options: Compiler options
+    :type options: `list` or `str`
+
+    .. |clang| replace:: `clangbuiltlinux/ubuntu`
+    .. _clang: https://hub.docker.com/r/clangbuiltlinux/ubuntu
+    """
 
     class Language(_Language):
-        'Programming language, C (c) or C++ (cpp)'
+        """Programming language, `C` (``c``) or `C++` (``cpp``)
+
+        :C: ``Clang.Language.c``,
+            ``Clang.Language['c']`` or ``Clang.Language('C')``
+        :C++: ``Clang.Language.cpp``,
+            ``Clang.Language['cpp']`` or ``Clang.Language('C++')``
+        """
         c = 'C'
         cpp = 'C++'
 
@@ -82,10 +169,34 @@ class Clang(Processor):
 
 
 class GCC(Processor):
-    'GNU project C, C++ and Go compiler'
+    """GNU project C, C++ and Go compiler
+
+    :param language: Programming panguage
+        (``C``\\ /\\ ``c``, ``C++``\\ /\\ ``cpp`` or ``Go``\\ /\\ ``go``),
+        `C++` by default
+    :type language: :class:`dockerjudge.processor.GCC.Language` or `str`
+    :param version: Tag name of Docker image |gcc|_
+    :type version: `str`, `int` or `float`
+    :param filenames: Filenames of source code and binary file,
+        C++ default: ``{'src': 'a.cpp', 'bin': None}``
+    :type filenames: `dict`
+    :param options: Compiler options
+    :type options: `list` or `str`
+
+    .. |gcc| replace:: `gcc`
+    .. _gcc: https://hub.docker.com/_/gcc
+    """
 
     class Language(_Language):
-        'Programming language, C, C++ or Go'
+        """Programming language, `C` (``c``), `C++` (``cpp``) or `Go` (``go``)
+
+        :C: ``GCC.Language.c``,
+            ``GCC.Language['c']`` or ``GCC.Language('C')``
+        :C++: ``GCC.Language.cpp``,
+            ``GCC.Language['cpp']`` or ``GCC.Language('C++')``
+        :Go: ``GCC.Language.go``,
+            ``GCC.Language['go']`` or ``GCC.Language('Go')``
+        """
         c = 'C'
         cpp = 'C++'
         go = 'Go'
@@ -115,7 +226,17 @@ class GCC(Processor):
 
 
 class Go(Processor):
-    'The Go Programming Language'
+    """The Go Programming Language
+
+    :param version: Tag name of Docker image |golang|_
+    :type version: `str`, `int` or `float`
+    :param filenames: Filenames of source code and binary file,
+        default: ``{'src': 'main.go', 'bin': None}``
+    :type filenames: `dict`
+
+    .. |golang| replace:: `golang`
+    .. _golang: https://hub.docker.com/_/golang
+    """
 
     def __init__(self, version=None, filenames=None, options=None):
         fns = filenames or {}
@@ -132,10 +253,40 @@ class Go(Processor):
 
 
 class Mono(Processor):
-    'Mono'
+    """**Mono** is a software platform
+    designed to allow developers to easily create
+    cross platform applications part of the `.NET Foundation`_.
+
+        Sponsored by Microsoft_,
+        Mono is an open source implementation of Microsoft's .NET Framework
+        based on the ECMA_ standards
+        for `C#`_ and the `Common Language Runtime`_.
+
+    :param language: Programming panguage
+        (``Visual Basic``\\ /\\ ``vb`` or ``C#``\\ /\\ ``csharp``),
+        C# by default
+    :type language: :class:`dockerjudge.processor.Mono.Language` or `str`
+    :param version: Tag name of Docker image |mono|_
+    :type version: `str`, `int` or `float`
+
+    .. _.NET Foundation: https://www.dotnetfoundation.org
+    .. _Microsoft: https://www.microsoft.com
+    .. _ECMA: https://www.mono-project.com/docs/about-mono/languages/ecma/
+    .. _C#: https://www.mono-project.com/docs/about-mono/languages/csharp/
+    .. _Common Language Runtime:
+        https://www.mono-project.com/docs/advanced/runtime/
+    .. |mono| replace:: `mono`
+    .. _mono: https://hub.docker.com/_/mono
+    """
 
     class Language(_Language):
-        'Programming language, C# or Visual Basic'
+        """Programming language, `Visual Basic` (``vb``) or `C#` (``csharp``)
+
+        :Visual Basic: ``GCC.Language.vb``,
+            ``GCC.Language['vb']`` or ``GCC.Language('Visual Basic')``
+        :C#: ``GCC.Language.csharp``,
+            ``GCC.Language['csharp']`` or ``GCC.Language('C#')``
+        """
         vb = 'Visual Basic'
         csharp = 'C#'
 

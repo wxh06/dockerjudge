@@ -15,7 +15,40 @@ __version__ = '1.2.3'
 
 def judge(processor, source, tests, config=None,
           client=docker.from_env()):
-    'Main function'
+    """Main function
+
+    :param processor: Programming language processor
+    :type processor: dockerjudge.processor.Processor
+    :param source: Source code
+    :type source: str
+    :param tests: Test cases
+    :type tests: list
+    :param config: Configuration
+
+        +------------------------------+-----------------+---------+----------+
+        | Key                          | Description     | Default |Value type|
+        +================+=============+=================+=========+==========+
+        | ``callback``   | ``compile`` | Compilation     | None    |`function`|
+        |                |             | callback        |         |          |
+        |                +-------------+-----------------+         |          |
+        |                | ``judge``   | Callback after  |         |          |
+        |                |             | judging         |         |          |
+        +----------------+-------------+-----------------+---------+----------+
+        | ``iofilename`` | ``in``      | Input filename  | `stdin` | `str`    |
+        |                +-------------+-----------------+---------+          |
+        |                | ``out``     | Output filename | `stdout`|          |
+        +----------------+-------------+-----------------+---------+----------+
+        | ``limit``      | ``time``    | Time limit      | ``1``   | `int` or |
+        |                |             |                 |         | `float`  |
+        +----------------+-------------+-----------------+---------+----------+
+        | ``network``                  | Network enabled |``False``| `bool`   |
+        +------------------------------+-----------------+---------+----------+
+        | ``threads``                  | Thread limit    | None    | `int`    |
+        +------------------------------+-----------------+---------+----------+
+    :type config: dict
+    :param client: Docker client
+    :type client: docker.client.DockerClient
+    """
     config = config or {}
     container = client.containers.run(
         processor.image, detach=True, tty=True,
