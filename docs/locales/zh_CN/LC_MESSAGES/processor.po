@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dockerjudge \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-10 23:22+0800\n"
+"POT-Creation-Date: 2020-07-11 20:25+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,8 +39,8 @@ msgid "Required `Docker image <https:// hub.docker.com>`_"
 msgstr "必要的 `Docker 镜像 <https://hub.docker.com/>`_"
 
 #: dockerjudge.processor:8 of
-msgid ":func:`~dockerjudge.processor.Bash`"
-msgstr ":func:`~dockerjudge.processor.Bash`"
+msgid ":class:`~dockerjudge.processor.Bash`"
+msgstr ":class:`~dockerjudge.processor.Bash`"
 
 #: dockerjudge.processor:8 of
 msgid "Shell"
@@ -51,8 +51,8 @@ msgid "|bash|_"
 msgstr "|bash|_"
 
 #: dockerjudge.processor:10 of
-msgid ":func:`~dockerjudge.processor.Clang`"
-msgstr ":func:`~dockerjudge.processor.Clang`"
+msgid ":class:`~dockerjudge.processor.Clang`"
+msgstr ":class:`~dockerjudge.processor.Clang`"
 
 #: dockerjudge.processor:10 dockerjudge.processor:14 of
 msgid "C (``c``)"
@@ -63,13 +63,12 @@ msgid "**C++** (``cpp``)"
 msgstr "**C++**\\ （``cpp``）"
 
 #: dockerjudge.processor:10 of
-#, fuzzy
 msgid "|clang|_"
-msgstr "|golang|_"
+msgstr "|clang|_"
 
 #: dockerjudge.processor:14 of
-msgid ":func:`~dockerjudge.processor.GCC`"
-msgstr ":func:`~dockerjudge.processor.GCC`"
+msgid ":class:`~dockerjudge.processor.GCC`"
+msgstr ":class:`~dockerjudge.processor.GCC`"
 
 #: dockerjudge.processor:18 of
 msgid "Go (``go``)"
@@ -80,8 +79,8 @@ msgid "|gcc|_"
 msgstr "|gcc|_"
 
 #: dockerjudge.processor:21 of
-msgid ":func:`~dockerjudge.processor.Go`"
-msgstr ":func:`~dockerjudge.processor.Go`"
+msgid ":class:`~dockerjudge.processor.Go`"
+msgstr ":class:`~dockerjudge.processor.Go`"
 
 #: dockerjudge.processor:21 dockerjudge.processor.GCC.Language of
 msgid "Go"
@@ -92,8 +91,8 @@ msgid "|golang|_"
 msgstr "|golang|_"
 
 #: dockerjudge.processor:23 of
-msgid ":func:`~dockerjudge.processor.Mono`"
-msgstr ":func:`~dockerjudge.processor.Mono`"
+msgid ":class:`~dockerjudge.processor.Mono`"
+msgstr ":class:`~dockerjudge.processor.Mono`"
 
 #: dockerjudge.processor:23 of
 msgid "Visual Basic (``vb``)"
@@ -108,8 +107,8 @@ msgid "|mono|_"
 msgstr "|mono|_"
 
 #: dockerjudge.processor:28 of
-msgid ":func:`~dockerjudge.processor.Node`"
-msgstr ":func:`~dockerjudge.processor.Node`"
+msgid ":class:`~dockerjudge.processor.Node`"
+msgstr ":class:`~dockerjudge.processor.Node`"
 
 #: dockerjudge.processor:28 of
 msgid "Node.js"
@@ -120,8 +119,8 @@ msgid "|node|_"
 msgstr "|node|_"
 
 #: dockerjudge.processor:30 of
-msgid ":func:`~dockerjudge.processor.OpenJDK`"
-msgstr ":func:`~dockerjudge.processor.OpenJDK`"
+msgid ":class:`~dockerjudge.processor.OpenJDK`"
+msgstr ":class:`~dockerjudge.processor.OpenJDK`"
 
 #: dockerjudge.processor:30 of
 msgid "Java"
@@ -132,8 +131,8 @@ msgid "|openjdk|_"
 msgstr "|openjdk|_"
 
 #: dockerjudge.processor:32 of
-msgid ":func:`~dockerjudge.processor.PHP`"
-msgstr ":func:`~dockerjudge.processor.PHP`"
+msgid ":class:`~dockerjudge.processor.PHP`"
+msgstr ":class:`~dockerjudge.processor.PHP`"
 
 #: dockerjudge.processor:32 of
 msgid "PHP"
@@ -144,8 +143,8 @@ msgid "|php|_"
 msgstr "|php|_"
 
 #: dockerjudge.processor:34 of
-msgid ":func:`~dockerjudge.processor.PyPy`"
-msgstr ":func:`~dockerjudge.processor.PyPy`"
+msgid ":class:`~dockerjudge.processor.PyPy`"
+msgstr ":class:`~dockerjudge.processor.PyPy`"
 
 #: dockerjudge.processor:34 dockerjudge.processor:36 of
 msgid "Python"
@@ -156,16 +155,16 @@ msgid "|pypy|_"
 msgstr "|pypy|_"
 
 #: dockerjudge.processor:36 of
-msgid ":func:`~dockerjudge.processor.Python`"
-msgstr ":func:`~dockerjudge.processor.Python`"
+msgid ":class:`~dockerjudge.processor.Python`"
+msgstr ":class:`~dockerjudge.processor.Python`"
 
 #: dockerjudge.processor:36 of
 msgid "|python|_"
 msgstr "|python|_"
 
 #: dockerjudge.processor:38 of
-msgid ":func:`~dockerjudge.processor.Ruby`"
-msgstr ":func:`~dockerjudge.processor.Ruby`"
+msgid ":class:`~dockerjudge.processor.Ruby`"
+msgstr ":class:`~dockerjudge.processor.Ruby`"
 
 #: dockerjudge.processor:38 of
 msgid "Ruby"
@@ -176,8 +175,8 @@ msgid "|ruby|_"
 msgstr "|ruby|_"
 
 #: dockerjudge.processor:40 of
-msgid ":func:`~dockerjudge.processor.Swift`"
-msgstr ":func:`~dockerjudge.processor.Swift`"
+msgid ":class:`~dockerjudge.processor.Swift`"
+msgstr ":class:`~dockerjudge.processor.Swift`"
 
 #: dockerjudge.processor:40 of
 msgid "Swift"
@@ -216,9 +215,8 @@ msgid ""
 msgstr "编程语言（``C``\\ /\\ `c` 或 ``C++``\\ /\\ ``cpp``），默认为 `C++`"
 
 #: dockerjudge.processor.Clang:6 of
-#, fuzzy
 msgid "Tag name of Docker image |clang|_"
-msgstr "Docker 镜像 |golang|_ 的标签名"
+msgstr "Docker 镜像 |clang|_ 的标签名"
 
 #: dockerjudge.processor.Clang:8 dockerjudge.processor.GCC:9 of
 msgid ""
@@ -362,10 +360,4 @@ msgstr "开放 Java 开发包"
 #: dockerjudge.processor.Python:1 of
 msgid "CPython"
 msgstr "CPython"
-
-#~ msgid "|clangbuiltlinux/ubuntu|_"
-#~ msgstr "|clangbuiltlinux/ubuntu|_"
-
-#~ msgid "Tag name of Docker image |clangbuiltlinux/ubuntu|_"
-#~ msgstr "Docker 镜像 |clangbuiltlinux/ubuntu|_ 的标签名"
 

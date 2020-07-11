@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dockerjudge \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-10 22:31+0800\n"
+"POT-Creation-Date: 2020-07-11 20:25+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,11 @@ msgstr ""
 
 #: ../../__init__.rst:2
 msgid ":mod:`dockerjudge` - Main"
-msgstr ""
+msgstr ":mod:`dockerjudge` —— 主要内容"
+
+#: dockerjudge:1 of
+msgid "dockerjudge - A Docker Based Online Judge Engine"
+msgstr "dockerjudge —— 基于 Docker 的在线测评引擎"
 
 #: dockerjudge.judge:1 of
 msgid "Main function"
@@ -73,202 +77,129 @@ msgstr "配置"
 
 #: dockerjudge.judge:12 of
 msgid "Key"
-msgstr ""
+msgstr "键"
 
 #: dockerjudge.judge:12 of
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 #: dockerjudge.judge:12 of
 msgid "Default"
-msgstr ""
+msgstr "默认"
 
 #: dockerjudge.judge:12 of
 msgid "Value type"
-msgstr ""
+msgstr "值的类型"
 
 #: dockerjudge.judge:14 of
 msgid "``callback``"
-msgstr ""
+msgstr "``callback``"
 
 #: dockerjudge.judge:14 of
 msgid "``compile``"
-msgstr ""
+msgstr "``compile``"
 
 #: dockerjudge.judge:14 of
 msgid "Compilation callback"
-msgstr ""
+msgstr "编译回调"
 
 #: dockerjudge.judge:14 dockerjudge.judge:29 of
 msgid "None"
-msgstr ""
+msgstr "无"
 
 #: dockerjudge.judge:14 of
-#, fuzzy
 msgid "`function`"
-msgstr "主函数"
+msgstr "函数"
 
 #: dockerjudge.judge:17 of
 msgid "``judge``"
-msgstr ""
+msgstr "``judge``"
 
 #: dockerjudge.judge:17 of
 msgid "Callback after judging"
-msgstr ""
+msgstr "测评回调"
 
 #: dockerjudge.judge:20 of
 msgid "``iofilename``"
-msgstr ""
+msgstr "``iofilename``"
 
 #: dockerjudge.judge:20 of
 msgid "``in``"
-msgstr ""
+msgstr "``in``"
 
 #: dockerjudge.judge:20 of
 msgid "Input filename"
-msgstr ""
+msgstr "输入文件名"
 
 #: dockerjudge.judge:20 of
 msgid "`stdin`"
-msgstr ""
+msgstr "`stdin`"
 
 #: dockerjudge.judge:20 of
 msgid "`str`"
-msgstr ""
+msgstr "`str`"
 
 #: dockerjudge.judge:22 of
 msgid "``out``"
-msgstr ""
+msgstr "``out``"
 
 #: dockerjudge.judge:22 of
 msgid "Output filename"
-msgstr ""
+msgstr "输出文件名"
 
 #: dockerjudge.judge:22 of
 msgid "`stdout`"
-msgstr ""
+msgstr "`stdout`"
 
 #: dockerjudge.judge:24 of
 msgid "``limit``"
-msgstr ""
+msgstr "``limit``"
 
 #: dockerjudge.judge:24 of
 msgid "``time``"
-msgstr ""
+msgstr "``time``"
 
 #: dockerjudge.judge:24 of
 msgid "Time limit"
-msgstr ""
+msgstr "时间限制"
 
 #: dockerjudge.judge:24 of
 msgid "``1``"
-msgstr ""
+msgstr "``1``"
 
 #: dockerjudge.judge:24 of
 msgid "`int` or `float`"
-msgstr ""
+msgstr "`int` 或 `float`"
 
 #: dockerjudge.judge:27 of
 msgid "``network``"
-msgstr ""
+msgstr "``network``"
 
 #: dockerjudge.judge:27 of
 msgid "Network enabled"
-msgstr ""
+msgstr "启用网络"
 
 #: dockerjudge.judge:27 of
 msgid "``False``"
-msgstr ""
+msgstr "``False``"
 
 #: dockerjudge.judge:27 of
 msgid "`bool`"
-msgstr ""
+msgstr "`bool`"
 
 #: dockerjudge.judge:29 of
 msgid "``threads``"
-msgstr ""
+msgstr "``threads``"
 
 #: dockerjudge.judge:29 of
 msgid "Thread limit"
-msgstr ""
+msgstr "线程限制"
 
 #: dockerjudge.judge:29 of
 msgid "`int`"
-msgstr ""
+msgstr "`int`"
 
 #: dockerjudge.judge:32 of
 msgid "Docker client"
 msgstr "Docker 客户端"
-
-#~ msgid ""
-#~ "Configuration  "
-#~ "+------------------------------+-----------------+---------+----------+"
-#~ " | Key                          | Description"
-#~ "     | Default |Value type| "
-#~ "+================+=============+=================+=========+==========+"
-#~ " | ``callback``   | ``compile`` | "
-#~ "Compilation     | None    |`function`| |"
-#~ "                |             | callback        |"
-#~ "         |          | |                "
-#~ "+-------------+-----------------+         |          | "
-#~ "|                | ``judge``   | Callback "
-#~ "after  |         |          | |"
-#~ "                |             | judging         |"
-#~ "         |          | "
-#~ "+----------------+-------------+-----------------+---------+----------+"
-#~ " | ``iofilename`` | ``in``      | "
-#~ "Input filename  | `stdin` | `str`    "
-#~ "| |                "
-#~ "+-------------+-----------------+---------+          | |"
-#~ "                | ``out``     | Output "
-#~ "filename | `stdout`|          | "
-#~ "+----------------+-------------+-----------------+---------+----------+"
-#~ " | ``limit``      | ``time``    | "
-#~ "Time limit      | ``1``   | `int` "
-#~ "or | |                |             |"
-#~ "                 |         | `float`  | "
-#~ "+----------------+-------------+-----------------+---------+----------+"
-#~ " | ``network``                  | Network "
-#~ "enabled |``False``| `bool`   | "
-#~ "+------------------------------+-----------------+---------+----------+"
-#~ " | ``threads``                  | Thread "
-#~ "limit    | None    | `int`    | "
-#~ "+------------------------------+-----------------+---------+----------+"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Configuration  "
-#~ "+------------------------------+-----------------+-----------+------------+"
-#~ " | Key                          | Description"
-#~ "     | Default   | Value type | "
-#~ "+================+=============+=================+===========+============+"
-#~ " | ``callback``   | ``compile`` | "
-#~ "Compilation     | None      | `function` "
-#~ "| |                |             | callback"
-#~ "        |           |            | |"
-#~ "                +-------------+-----------------+           |"
-#~ "            | |                | ``judge``   "
-#~ "| Callback after  |           |            "
-#~ "| |                |             | judging"
-#~ "         |           |            | "
-#~ "+----------------+-------------+-----------------+-----------+------------+"
-#~ " | ``iofilename`` | ``in``      | "
-#~ "Input filename  | `stdin`   | `str`"
-#~ "      | |                "
-#~ "+-------------+-----------------+-----------+            | "
-#~ "|                | ``out``     | Output "
-#~ "filename | `stdout`  |            | "
-#~ "+----------------+-------------+-----------------+-----------+------------+"
-#~ " | ``limit``      | ``time``    | "
-#~ "Time limit      | ``1``     | `int` "
-#~ "or   | |                |             |"
-#~ "                 |           | `float`    | "
-#~ "+----------------+-------------+-----------------+-----------+------------+"
-#~ " | ``network``                  | Network "
-#~ "enabled | ``False`` | `bool`     | "
-#~ "+------------------------------+-----------------+-----------+------------+"
-#~ " | ``threads``                  | Thread "
-#~ "limit    | None      | `int`      | "
-#~ "+------------------------------+-----------------+-----------+------------+"
-#~ msgstr ""
 
