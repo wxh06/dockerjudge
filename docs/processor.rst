@@ -3,18 +3,18 @@
 
 .. automodule:: dockerjudge.processor
 
-.. autofunction:: dockerjudge.processor.Bash
-.. autofunction:: dockerjudge.processor.Clang
-.. autofunction:: dockerjudge.processor.Clang.Language
-.. autofunction:: dockerjudge.processor.GCC
-.. autofunction:: dockerjudge.processor.GCC.Language
-.. autofunction:: dockerjudge.processor.Go
-.. autofunction:: dockerjudge.processor.Mono
-.. autofunction:: dockerjudge.processor.Mono.Language
-.. autofunction:: dockerjudge.processor.Node
-.. autofunction:: dockerjudge.processor.OpenJDK
-.. autofunction:: dockerjudge.processor.PHP
-.. autofunction:: dockerjudge.processor.PyPy
-.. autofunction:: dockerjudge.processor.Python
-.. autofunction:: dockerjudge.processor.Ruby
-.. autofunction:: dockerjudge.processor.Swift
+.. autoclass:: dockerjudge.processor.Bash
+.. autoclass:: dockerjudge.processor.Clang
+.. autoclass:: dockerjudge.processor.Clang.Language
+.. autoclass:: dockerjudge.processor.GCC
+.. autoclass:: dockerjudge.processor.GCC.Language
+.. autoclass:: dockerjudge.processor.Go
+.. autoclass:: dockerjudge.processor.Mono
+.. autoclass:: dockerjudge.processor.Mono.Language
+.. autoclass:: dockerjudge.processor.Node
+.. autoclass:: dockerjudge.processor.OpenJDK
+.. autoclass:: dockerjudge.processor.PHP
+.. autoclass:: dockerjudge.processor.PyPy
+.. autoclass:: dockerjudge.processor.Python
+.. autoclass:: dockerjudge.processor.Ruby
+.. autoclass:: dockerjudge.processor.Swift
