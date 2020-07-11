@@ -1,0 +1,96 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, 汪心禾
+# This file is distributed under the same license as the dockerjudge
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: dockerjudge \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-12 00:20+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../status.rst:2
+msgid ":mod:`dockerjudge.status` - Statuses"
+msgstr ":mod:`dockerjudge.status` —— 状态"
+
+#: dockerjudge.status:1 of
+msgid "The collection of judge statuses"
+msgstr "测评状态的收集"
+
+#: dockerjudge.status.Status:1 of
+msgid "Enumeration of judge statuses"
+msgstr "测评状态的枚举"
+
+#: dockerjudge.status.Status:4 of
+msgid "Name"
+msgstr "名"
+
+#: dockerjudge.status.Status:4 of
+msgid "Value"
+msgstr "值"
+
+#: dockerjudge.status.Status:6 of
+msgid "``AC``"
+msgstr "``AC``"
+
+#: dockerjudge.status.Status:6 of
+msgid "`Accepted`"
+msgstr "`Accepted`\\ （通过）"
+
+#: dockerjudge.status.Status:7 of
+msgid "``WA``"
+msgstr "``WA``"
+
+#: dockerjudge.status.Status:7 of
+msgid "`Wrong Answer`"
+msgstr "`Wrong Answer`\\ （答案错误）"
+
+#: dockerjudge.status.Status:8 of
+msgid "``ONF``"
+msgstr "``ONF``"
+
+#: dockerjudge.status.Status:8 of
+msgid "`Output Not Found`"
+msgstr "`Output Not Found`\\ （未找到输出）"
+
+#: dockerjudge.status.Status:9 of
+msgid "``RE``"
+msgstr "``RE``"
+
+#: dockerjudge.status.Status:9 of
+msgid "`Runtime Error`"
+msgstr "`Runtime Error`\\ （运行时错误）"
+
+#: dockerjudge.status.Status:10 of
+msgid "``TLE``"
+msgstr "``TLE``"
+
+#: dockerjudge.status.Status:10 of
+msgid "`Time Limit Exceeded`"
+msgstr "`Time Limit Exceeded`\\ （超出时间限制）"
+
+#: dockerjudge.status.Status:11 of
+msgid "``UE``"
+msgstr "``UE``"
+
+#: dockerjudge.status.Status:11 of
+msgid "`Unknown Error`"
+msgstr "`Unknown Error`\\ （未知错误）"
+
+#: dockerjudge.status.Status:12 of
+msgid "``CE``"
+msgstr "``CE``"
+
+#: dockerjudge.status.Status:12 of
+msgid "`Compilation Error`"
+msgstr "`Compilation Error`\\ （编译错误）"
+

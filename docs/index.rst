@@ -17,6 +17,7 @@ Project links
 
    __init__.rst
    processor.rst
+   status.rst
 
 
 
