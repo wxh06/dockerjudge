@@ -21,7 +21,7 @@
 
 🎌 [🇺🇸 English](README.md) | **🇨🇳 大陆简体**
 
-**基于 [Docker](https://www.docker.com/) 的在线测评引擎**，支持 10+ 个编程语言处理程序：
+**基于 LXC 的在线测评引擎**，支持 [10+ 个编程语言处理程序](#支持的处理程序)：
 - [Shell](https://zh.wikipedia.org/zh-cn/Unix_shell)
   - [Bash (**B**ourne-**A**gain **sh**ell)](https://zh.wikipedia.org/zh-cn/Bash)
 - [C](https://zh.wikipedia.org/zh-cn/C语言)/[C++](https://zh.wikipedia.org/zh-cn/C%2B%2B)
@@ -47,24 +47,54 @@
   - [`swiftc`](https://swift.org/swift-compiler/)
 
 
+## 支持的处理程序
+处理程序 | 语言\* | 必要的 [Docker 镜像](https://hub.docker.com/)
+-------- | ------ | ---------------------------------------------
+`Bash` | Shell | [`bash`](https://hub.docker.com/_/bash)
+`Clang` | <ul><li>C (`c`)</li><li>**C++ (`cpp`)**</li></ul> | [`clangbuiltlinux/ubuntu`](https://hub.docker.com/r/clangbuiltlinux/ubuntu)
+`GCC` | <ul><li>C (`c`)</li><li>**C++ (`cpp`)**</li><li>Go (`go`)</li></ul> | [`gcc`](https://hub.docker.com/_/gcc)
+`Go` | Go | [`golang`](https://hub.docker.com/_/golang)
+`Mono` | <ul><li>Visual Basic (`vb`)</li><li>**C# (`csharp`)**</li></ul> | [`mono`](https://hub.docker.com/_/mono)
+`Node` | Node.js | [`node`](https://hub.docker.com/_/node)
+`OpenJDK` | Java | [`openjdk`](https://hub.docker.com/_/openjdk)
+`PHP` | PHP | [`php`](https://hub.docker.com/_/php)
+`PyPy` | Python | [`pypy`](https://hub.docker.com/_/pypy)
+`Python`| Python | [`python`](https://hub.docker.com/_/python)
+`Ruby` | Ruby | [`ruby`](https://hub.docker.com/_/ruby)
+`Swift` | Swift | [`swift`](https://hub.docker.com/_/swift)
+
+**\*** 应该向多语言处理器提供 `language` 参数，否则将以默认语言（通常是 C++ 或 C#，表格中加粗的）对 `source` 进行测评。
+
+
 ## 安装
-### 从 [Python 包索引 (PyPI)](https://pypi.org/)
+### Docker
+必须安装了 [Docker 引擎](https://www.docker.com/)才能运行 `dockerjudge`。
+
+#### 用简便脚本安装（服务器端）
+```sh
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+更多信息，请参阅 [Install Docker Engine \| Docker Documentation（英文）](https://docs.docker.com/engine/install/)。
+
+### 包
+#### 从 [Python 包索引 (PyPI)](https://pypi.org/)
 [dockerjudge · PyPI](https://pypi.org/project/dockerjudge/)
 - [PyPI](https://pypi.org/simple/dockerjudge/)
 - [阿里巴巴开源镜像站](https://mirrors.aliyun.com/pypi/simple/dockerjudge/)
 - [清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://pypi.tuna.tsinghua.edu.cn/simple/dockerjudge/)
 
-#### 通过 [pip](https://pip.pypa.io/)
+##### 通过 [pip](https://pip.pypa.io/)
 ```sh
 pip install dockerjudge
 ```
 
-#### 通过 [Easy install](https://setuptools.readthedocs.io/en/latest/easy_install.html) (不建议)
+##### 通过 [Easy install](https://setuptools.readthedocs.io/en/latest/easy_install.html) (不建议)
 ```sh
 easy_install dockerjudge
 ```
 
-### 从 [GitHub](https://github.com/)
+#### 从 [GitHub](https://github.com/)
 [wxh06/dockerjudge: A Docker Based Online Judge Engine](https://github.com/wxh06/dockerjudge)
 - HTTPS: `https://github.com/wxh06/dockerjudge.git`
 - SSH: `git@github.com:wxh06/dockerjudge.git`
