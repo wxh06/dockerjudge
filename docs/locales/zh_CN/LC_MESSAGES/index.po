@@ -53,10 +53,3 @@ msgstr ":ref:`modindex`"
 #: ../../index.rst:28
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
-
-#~ msgid "`GitHub Repository`_"
-#~ msgstr ""
-
-#~ msgid "`PyPI 项目 <https://pypi.org/project/dockerjudge/>`_"
-#~ msgstr ""
-
