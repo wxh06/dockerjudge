@@ -6,6 +6,11 @@
 Welcome to dockerjudge's documentation!
 =======================================
 
+Project links
+=============
+- `GitHub Repository <https://github.com/wxh06/dockerjudge>`_
+- `PyPI Project <https://pypi.org/project/dockerjudge/>`_
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

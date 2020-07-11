@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dockerjudge \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 19:16+0800\n"
+"POT-Creation-Date: 2020-07-11 15:07+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: ../../index.rst:9
+#: ../../index.rst:14
 msgid "Contents:"
 msgstr "目录："
 
@@ -26,19 +26,37 @@ msgstr "目录："
 msgid "Welcome to dockerjudge's documentation!"
 msgstr "欢迎来到 dockerjudge 的文档！"
 
-#: ../../index.rst:16
+#: ../../index.rst:10
+msgid "Project links"
+msgstr "项目链接"
+
+#: ../../index.rst:11
+msgid "`GitHub Repository <https://github.com/wxh06/dockerjudge>`_"
+msgstr "`GitHub 仓库 <https://github.com/wxh06/dockerjudge>`_"
+
+#: ../../index.rst:12
+msgid "`PyPI Project <https://pypi.org/project/dockerjudge/>`_"
+msgstr "`PyPI 项目 <https://pypi.org/project/dockerjudge/>`_"
+
+#: ../../index.rst:24
 msgid "Indices and tables"
 msgstr "索引与表格"
 
-#: ../../index.rst:18
+#: ../../index.rst:26
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../index.rst:19
+#: ../../index.rst:27
 msgid ":ref:`modindex`"
 msgstr ":ref:`modindex`"
 
-#: ../../index.rst:20
+#: ../../index.rst:28
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
+
+#~ msgid "`GitHub Repository`_"
+#~ msgstr ""
+
+#~ msgid "`PyPI 项目 <https://pypi.org/project/dockerjudge/>`_"
+#~ msgstr ""
 
