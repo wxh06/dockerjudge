@@ -15,6 +15,7 @@ Project links
    :maxdepth: 2
    :caption: Contents:
 
+   installation.rst
    __init__.rst
    processor.rst
    status.rst

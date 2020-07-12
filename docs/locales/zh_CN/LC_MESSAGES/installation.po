@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, 汪心禾
+# This file is distributed under the same license as the dockerjudge
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: dockerjudge \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-13 00:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: ../../installation.rst:3
+msgid "Installation"
+msgstr "安装"
+
+#: ../../installation.rst:6
+msgid "Docker"
+msgstr "Docker"
+
+#: ../../installation.rst:8
+msgid ""
+"To run :mod:`dockerjudge`, `Docker Engine <https://www.docker.com>`_ is "
+"required."
+msgstr "必须安装 `Docker 引擎 <https://www.docker.com>`_ 才能运行 :mod:`dockerjudge`。"
+
+#: ../../installation.rst:11
+msgid "Install using the convenience script (for servers)"
+msgstr "用简便脚本安装（服务器端）"
+
+#: ../../installation.rst:18
+msgid ""
+"See `Install Docker Engine | Docker Documentation "
+"<https://docs.docker.com/engine/install/>`_ for more information."
+msgstr "更多信息，请参阅 `Install Docker Engine | Docker Documentation（英文） <https://docs.docker.com/engine/install/>`_"
+
+#: ../../installation.rst:21
+msgid "Package :mod:`dockerjudge`"
+msgstr ":mod:`dockerjudge` 包"
+
+#: ../../installation.rst:24
+msgid "From the `Python Package Index (PyPI) <https://pypi.org>`_"
+msgstr "从 `Python 包索引 (PyPI) <https://pypi.org>`_"
+
+#: ../../installation.rst:26
+msgid "`dockerjudge · PyPI <https://pypi.org/project/dockerjudge/>`_"
+msgstr "`dockerjudge · PyPI <https://pypi.org/project/dockerjudge/>`_"
+
+#: ../../installation.rst:28
+msgid "`PyPI <https://pypi.org/simple/dockerjudge/>`_"
+msgstr "`PyPI <https://pypi.org/simple/dockerjudge/>`_"
+
+#: ../../installation.rst:29
+msgid ""
+"`Alibaba Open Source Mirror "
+"<https://mirrors.aliyun.com/pypi/simple/dockerjudge/>`_"
+msgstr "`阿里巴巴开源镜像站 <https://mirrors.aliyun.com/pypi/simple/dockerjudge/>`_"
+
+#: ../../installation.rst:30
+msgid ""
+"`Tsinghua Open Source Mirror "
+"<https://pypi.tuna.tsinghua.edu.cn/simple/dockerjudge/>`_"
+msgstr "`清华大学开源软件镜像站 <https://pypi.tuna.tsinghua.edu.cn/simple/dockerjudge/>`_"
+
+#: ../../installation.rst:33
+msgid "Via `pip <https://pip.pypa.io>`_"
+msgstr "通过 `pip <https://pip.pypa.io>`_"
+
+#: ../../installation.rst:40
+msgid ""
+"Via `Easy install "
+"<https://setuptools.readthedocs.io/en/latest/easy_install.html>`_ "
+"(deprecated)"
+msgstr "通过 `Easy install <https://setuptools.readthedocs.io/en/latest/easy_install.html>`_\\ （反对）"
+
+#: ../../installation.rst:48
+msgid ""
+"From `source <https://github.com/wxh06/dockerjudge>`_ on `GitHub "
+"<https://github.com>`_"
+msgstr "从 `GitHub <https://github.com>`_ 上的\\ `源 <https://github.com/wxh06/dockerjudge>`_"
+
+#: ../../installation.rst:50
+msgid "HTTPS: `https://github.com/wxh06/dockerjudge.git`"
+msgstr "HTTPS: `https://github.com/wxh06/dockerjudge.git`"
+
+#: ../../installation.rst:51
+msgid "SSH: `git@github.com:wxh06/dockerjudge.git`"
+msgstr "SSH: `git@github.com:wxh06/dockerjudge.git`"
+
