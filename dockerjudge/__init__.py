@@ -48,6 +48,16 @@ def judge(processor, source, tests, config=None,
     :type config: dict
     :param client: Docker client
     :type client: docker.client.DockerClient
+
+    :return: Result
+    :rtype: `list`
+
+        === ========== ========================
+        Key Value type Description
+        === ========== ========================
+        `0` `list`     Result of each test case
+        `1` `byte`     Compiler output
+        === ========== ========================
     """
     config = config or {}
     container = client.containers.run(

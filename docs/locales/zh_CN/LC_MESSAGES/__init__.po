@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dockerjudge \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-11 20:25+0800\n"
+"POT-Creation-Date: 2020-07-12 15:03+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,11 +75,11 @@ msgstr ""
 msgid "Configuration"
 msgstr "配置"
 
-#: dockerjudge.judge:12 of
+#: dockerjudge.judge:12 dockerjudge.judge:39 of
 msgid "Key"
 msgstr "键"
 
-#: dockerjudge.judge:12 of
+#: dockerjudge.judge:12 dockerjudge.judge:39 of
 msgid "Description"
 msgstr "描述"
 
@@ -87,7 +87,7 @@ msgstr "描述"
 msgid "Default"
 msgstr "默认"
 
-#: dockerjudge.judge:12 of
+#: dockerjudge.judge:12 dockerjudge.judge:39 of
 msgid "Value type"
 msgstr "值的类型"
 
@@ -202,4 +202,48 @@ msgstr "`int`"
 #: dockerjudge.judge:32 of
 msgid "Docker client"
 msgstr "Docker 客户端"
+
+#: dockerjudge.judge of
+msgid "Returns"
+msgstr ""
+
+#: dockerjudge.judge:35 of
+msgid "Result"
+msgstr "结果"
+
+#: dockerjudge.judge of
+msgid "Return type"
+msgstr ""
+
+#: dockerjudge.judge:36 of
+msgid ""
+"`list`  === ========== ======================== Key Value type "
+"Description === ========== ======================== `0` `list`     Result"
+" of each test case `1` `byte`     Compiler output === ========== "
+"========================"
+msgstr ""
+
+#: dockerjudge.judge:36 dockerjudge.judge:41 of
+msgid "`list`"
+msgstr "`list`"
+
+#: dockerjudge.judge:41 of
+msgid "`0`"
+msgstr "`0`"
+
+#: dockerjudge.judge:41 of
+msgid "Result of each test case"
+msgstr "每个测试点的结果"
+
+#: dockerjudge.judge:42 of
+msgid "`1`"
+msgstr "`1`"
+
+#: dockerjudge.judge:42 of
+msgid "`byte`"
+msgstr "`byte`"
+
+#: dockerjudge.judge:42 of
+msgid "Compiler output"
+msgstr "编译器输出"
 
