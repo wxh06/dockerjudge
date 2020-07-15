@@ -1,0 +1,33 @@
+[main]
+host = https://www.transifex.com
+
+[dockerjudge.docs__build_gettext___init__]
+file_filter = docs/locales/<lang>/LC_MESSAGES/__init__.pot
+source_file = docs/_build/gettext/__init__.pot
+source_lang = en
+type = PO
+
+[dockerjudge.docs__build_gettext_index]
+file_filter = docs/locales/<lang>/LC_MESSAGES/index.pot
+source_file = docs/_build/gettext/index.pot
+source_lang = en
+type = PO
+
+[dockerjudge.docs__build_gettext_status]
+file_filter = docs/locales/<lang>/LC_MESSAGES/status.pot
+source_file = docs/_build/gettext/status.pot
+source_lang = en
+type = PO
+
+[dockerjudge.docs__build_gettext_installation]
+file_filter = docs/locales/<lang>/LC_MESSAGES/installation.pot
+source_file = docs/_build/gettext/installation.pot
+source_lang = en
+type = PO
+
+[dockerjudge.docs__build_gettext_processor]
+file_filter = docs/locales/<lang>/LC_MESSAGES/processor.pot
+source_file = docs/_build/gettext/processor.pot
+source_lang = en
+type = PO
+
