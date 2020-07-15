@@ -12,7 +12,7 @@
 [![Upload Python Package](https://github.com/wxh06/dockerjudge/workflows/Upload%20Python%20Package/badge.svg)](https://github.com/wxh06/dockerjudge/actions?query=workflow%3A%22Upload+Python+Package%22)
 [![Build Status](https://travis-ci.com/wxh06/dockerjudge.svg)](https://travis-ci.com/wxh06/dockerjudge)
 [![CodeCov](https://codecov.io/gh/wxh06/dockerjudge/graph/badge.svg)](https://codecov.io/gh/wxh06/dockerjudge)
-[![文档状态](https://readthedocs.org/projects/dockerjudge-zh-cn/badge/)](https://dockerjudge.readthedocs.io/zh_CN/latest/)
+[![Documentation Status](https://readthedocs.org/projects/dockerjudge/badge/)](https://dockerjudge.readthedocs.io/en/latest/)
 [![Python Version](https://img.shields.io/pypi/pyversions/dockerjudge.svg)](https://www.python.org/downloads/)
 [![GitHub pre-release](https://img.shields.io/github/release-pre/wxh06/dockerjudge.svg)](https://github.com/wxh06/dockerjudge/releases)
 [![PyPI](https://img.shields.io/pypi/v/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#history)
