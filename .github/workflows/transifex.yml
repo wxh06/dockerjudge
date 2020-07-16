@@ -5,24 +5,27 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install sphinx
+          pip install -U setuptools wheel
+          pip install -r requirements.txt
+          pip install sphinx transifex-client
+
       - name: Build docs
         run: make -C docs gettext
 
-  deploy:
-    steps:
-      - name: Install dependencies
-        run: pip install transifex-client
       - name: Push
-        run: tx --token ${{ secrets.TRANSIFEX_TOKEN }} push -s
+        env:
+          TX_TOKEN: ${{ secrets.TX_TOKEN }}
+        run: python -m txclib.cmdline push -s
