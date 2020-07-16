@@ -10,6 +10,7 @@ Project links
 =============
 - `GitHub Repository <https://github.com/wxh06/dockerjudge>`_
 - `PyPI Project <https://pypi.org/project/dockerjudge/>`_
+- `Transifex Translation <https://www.transifex.com/piterator/dockerjudge/>`_
 
 .. toctree::
    :maxdepth: 2
