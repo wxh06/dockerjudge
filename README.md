@@ -10,7 +10,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/dfe666a2140cd3390e56/maintainability)](https://codeclimate.com/github/wxh06/dockerjudge/maintainability)
 [![Python package](https://github.com/wxh06/dockerjudge/workflows/Python%20package/badge.svg)](https://github.com/wxh06/dockerjudge/actions?query=workflow%3A%22Python+package%22)
 [![Upload Python Package](https://github.com/wxh06/dockerjudge/workflows/Upload%20Python%20Package/badge.svg)](https://github.com/wxh06/dockerjudge/actions?query=workflow%3A%22Upload+Python+Package%22)
-[![Azure DevOps tests](https://dev.azure.com/wangxinhe/wangxinhe/_test/analytics?definitionId=1)](https://img.shields.io/azure-devops/tests/wangxinhe/wangxinhe/1)
+[![Azure DevOps tests](https://img.shields.io/azure-devops/tests/wangxinhe/wangxinhe/1)](https://dev.azure.com/wangxinhe/wangxinhe/_test/analytics?definitionId=1)
 [![Build Status](https://travis-ci.com/wxh06/dockerjudge.svg)](https://travis-ci.com/wxh06/dockerjudge)
 [![CodeCov](https://codecov.io/gh/wxh06/dockerjudge/graph/badge.svg)](https://codecov.io/gh/wxh06/dockerjudge)
 [![Documentation Status](https://readthedocs.org/projects/dockerjudge/badge/)](https://dockerjudge.readthedocs.io/en/latest/)
