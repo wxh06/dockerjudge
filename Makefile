@@ -31,7 +31,7 @@ pip:
 
 
 test:
-	python3 -W ignore test_.py
+	python3 -W ignore test_*.py
 
 pytest:
 	pytest --cov=dockerjudge
