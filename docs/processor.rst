@@ -1,5 +1,9 @@
+=========================================
 :mod:`dockerjudge.processor` - Processors
 =========================================
+
+Available built-in processors
+=============================
 
 .. automodule:: dockerjudge.processor
 
@@ -18,3 +22,8 @@
 .. autoclass:: dockerjudge.processor.Python
 .. autoclass:: dockerjudge.processor.Ruby
 .. autoclass:: dockerjudge.processor.Swift
+
+Customize
+=========
+
+.. autoclass:: dockerjudge.processor.Processor

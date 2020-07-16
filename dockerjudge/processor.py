@@ -66,7 +66,22 @@ import shlex
 
 
 class Processor():
-    'Defines the operations of a multi-version programming language processor'
+    """Defines the operations of a multi-version programming language processor
+
+    ================== ========================================
+    Data               Type
+    ================== ========================================
+    ``image``          `str`
+    ``workdir``        :class:`~pathlib.PurePosixPath` or `str`
+    ``source``         `str`
+    ``before_compile`` `str` or `list`
+    ``compile``        `str` or `list`
+    ``after_compile``  `str` or `list`
+    ``before_judge``   `str` or `list`
+    ``judge``          `str`
+    ``after_judge``    `str` or `list`
+    ================== ========================================
+    """
 
     @staticmethod
     def _get_image_with_tag(image, tag):
