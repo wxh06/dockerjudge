@@ -91,7 +91,9 @@ def compile_source_code(container, processor, source, config):
 
     exec_run(container, processor.before_compile, f'{processor.workdir}/0')
     exec_result = container.exec_run(processor.compile,
-                                     workdir=f'{processor.workdir}/0')
+                                     workdir=f'{processor.workdir}/0',
+                                     demux=config['demux'].get('compile',
+                                                               False))
     if 'compile' in config['callback']:
         config['callback']['compile'](exec_result.exit_code,
                                       exec_result.output)
@@ -124,6 +126,7 @@ def judge_test_cases(container, processor, tests, config):
 def run(container, processor, source, tests, config=None):
     'Compile and judge'
     config.setdefault('callback', {})
+    config.setdefault('demux', {})
     exec_result = compile_source_code(container, processor, source, config)
     if exec_result.exit_code:
         return [[(Status.CE, (None, None), .0)] * len(tests),
