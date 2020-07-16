@@ -34,6 +34,11 @@ def judge(processor, source, tests, config=None,
         |                | ``judge``   | Callback after  |         |          |
         |                |             | judging         |         |          |
         +----------------+-------------+-----------------+---------+----------+
+        | ``demux``      | ``compile`` | Return `stdout` |``False``| `bool`   |
+        |                |             | and `stderr` of |         |          |
+        |                |             | compiler        |         |          |
+        |                |             | separately      |         |          |
+        +----------------+-------------+-----------------+---------+----------+
         | ``iofilename`` | ``in``      | Input filename  | `stdin` | `str`    |
         |                +-------------+-----------------+---------+          |
         |                | ``out``     | Output filename | `stdout`|          |
