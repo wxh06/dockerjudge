@@ -48,6 +48,8 @@
 
 
 ## Supported processors
+Read the [docs](https://dockerjudge.readthedocs.io/en/latest/processor.html#module-dockerjudge.processor) for more information.
+
 Processor | Language(s)\* | Required [Docker image](https://hub.docker.com/)
 --------- | ------------- | ------------------------------------------------
 `Bash` | Shell | [`bash`](https://hub.docker.com/_/bash)
@@ -67,6 +69,8 @@ Processor | Language(s)\* | Required [Docker image](https://hub.docker.com/)
 
 
 ## Installation
+Read the [docs](https://dockerjudge.readthedocs.io/en/latest/installation.html) for more information.
+
 ### Docker
 To run `dockerjudge`, [Docker Engine](https://www.docker.com/) is required.
 
@@ -108,6 +112,8 @@ sudo make install  # python3 setup.py install
 
 
 ## Usage
+Read the [docs](https://dockerjudge.readthedocs.io/en/latest/__init__.html) for more information.
+
 ```python
 >>> from dockerjudge import judge
 >>> from dockerjudge.processor import GCC, Clang, Bash, Python, Node, OpenJDK, PHP, Ruby, Mono, Swift

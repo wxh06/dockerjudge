@@ -48,6 +48,8 @@
 
 
 ## 支持的处理程序
+阅读[文档](https://dockerjudge.readthedocs.io/zh_CN/latest/processor.html#module-dockerjudge.processor)以获取更多信息。
+
 处理程序 | 语言\* | 必要的 [Docker 镜像](https://hub.docker.com/)
 -------- | ------ | ---------------------------------------------
 `Bash` | Shell | [`bash`](https://hub.docker.com/_/bash)
@@ -67,6 +69,8 @@
 
 
 ## 安装
+阅读[文档](https://dockerjudge.readthedocs.io/zh_CN/latest/installation.html)以获取更多信息。
+
 ### Docker
 必须安装了 [Docker 引擎](https://www.docker.com/)才能运行 `dockerjudge`。
 
@@ -108,6 +112,8 @@ sudo make install  # python3 setup.py install
 
 
 ## 用法示例
+阅读[文档](https://dockerjudge.readthedocs.io/zh_CN/latest/__init__.html)以获取更多信息。
+
 ```python
 >>> from dockerjudge import judge
 >>> from dockerjudge.processor import GCC, Clang, Bash, Python, Node, OpenJDK, PHP, Ruby, Mono, Swift
