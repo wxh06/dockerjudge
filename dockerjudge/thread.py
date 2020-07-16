@@ -8,7 +8,7 @@ from .status import Status
 class Thread(threading.Thread):
     'Subclass of threading.Thread with return value and callback'
 
-    def __init__(self, callback, *args, **kwargs):
+    def __init__(self, *args, callback=None, **kwargs):
         self.return_value = (Status.UE, .0)
         self._callback = callback
         super().__init__(*args, **kwargs)
