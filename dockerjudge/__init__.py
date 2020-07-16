@@ -66,13 +66,13 @@ def judge(processor, source, tests, config=None,
 
         Tese case
 
-        === ================================== =====================
-        Key Value type                         Description
-        === ================================== =====================
-        `0` :class:`dockerjudge.status.Status` Status code
-        `1` `tuple`                            `stdout` and `stderr`
-        `2` `float`                            Time used
-        === ================================== =====================
+        === =================================== =====================
+        Key Value type                          Description
+        === =================================== =====================
+        `0` :class:`~dockerjudge.status.Status` Status code
+        `1` `tuple`                             `stdout` and `stderr`
+        `2` `float`                             Time used
+        === =================================== =====================
     """
     config = config or {}
     container = client.containers.run(
