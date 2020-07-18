@@ -19,7 +19,7 @@ def judge(processor, source, tests, config=None,
     """Main function
 
     :param processor: Programming language processor
-    :type processor: :class:`dockerjudge.processor.Processor` or `str`
+    :type processor: :class:`dockerjudge.processor.Processor`, `list` or `tuple`
     :param source: Source code
     :type source: str
     :param tests: Test cases
@@ -77,9 +77,12 @@ def judge(processor, source, tests, config=None,
     """
     config = config or {}
     try:
-        processor = getattr(_processor, processor)
+        processor = getattr(_processor, processor[0])(**processor[1])
     except TypeError:
-        pass
+        try:
+            processor = getattr(_processor, processor[0])(*processor[1])
+        except TypeError:
+            pass
     container = client.containers.run(
         processor.image, detach=True, tty=True,
         network_disabled=not config.get('network')

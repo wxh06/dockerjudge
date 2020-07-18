@@ -284,6 +284,22 @@ class TestPython(unittest.TestCase):
         self.assertFalse(result[0][1][1][0])
         self.assertFalse(result[0][1][1][1])
 
+    def test_processor_tuple(self):
+        result = judge(
+            ('Python', ('3',)),
+            b"print('Hello, world!')",
+            [(b'', b'Hello, world!')]
+        )
+        self.assertEqual(result[0][0][0], Status.AC)
+
+    def test_processor_dict(self):
+        result = judge(
+            ('Python', {'version': '3'}),
+            b"print('Hello, world!')",
+            [(b'', b'Hello, world!')]
+        )
+        self.assertEqual(result[0][0][0], Status.AC)
+
     def test_pypy(self):
         result = judge(
             PyPy(2),
