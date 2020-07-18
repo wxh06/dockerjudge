@@ -6,6 +6,7 @@ from pathlib import PurePosixPath
 import docker
 
 from .dockerpy import exec_run, put_bin
+from . import processor as _processor
 from .status import Status
 from . import test_case
 from .thread import Thread
@@ -18,7 +19,7 @@ def judge(processor, source, tests, config=None,
     """Main function
 
     :param processor: Programming language processor
-    :type processor: dockerjudge.processor.Processor
+    :type processor: :class:`dockerjudge.processor.Processor` or `str`
     :param source: Source code
     :type source: str
     :param tests: Test cases
@@ -75,6 +76,10 @@ def judge(processor, source, tests, config=None,
         === =================================== =====================
     """
     config = config or {}
+    try:
+        processor = getattr(_processor, processor)
+    except TypeError:
+        pass
     container = client.containers.run(
         processor.image, detach=True, tty=True,
         network_disabled=not config.get('network')
