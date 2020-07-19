@@ -19,7 +19,8 @@ def judge(processor, source, tests, config=None,
     """Main function
 
     :param processor: Programming language processor
-    :type processor: :class:`dockerjudge.processor.Processor`, `list` or `tuple`
+    :type processor:
+        :class:`dockerjudge.processor.Processor`, `list` or `tuple`
     :param source: Source code
     :type source: str
     :param tests: Test cases
