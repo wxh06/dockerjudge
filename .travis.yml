@@ -16,7 +16,7 @@ before_install:
   - pip install -U setuptools wheel
 install:
   - make pip
-  - pip install -U flake8 pylint pytest-cov codecov
+  - pip install -U tox flake8 pylint pytest-cov codecov
   - make docker-pull
 script:
   - make lint
