@@ -22,7 +22,7 @@ cache:
     - venv/
 
 before_script:
-  - apk add py3-pip
+  - apk add make py3-pip
   - python3 -V  # Print out python version for debugging
   - python3 -m venv venv
   - source venv/bin/activate
