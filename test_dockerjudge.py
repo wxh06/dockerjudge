@@ -104,7 +104,7 @@ class TestDockerJudge(unittest.TestCase):
         self.assertEqual(result[0][0][0], Status.TLE)
         self.assertEqual(result[0][1][0], Status.RE)
         self.assertAlmostEqual(result[0][0][2], .8, 0)
-        self.assertAlmostEqual(result[0][1][2], .0, 0)
+        self.assertLess(result[0][1][2], .8, 0)
         self.assertFalse(result[1])
 
     def test_iofile(self):
