@@ -1,7 +1,10 @@
 # This file is a template, and might need editing before it works on your project.
 # Official language image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/python/tags/
-image: python:latest
+image: docker:latest
+
+services:
+  - docker:dind
 
 # Change pip's cache directory to be inside the project directory since we can
 # only cache local items.
@@ -19,6 +22,7 @@ cache:
     - venv/
 
 before_script:
+  - apk add py3-pip
   - python -V  # Print out python version for debugging
   - pip install virtualenv
   - virtualenv venv
