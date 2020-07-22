@@ -23,23 +23,23 @@ cache:
 
 before_script:
   - apk add py3-pip
-  - python -V  # Print out python version for debugging
-  - pip install virtualenv
+  - python3 -V  # Print out python version for debugging
+  - pip3 install virtualenv
   - virtualenv venv
   - source venv/bin/activate
 
 test:
   script:
     - make docker-pull
-    - python setup.py test
-    - pip install tox flake8  # you can also use tox
+    - python3 setup.py test
+    - pip3 install tox flake8  # you can also use tox
     - tox -e py36,flake8
 
 run:
   script:
-    - python setup.py bdist_wheel
+    - python3 setup.py bdist_wheel
     # an alternative approach is to install and run:
-    - pip install dist/*
+    - pip3 install dist/*
     # run the command here
   artifacts:
     paths:
@@ -47,7 +47,7 @@ run:
 
 pages:
   script:
-    - pip install sphinx sphinx-rtd-theme
+    - pip3 install sphinx sphinx-rtd-theme
     - cd docs ; make html
     - mv _build/html/ ../public/
   artifacts:
