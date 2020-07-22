@@ -24,7 +24,8 @@ cache:
 before_script:
   - apk add make py3-pip
   - python3 -V  # Print out python version for debugging
-  - python3 -m venv venv
+  - pip install --ignore-installed virtualenv
+  - virtualenv venv
   - source venv/bin/activate
   - pip install -U pip setuptools wheel
 
