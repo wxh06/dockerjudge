@@ -45,7 +45,7 @@ docker-pull:
 lint: flake8 pylint
 
 flake8:
-	flake8 dockerjudge test_*.py
+	tox -e flake8
 
 pylint:
-	pylint dockerjudge test_*.py
+	tox -e pylint
