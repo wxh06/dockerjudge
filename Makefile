@@ -30,6 +30,10 @@ pip:
 	python3 -m pip install -Ur requirements.txt
 
 
+tox:
+	tox
+
+
 test:
 	python3 -W ignore test_*.py
 
@@ -45,7 +49,7 @@ docker-pull:
 lint: flake8 pylint
 
 flake8:
-	tox -e flake8
+	flake8 dockerjudge test_*.py
 
 pylint:
-	tox -e pylint
+	pylint dockerjudge test_*.py

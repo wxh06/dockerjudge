@@ -19,7 +19,7 @@ install:
   - pip install -U tox flake8 pylint pytest-cov codecov
   - make docker-pull
 script:
-  - make lint
+  - make tox
   - make pytest
 after_script:
   - codecov
