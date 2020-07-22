@@ -25,13 +25,14 @@ before_script:
   - apk add make py3-pip
   - python3 -V  # Print out python version for debugging
   - python3 -m venv venv
+  - pip install -U pip setuptools wheel
   - source venv/bin/activate
 
 test:
   script:
     - make docker-pull
     - python setup.py test
-    - pip install tox flake8  # you can also use tox
+    - pip install -U tox flake8  # you can also use tox
     - tox -e py36,flake8
 
 run:
@@ -46,7 +47,7 @@ run:
 
 pages:
   script:
-    - pip install sphinx sphinx-rtd-theme
+    - pip install -U sphinx sphinx-rtd-theme
     - cd docs ; make html
     - mv _build/html/ ../public/
   artifacts:
