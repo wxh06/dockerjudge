@@ -33,6 +33,9 @@ pip:
 tox:
 	tox
 
+tox-lint:
+	tox -e py3,flake8,pylint
+
 
 test:
 	python3 -W ignore test_*.py

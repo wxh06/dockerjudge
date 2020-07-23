@@ -33,6 +33,7 @@ test:
   script:
     - make docker-pull
     - pip install -U tox flake8 pylint pytest-cov  # you can also use tox
+    - make tox-lint
     - make pytest
 
 run:
