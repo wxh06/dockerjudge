@@ -22,6 +22,6 @@ script:
   - make flake8
   - make pylint
   - make pytest
-  - make tox
+  - make tox-lint
 after_script:
   - codecov
