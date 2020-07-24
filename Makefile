@@ -31,10 +31,10 @@ pip:
 
 
 tox:
-	tox
+	tox -p all
 
 tox-lint:
-	tox -e py3,flake8,pylint
+	tox -e py3,flake8,pylint -p all
 
 
 test:
