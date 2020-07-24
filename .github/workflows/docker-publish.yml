@@ -15,7 +15,7 @@ on:
 
 env:
   # TODO: Change variable to your image's name.
-  IMAGE_NAME: image
+  IMAGE_NAME: dockerjudge
 
 jobs:
   # Run tests.
@@ -28,6 +28,7 @@ jobs:
 
       - name: Run tests
         run: |
+          if [ -f Makefile ]; then make docker-pull; fi
           if [ -f docker-compose.test.yml ]; then
             docker-compose --file docker-compose.test.yml build
             docker-compose --file docker-compose.test.yml run sut
