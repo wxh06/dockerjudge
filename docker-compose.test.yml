@@ -1,3 +1,5 @@
 sut:
   build: .
-  command: dockerd && make test
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  command: make test
