@@ -9,6 +9,7 @@ Welcome to dockerjudge's documentation!
 Project links
 =============
 - `GitHub Repository <https://github.com/wxh06/dockerjudge>`_
+- `GitLab Repository <https://gitlab.com/wangxinhe/dockerjudge>`_
 - `PyPI Project <https://pypi.org/project/dockerjudge/>`_
 - `Transifex Translation <https://www.transifex.com/piterator/dockerjudge/>`_
 
