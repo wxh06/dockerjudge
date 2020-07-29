@@ -20,6 +20,7 @@
 [![PyPI](https://img.shields.io/pypi/v/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#history)
 [![Wheel](https://img.shields.io/pypi/wheel/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#files)
 [![License](https://img.shields.io/github/license/wxh06/dockerjudge.svg)](LICENSE)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwxh06%2Fdockerjudge.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fwxh06%2Fdockerjudge?ref=badge_shield)
 
 🎌 **🇺🇸 English** | [🇨🇳 大陆简体](README.zh_Hans_CN.md)
 
@@ -419,3 +420,6 @@ Read the [docs](https://dockerjudge.readthedocs.io/en/latest/__init__.html) for 
 ## [License](LICENSE)
 Licensed under [the **Apache License, Version 2.0**](https://www.apache.org/licenses/LICENSE-2.0)
 <a href="https://www.apache.org/foundation/press/kit/#wide"><img src="https://www.apache.org/foundation/press/kit/asf_logo_wide.svg" alt="Wide Apache Software Foundation Logo with Feather.svg" height="32" align="right"></a>
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwxh06%2Fdockerjudge.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fwxh06%2Fdockerjudge?ref=badge_large)
