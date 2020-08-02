@@ -24,6 +24,10 @@ Badges
 | Code Climate    | .. image:: https://api.codeclimate.com/v1/badges/dfe666a2140cd3390e56/maintainability                 |
 |                 |    :alt: Maintainability                                                                              |
 |                 |    :target: https://codeclimate.com/github/wxh06/dockerjudge/maintainability                          |
+|                 +-------------------------------------------------------------------------------------------------------+
+|                 | .. image:: https://api.codeclimate.com/v1/badges/dfe666a2140cd3390e56/test_coverage                   |
+|                 |    :alt: Test Coverage                                                                                |
+|                 |    :target: https://codeclimate.com/github/wxh06/dockerjudge/test_coverage                            |
 +-----------------+-------------------------------------------------------------------------------------------------------+
 | FOSSA           | .. image:: https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwxh06%2Fdockerjudge.svg?type=shield  |
 |                 |    :alt: FOSSA Status                                                                                 |
