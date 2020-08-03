@@ -23,7 +23,7 @@ def _get_io_file_path(ioro, processor, i, config):
     'Get the absolute path of input or output file'
     return PurePosixPath(
         f"{processor.workdir}/{i}/{config['iofilename'][ioro]}"
-        if ioro in config.get('iofilename', {})
+        if config['iofilename'].get(ioro)
         else f'{processor.workdir}/{i}.{ioro}'
     )
 
@@ -38,7 +38,7 @@ def judge(container, processor, i, ioput, config):
             + ' sh -c ' + shlex.quote(processor.judge)
             + ' > ' + f'{processor.workdir}/{i}.out'
             + (' < ' + f'{processor.workdir}/{i}.in'
-               if 'in' not in config.get('iofilename', {}) else '')
+               if not config['iofilename'].get('in') else '')
         ),
         workdir=f'{processor.workdir}/{i}', demux=True
     )

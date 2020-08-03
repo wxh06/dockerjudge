@@ -11,7 +11,7 @@ from .status import Status
 from . import test_case
 from .thread import Thread
 
-__version__ = '1.2.4'
+__version__ = '1.2.5'
 
 
 def judge(processor, source, tests, config=None,
@@ -141,6 +141,7 @@ def run(container, processor, source, tests, config=None):
     'Compile and judge'
     config.setdefault('callback', {})
     config.setdefault('demux', {})
+    config.setdefault('iofilename', {})
     exec_result = compile_source_code(container, processor, source, config)
     if exec_result.exit_code:
         return [[(Status.CE, (None, None), .0)] * len(tests),
