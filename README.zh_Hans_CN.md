@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD013 MD033 -->
 <p align="center">
   <a href="https://github.com/piterator-org">
     <img src="https://static.piterator.com/piterator/logo.svg" alt="Piterator" width="20%">
@@ -7,6 +8,7 @@
 </p>
 
 # dockerjudge
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/dfe666a2140cd3390e56/maintainability)](https://codeclimate.com/github/wxh06/dockerjudge/maintainability)
 [![Python 包](https://github.com/wxh06/dockerjudge/workflows/Python%20package/badge.svg)](https://github.com/wxh06/dockerjudge/actions?query=workflow%3A%22Python+package%22)
 [![上传 Python 包](https://github.com/wxh06/dockerjudge/workflows/Upload%20Python%20Package/badge.svg)](https://github.com/wxh06/dockerjudge/actions?query=workflow%3A%22Upload+Python+Package%22)
@@ -26,6 +28,7 @@
 🎌 [🇺🇸 English](README.md) | **🇨🇳 大陆简体**
 
 **基于 LXC 的在线测评引擎**，支持 [10+ 个编程语言处理程序](#支持的处理程序)：
+
 - [Shell](https://zh.wikipedia.org/zh-cn/Unix_shell)
   - [Bash (**B**ourne-**A**gain **sh**ell)](https://zh.wikipedia.org/zh-cn/Bash)
 - [C](https://zh.wikipedia.org/zh-cn/C语言)/[C++](https://zh.wikipedia.org/zh-cn/C%2B%2B)
@@ -50,8 +53,8 @@
 - [Swift](https://swift.org/)
   - [`swiftc`](https://swift.org/swift-compiler/)
 
-
 ## 支持的处理程序
+
 阅读[文档](https://dockerjudge.readthedocs.io/zh_CN/latest/processor.html#module-dockerjudge.processor)以获取更多信息。
 
 处理程序 | 语言\* | 必要的 [Docker 镜像](https://hub.docker.com/)
@@ -71,41 +74,52 @@
 
 **\*** 应该向多语言处理器提供 `language` 参数，否则将以默认语言（通常是 C++ 或 C#，表格中加粗的）对 `source` 进行测评。
 
-
 ## 安装
+
 阅读[文档](https://dockerjudge.readthedocs.io/zh_CN/latest/installation.html)以获取更多信息。
 
 ### Docker
+
 必须安装了 [Docker 引擎](https://www.docker.com/)才能运行 `dockerjudge`。
 
 #### 用简便脚本安装（服务器端）
+
 ```sh
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
+
 更多信息，请参阅 [Install Docker Engine \| Docker Documentation（英文）](https://docs.docker.com/engine/install/)。
 
 ### 包
+
 #### 从 [Python 包索引 (PyPI)](https://pypi.org/)
+
 [dockerjudge · PyPI](https://pypi.org/project/dockerjudge/)
+
 - [PyPI](https://pypi.org/simple/dockerjudge/)
 - [阿里巴巴开源镜像站](https://mirrors.aliyun.com/pypi/simple/dockerjudge/)
 - [清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://pypi.tuna.tsinghua.edu.cn/simple/dockerjudge/)
 
 ##### 通过 [pip](https://pip.pypa.io/)
+
 ```sh
 pip install dockerjudge
 ```
 
 ##### 通过 [Easy install](https://setuptools.readthedocs.io/en/latest/easy_install.html) (不建议)
+
 ```sh
 easy_install dockerjudge
 ```
 
 #### 从 [GitHub](https://github.com/)
+
 [wxh06/dockerjudge: A Docker Based Online Judge Engine](https://github.com/wxh06/dockerjudge)
+
 - HTTPS: `https://github.com/wxh06/dockerjudge.git`
 - SSH: `git@github.com:wxh06/dockerjudge.git`
+
 ```sh
 git clone https://github.com/wxh06/dockerjudge.git
 cd dockerjudge
@@ -114,8 +128,8 @@ make pip && make  # python3 -m pip install -Ur requirements.txt && python3 setup
 sudo make install  # python3 setup.py install
 ```
 
-
 ## 用法示例
+
 阅读[文档](https://dockerjudge.readthedocs.io/zh_CN/latest/__init__.html)以获取更多信息。
 
 ```python
@@ -360,7 +374,7 @@ sudo make install  # python3 setup.py install
 ...     Mono(Mono.Language.csharp),  # C# (Mono)
 ...     b'''
 ...         using System;
-... 
+...
 ...         public class HelloWorld
 ...         {
 ...             public static void Main(string[] args)
@@ -385,7 +399,7 @@ sudo make install  # python3 setup.py install
 ...     Mono(Mono.Language.vb),  # Visual Basic (Mono)
 ...     b'''
 ...         Imports System
-... 
+...
 ...         Module HelloWorld
 ...             Sub Main()
 ...                 Console.WriteLine("Hello World!")
@@ -417,7 +431,7 @@ sudo make install  # python3 setup.py install
 ]
 ```
 
-
 ## [许可协议](LICENSE)
+
 以 [**Apache License 2.0**](https://www.apache.org/licenses/LICENSE-2.0) 进行授权
 <a href="https://www.apache.org/foundation/press/kit/#wide"><img src="https://www.apache.org/foundation/press/kit/asf_logo_wide.svg" alt="Wide Apache Software Foundation Logo with Feather.svg" height="32" align="right"></a>

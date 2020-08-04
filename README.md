@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD013 MD033 -->
 <p align="center">
   <a href="https://github.com/piterator-org">
     <img src="https://static.piterator.com/piterator/logo.svg" alt="Piterator" width="20%">
@@ -7,6 +8,7 @@
 </p>
 
 # dockerjudge
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/dfe666a2140cd3390e56/maintainability)](https://codeclimate.com/github/wxh06/dockerjudge/maintainability)
 [![Python package](https://github.com/wxh06/dockerjudge/workflows/Python%20package/badge.svg)](https://github.com/wxh06/dockerjudge/actions?query=workflow%3A%22Python+package%22)
 [![Upload Python Package](https://github.com/wxh06/dockerjudge/workflows/Upload%20Python%20Package/badge.svg)](https://github.com/wxh06/dockerjudge/actions?query=workflow%3A%22Upload+Python+Package%22)
@@ -26,6 +28,7 @@
 🎌 **🇺🇸 English** | [🇨🇳 大陆简体](README.zh_Hans_CN.md)
 
 **A LXC based online judge engine**, which supports [10+ programming language processors](#supported-processors):
+
 - [Shell](https://en.wikipedia.org/wiki/Unix_shell)
   - [Bash (**B**ourne-**A**gain **sh**ell)](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
 - [C](https://en.wikipedia.org/wiki/C_(programming_language))/[C++](https://en.wikipedia.org/wiki/C%2B%2B)
@@ -50,8 +53,8 @@
 - [Swift](https://swift.org/)
   - [`swiftc`](https://swift.org/swift-compiler/)
 
-
 ## Supported processors
+
 Read the [docs](https://dockerjudge.readthedocs.io/en/latest/processor.html#module-dockerjudge.processor) for more information.
 
 Processor | Language(s)\* | Required [Docker image](https://hub.docker.com/)
@@ -71,41 +74,52 @@ Processor | Language(s)\* | Required [Docker image](https://hub.docker.com/)
 
 **\*** The `language` argumnets of the processors which support multiple languages should be provided, or the `source` will be judged in the default language (usually C++ or C#, emboldened in the table).
 
-
 ## Installation
+
 Read the [docs](https://dockerjudge.readthedocs.io/en/latest/installation.html) for more information.
 
 ### Docker
+
 To run `dockerjudge`, [Docker Engine](https://www.docker.com/) is required.
 
 #### Install using the convenience script (for servers)
+
 ```sh
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
+
 See [Install Docker Engine \| Docker Documentation](https://docs.docker.com/engine/install/) for more information.
 
 ### Package
+
 #### From the [Python Package Index (PyPI)](https://pypi.org/)
+
 [dockerjudge · PyPI](https://pypi.org/project/dockerjudge/)
+
 - [PyPI](https://pypi.org/simple/dockerjudge/)
 - [阿里巴巴开源镜像站 (Alibaba Open Source Mirror)](https://mirrors.aliyun.com/pypi/simple/dockerjudge/)
 - [清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://pypi.tuna.tsinghua.edu.cn/simple/dockerjudge/)
 
 ##### Via [pip](https://pip.pypa.io/)
+
 ```sh
 pip install dockerjudge
 ```
 
 ##### Via [Easy install](https://setuptools.readthedocs.io/en/latest/easy_install.html) (deprecated)
+
 ```sh
 easy_install dockerjudge
 ```
 
 #### From [GitHub](https://github.com/)
+
 [wxh06/dockerjudge: A Docker Based Online Judge Engine](https://github.com/wxh06/dockerjudge)
+
 - HTTPS: `https://github.com/wxh06/dockerjudge.git`
 - SSH: `git@github.com:wxh06/dockerjudge.git`
+
 ```sh
 git clone https://github.com/wxh06/dockerjudge.git
 cd dockerjudge
@@ -114,8 +128,8 @@ make pip && make  # python3 -m pip install -Ur requirements.txt && python3 setup
 sudo make install  # python3 setup.py install
 ```
 
-
 ## Usage
+
 Read the [docs](https://dockerjudge.readthedocs.io/en/latest/__init__.html) for more information.
 
 ```python
@@ -360,7 +374,7 @@ Read the [docs](https://dockerjudge.readthedocs.io/en/latest/__init__.html) for 
 ...     Mono(Mono.Language.csharp),  # C# (Mono)
 ...     b'''
 ...         using System;
-... 
+...
 ...         public class HelloWorld
 ...         {
 ...             public static void Main(string[] args)
@@ -385,7 +399,7 @@ Read the [docs](https://dockerjudge.readthedocs.io/en/latest/__init__.html) for 
 ...     Mono(Mono.Language.vb),  # Visual Basic (Mono)
 ...     b'''
 ...         Imports System
-... 
+...
 ...         Module HelloWorld
 ...             Sub Main()
 ...                 Console.WriteLine("Hello World!")
@@ -417,10 +431,9 @@ Read the [docs](https://dockerjudge.readthedocs.io/en/latest/__init__.html) for 
 ]
 ```
 
-
 ## [License](LICENSE)
+
 Licensed under [the **Apache License, Version 2.0**](https://www.apache.org/licenses/LICENSE-2.0)
 <a href="https://www.apache.org/foundation/press/kit/#wide"><img src="https://www.apache.org/foundation/press/kit/asf_logo_wide.svg" alt="Wide Apache Software Foundation Logo with Feather.svg" height="32" align="right"></a>
-
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwxh06%2Fdockerjudge.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fwxh06%2Fdockerjudge?ref=badge_large)
