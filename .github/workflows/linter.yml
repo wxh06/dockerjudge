@@ -36,6 +36,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
+      - name: Install Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
       ################################
       # Run Linter against code base #
       ################################
