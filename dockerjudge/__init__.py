@@ -1,6 +1,6 @@
 'dockerjudge - A Docker Based Online Judge Engine'
 
-from math import ceil
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import PurePosixPath
 
 import docker
@@ -9,7 +9,6 @@ from .dockerpy import exec_run, put_bin
 from . import processor as _processor
 from .status import Status
 from . import test_case
-from .thread import Thread
 
 __version__ = '1.2.5'
 
@@ -117,24 +116,24 @@ def compile_source_code(container, processor, source, config):
 
 def judge_test_cases(container, processor, tests, config):
     'Judge test cases'
-    res = []
-    for i in range(ceil(len(tests) / config.setdefault('threads',
-                                                       len(tests)))):
-        threads = []
-        for j in range(i * config['threads'],
-                       min((i + 1) * config['threads'], len(tests))):
-            threads.append(
-                Thread(
-                    target=test_case.__init__,
-                    args=(container, processor, j + 1, tests[j], config),
-                    callback=config['callback'].get('judge')
-                )
+    with ThreadPoolExecutor(max_workers=config.get('threads')) as executor:
+        futures = []
+        for i, test in zip(range(1, len(tests) + 1), tests):
+            futures.append(
+                executor.submit(test_case.__init__,
+                                container, processor, i, test, config)
             )
-            threads[-1].start()
-        for thread in threads:
-            thread.join()
-            res.append(thread.return_value)
-    return res
+            futures[-1].add_done_callback(done_callback)
+    return [future.result()[2] for future in futures]
+
+
+def done_callback(future):
+    'Callback'
+    result = future.result()
+    try:
+        result[0]['callback'].get('judge')(result[1], *result[2])
+    except TypeError:
+        pass
 
 
 def run(container, processor, source, tests, config=None):

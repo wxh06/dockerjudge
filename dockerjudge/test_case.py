@@ -12,11 +12,14 @@ from .status import Status
 
 def __init__(container, processor, i, ioput, config):
     'Copy binary files to `i` and judge'
-    container.exec_run(f'cp -r 0 {i}', workdir=str(processor.workdir))
-    exec_run(container, processor.before_judge, f'{processor.workdir}/{i}')
-    res = judge(container, processor, i, ioput, config)
-    exec_run(container, processor.after_judge, f'{processor.workdir}/{i}')
-    return res
+    try:
+        container.exec_run(f'cp -r 0 {i}', workdir=str(processor.workdir))
+        exec_run(container, processor.before_judge, f'{processor.workdir}/{i}')
+        res = judge(container, processor, i, ioput, config)
+        exec_run(container, processor.after_judge, f'{processor.workdir}/{i}')
+        return config, i - 1, res
+    except Exception:  # pylint: disable = broad-except
+        return config, i - 1, [Status.UE, (None, None), .0]
 
 
 def _get_io_file_path(ioro, processor, i, config):
