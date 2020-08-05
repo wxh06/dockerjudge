@@ -118,22 +118,29 @@ def judge_test_cases(container, processor, tests, config):
     'Judge test cases'
     with ThreadPoolExecutor(max_workers=config.get('threads')) as executor:
         futures = []
-        for i, test in zip(range(1, len(tests) + 1), tests):
+        for i, test in zip(range(len(tests)), tests):
             futures.append(
                 executor.submit(test_case.__init__,
-                                container, processor, i, test, config)
+                                container, processor, i + 1, test, config)
             )
-            futures[-1].add_done_callback(done_callback)
-    return [future.result()[2] for future in futures]
+            futures[-1].add_done_callback(done_callback(i, config))
+    return [
+        future.result()
+        if not future.exception() else (Status.UE, (None, None), .0)
+        for future in futures
+    ]
 
 
-def done_callback(future):
-    'Callback'
-    result = future.result()
-    try:
-        result[0]['callback'].get('judge')(result[1], *result[2])
-    except TypeError:
-        pass
+def done_callback(i, config):
+    'Return the callback func for concurrent.futures.Future.add_done_callback'
+    def _done_callback(future):
+        result = ((Status.UE, (None, None), .0)
+                  if future.exception() else future.result())
+        try:
+            config['callback'].get('judge')(i, *result)
+        except TypeError:
+            pass
+    return _done_callback
 
 
 def run(container, processor, source, tests, config=None):
