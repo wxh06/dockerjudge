@@ -38,10 +38,13 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          sudo apt-get install -qqy --no-install-recommends python3-venv python3-setuptools
+          sudo apt-get install -qqy --no-install-recommends \
+            python3-venv python3-setuptools
           python3 -m venv .venv
           .venv/bin/python3 -m pip install -U pip
-          if [ -f requirements.txt ]; then .venv/bin/python3 -m pip install -r requirements.txt; fi
+          if [ -f requirements.txt ]
+          then .venv/bin/python3 -m pip install -r requirements.txt
+          fi
           mv .venv /home/runner/work/_temp/_github_workflow
 
       ################################
@@ -50,5 +53,6 @@ jobs:
       - name: Lint Code Base
         uses: docker://github/super-linter:v3
         env:
-          PYTHONPATH: "/github/workspace/:/github/workflow/.venv/lib/python3.6/site-packages"
+          PYTHONPATH:
+            '/github/workspace:/github/workflow/.venv/lib/python3.6/site-packages'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

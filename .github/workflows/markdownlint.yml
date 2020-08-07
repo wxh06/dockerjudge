@@ -1,3 +1,5 @@
+---
+
 name: MarkdownLint
 
 on: [push, pull_request]
@@ -6,9 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Install markdownlint-cli
-      run: sudo npm install --global markdownlint-cli
+      - name: Install markdownlint-cli
+        run: sudo npm install --global markdownlint-cli
 
-    - run: markdownlint .
+      - run: markdownlint .
