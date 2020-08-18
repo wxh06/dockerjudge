@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-
-'WS server example'
+'WebSocket server'
 
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
