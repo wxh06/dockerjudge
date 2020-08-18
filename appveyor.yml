@@ -9,7 +9,7 @@ environment:
 build: off
 
 install:
-  - pip install tox codecov
+  - python3 -m pip install tox codecov
 
 test_script:
   - tox
