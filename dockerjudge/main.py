@@ -12,7 +12,7 @@ from . import test_case
 
 
 def judge(processor, source, tests, config=None,
-          client=docker.from_env()):
+          client=docker.from_env(version='auto')):
     """Main function
 
     :param processor: Programming language processor
