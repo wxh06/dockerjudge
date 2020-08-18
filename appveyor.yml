@@ -11,12 +11,13 @@ build: false
 install:
   - "SET PATH=C:\\Python37-x64;C:\\Python37-x64\\Scripts;C:\\MinGW\\bin;%PATH%"
   - "mklink C:\\MinGW\\bin\\make.exe C:\\MinGW\\bin\\mingw32-make.exe"
-  - pip install tox codecov
-  - sh docker-pull.sh
+  - pip install tox
+  # - pip install codecov
+  # - sh docker-pull.sh
 
 test_script:
-  - "SET TOXENV=%TOXENV%,flake8,pylint,pytest"
-  - tox -p all
+  - "SET TOXENV=%TOXENV%,flake8,pylint"
+  - make tox
 
-after_test:
-  - codecov
+# after_test:
+#   - codecov
