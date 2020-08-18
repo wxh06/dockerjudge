@@ -56,3 +56,5 @@ jobs:
           PYTHONPATH:
             '/github/workspace:/github/workflow/.venv/lib/python3.6/site-packages'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_JAVASCRIPT_STANDARD: false
+          YAML_CONFIG_FILE: .yamllint.yaml
