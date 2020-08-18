@@ -13,7 +13,8 @@ install:
   - pip install tox codecov
 
 test_script:
-  - tox
+  - "SET TOXENV=%TOXENV%,flake8,pylint"
+  - tox -p all
 
 after_test:
   - codecov
