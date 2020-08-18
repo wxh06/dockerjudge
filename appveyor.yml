@@ -1,0 +1,18 @@
+---
+environment:
+  matrix:
+    - TOXENV: py36
+    - TOXENV: py37
+    - TOXENV: py38
+    - TOXENV: py3
+
+build: off
+
+install:
+  - pip install tox codecov
+
+test_script:
+  - tox
+
+after_test:
+  - codecov
