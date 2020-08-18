@@ -6,10 +6,11 @@ environment:
     - TOXENV: py38
     - TOXENV: py3
 
-build: off
+build: false
 
 install:
-  - python3 -m pip install tox codecov
+  - "SET PATH=C:\\Python37-x64;C:\\Python37-x64\\Scripts;%PATH%"
+  - pip install tox codecov
 
 test_script:
   - tox
