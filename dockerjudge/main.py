@@ -1,6 +1,7 @@
 'dockerjudge main functions'
 
 from concurrent.futures import ThreadPoolExecutor
+from functools import partial
 from pathlib import PurePosixPath
 
 import docker
@@ -121,7 +122,7 @@ def judge_test_cases(container, processor, tests, config):
                 executor.submit(test_case.__init__,
                                 container, processor, i + 1, test, config)
             )
-            futures[-1].add_done_callback(done_callback(i, config))
+            futures[-1].add_done_callback(partial(done_callback, i, config))
     return [
         future.result()
         if not future.exception() else (Status.UE, (None, None), .0)
@@ -129,16 +130,14 @@ def judge_test_cases(container, processor, tests, config):
     ]
 
 
-def done_callback(i, config):
-    'Return the callback func for concurrent.futures.Future.add_done_callback'
-    def _done_callback(future):
-        result = ((Status.UE, (None, None), .0)
-                  if future.exception() else future.result())
-        try:
-            config['callback'].get('judge')(i, *result)
-        except TypeError:
-            pass
-    return _done_callback
+def done_callback(i, config, future):
+    'Callback function for concurrent.futures.Future.add_done_callback'
+    result = ((Status.UE, (None, None), .0)
+              if future.exception() else future.result())
+    try:
+        config['callback'].get('judge')(i, *result)
+    except TypeError:
+        pass
 
 
 def run(container, processor, source, tests, config=None):

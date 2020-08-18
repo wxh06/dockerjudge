@@ -2,11 +2,12 @@
 
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
+from functools import partial
 from json import JSONEncoder as _JSONEncoder, dumps, loads
 from sys import argv
 
 import websockets
-from .main import judge as _judge
+from .main import judge
 from .status import Status
 
 executor = ThreadPoolExecutor()
@@ -23,11 +24,6 @@ class JSONEncoder(_JSONEncoder):
         return _JSONEncoder.default(self, o)
 
 
-def judge(kwargs):
-    'Return _judge(**kwargs)'
-    return _judge(**kwargs)
-
-
 async def hello(websocket, path):  # pylint: disable = W0613
     'hello'
     loop = asyncio.get_event_loop()
@@ -40,7 +36,7 @@ async def hello(websocket, path):  # pylint: disable = W0613
             websocket.send(dumps(['compile', args], cls=JSONEncoder))
         )
     }
-    res = await loop.run_in_executor(executor, judge, kwargs)
+    res = await loop.run_in_executor(executor, partial(judge, **kwargs))
     await websocket.send(dumps(['done', res], cls=JSONEncoder))
 
 start_server = websockets.serve(hello, *argv[1].split(':'))
