@@ -10,8 +10,6 @@ from . import processor as _processor
 from .status import Status
 from . import test_case
 
-__version__ = '1.4.0'
-
 
 def judge(processor, source, tests, config=None,
           client=docker.from_env()):
