@@ -9,7 +9,7 @@ environment:
 build: false
 
 install:
-  - "SET PATH=C:\\Python37-x64;C:\\Python37-x64\\Scripts;%PATH%"
+  - "SET PATH=C:\\Python37-x64;C:\\Python37-x64\\Scripts;C:\\MinGW\\bin;%PATH%"
   - pip install tox codecov
 
 test_script:
