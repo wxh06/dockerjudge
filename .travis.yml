@@ -3,16 +3,26 @@ language: python
 cache: pip
 services:
   - docker
-python:
-  - "3.6"
-  - "3.6-dev"
-  - "3.7"
-  - "3.7-dev"
-  - "3.8"
-  - "3.8-dev"
-  - "3.9-dev"
-  - "nightly"
-  - "pypy3"
+jobs:
+  include:
+    - python: "3.6"
+      env: TOXENV=py36,flake8,pylint
+    - python: "3.6-dev"
+      env: TOXENV=py36,flake8,pylint
+    - python: "3.7"
+      env: TOXENV=py37,flake8,pylint
+    - python: "3.7-dev"
+      env: TOXENV=py37,flake8,pylint
+    - python: "3.8"
+      env: TOXENV=py38,flake8,pylint
+    - python: "3.8-dev"
+      env: TOXENV=py38,flake8,pylint
+    - python: "3.9-dev"
+      env: TOXENV=py39,flake8,pylint
+    - python: "nightly"
+      env: TOXENV=py3,flake8
+    - python: "pypy3"
+      env: TOXENV=pypy3,flake8,pylint
 before_install:
   - pip install -U pip
   - pip install -U setuptools wheel
@@ -24,6 +34,6 @@ script:
   - make flake8
   - make pylint
   - make pytest
-  - make tox-lint
+  - make tox
 after_script:
   - codecov
