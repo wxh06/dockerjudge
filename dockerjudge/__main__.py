@@ -1,6 +1,6 @@
 'WebSocket server'
 
-import asyncio
+from asyncio import get_event_loop
 from concurrent.futures import ThreadPoolExecutor
 from functools import partial
 from json import JSONEncoder as _JSONEncoder, dumps, loads
@@ -24,9 +24,9 @@ class JSONEncoder(_JSONEncoder):
         return _JSONEncoder.default(self, o)
 
 
-async def hello(websocket, path):  # pylint: disable = W0613
-    'hello'
-    loop = asyncio.get_event_loop()
+async def server(websocket, path):  # pylint: disable = W0613
+    'WebSocket server'
+    loop = get_event_loop()
     kwargs = loads(await websocket.recv())
     await websocket.send(dumps(['judge', kwargs]))
     kwargs['source'] = kwargs['source'].encode()
@@ -39,7 +39,16 @@ async def hello(websocket, path):  # pylint: disable = W0613
     res = await loop.run_in_executor(executor, partial(judge, **kwargs))
     await websocket.send(dumps(['done', res], cls=JSONEncoder))
 
-start_server = websockets.serve(hello, *argv[1].split(':'))
 
-asyncio.get_event_loop().run_until_complete(start_server)
-asyncio.get_event_loop().run_forever()
+def main(*args):
+    start_server = websockets.serve(server, *args)
+
+    get_event_loop().run_until_complete(start_server)
+    get_event_loop().run_forever()
+
+
+if __name__ == '__main__':
+    try:
+        main(*argv[1].split(':'))
+    except KeyboardInterrupt:
+        print()
