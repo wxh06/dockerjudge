@@ -1,6 +1,6 @@
 'WebSocket server'
 
-from asyncio import get_event_loop
+from asyncio import get_event_loop, new_event_loop, set_event_loop
 from concurrent.futures import ThreadPoolExecutor
 from functools import partial
 from json import JSONEncoder as _JSONEncoder, dumps, loads
@@ -41,6 +41,8 @@ async def server(websocket, path):  # pylint: disable = W0613
 
 
 def main(*args):
+    set_event_loop(new_event_loop())
+
     start_server = websockets.serve(server, *args)
 
     get_event_loop().run_until_complete(start_server)
