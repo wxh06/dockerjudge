@@ -41,6 +41,7 @@ async def server(websocket, path):  # pylint: disable = W0613
 
 
 def main(*args):
+    "if __name__ == '__main__'"
     set_event_loop(new_event_loop())
 
     start_server = websockets.serve(server, *args)
