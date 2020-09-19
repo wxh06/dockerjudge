@@ -3,4 +3,4 @@
 
 .. automodule:: dockerjudge.status
 
-.. autoclass:: dockerjudge.status.Status
+   .. autoclass:: dockerjudge.status.Status
