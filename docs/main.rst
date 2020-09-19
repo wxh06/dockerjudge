@@ -1,13 +1,13 @@
-=========================
-:mod:`dockerjudge` - Main
-=========================
+==============================
+:mod:`dockerjudge.main` - Main
+==============================
 
-.. automodule:: dockerjudge
+.. automodule:: dockerjudge.main
 
 Judge
 =====
 
-.. autofunction:: dockerjudge.judge
+.. autofunction:: dockerjudge.main.judge
 
 Callback
 ========

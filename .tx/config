@@ -1,9 +1,9 @@
 [main]
 host = https://www.transifex.com
 
-[dockerjudge.docs__build_gettext___init__]
-file_filter = docs/locales/<lang>/LC_MESSAGES/__init__.po
-source_file = docs/_build/gettext/__init__.pot
+[dockerjudge.docs__build_gettext_main]
+file_filter = docs/locales/<lang>/LC_MESSAGES/main.po
+source_file = docs/_build/gettext/main.pot
 source_lang = en
 type = PO
 

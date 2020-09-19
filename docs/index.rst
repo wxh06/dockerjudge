@@ -84,7 +84,7 @@ Project links
    :caption: Contents:
 
    installation.rst
-   __init__.rst
+   main.rst
    processor.rst
    status.rst
 
