@@ -29,6 +29,7 @@ author = '汪心禾'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.viewcode',
 ]
 
 master_doc = 'index'
