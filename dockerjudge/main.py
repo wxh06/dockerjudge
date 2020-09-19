@@ -13,7 +13,7 @@ from . import test_case
 
 
 def judge(processor, source, tests, config=None,
-          client=docker.from_env(version='auto')):
+          client=None):
     """Main function
 
     :param processor: Programming language processor
@@ -75,6 +75,7 @@ def judge(processor, source, tests, config=None,
         === =================================== =====================
     """
     config = config or {}
+    client = client or docker.from_env(version='auto')
     try:
         processor = getattr(_processor, processor[0])(**processor[1])
     except TypeError:
