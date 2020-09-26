@@ -1,1 +1,2 @@
-.github/linters/.python-black
+[tool.black]
+line-length = 79
