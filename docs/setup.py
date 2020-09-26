@@ -1,6 +1,6 @@
-'Run `tx pull --all`'
+"Run `tx pull --all`"
 
 import subprocess
 
 
-subprocess.run(['tx', 'pull', '--all'], check=True)
+subprocess.run(["tx", "pull", "--all"], check=True)
