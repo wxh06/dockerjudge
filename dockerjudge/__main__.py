@@ -1,4 +1,4 @@
-'WebSocket server'
+"WebSocket server"
 
 from asyncio import get_event_loop, new_event_loop, set_event_loop
 from concurrent.futures import ThreadPoolExecutor
@@ -14,9 +14,10 @@ executor = ThreadPoolExecutor()
 
 
 class JSONEncoder(_JSONEncoder):
-    'TypeError: Object is not JSON serializable'
+    "TypeError: Object is not JSON serializable"
+
     def default(self, o):
-        'bytes and dockerjudge.status.Status'
+        "bytes and dockerjudge.status.Status"
         if isinstance(o, bytes):
             return o.decode()
         if isinstance(o, Status):
@@ -25,19 +26,19 @@ class JSONEncoder(_JSONEncoder):
 
 
 async def server(websocket, path):  # pylint: disable = W0613
-    'WebSocket server'
+    "WebSocket server"
     loop = get_event_loop()
     kwargs = loads(await websocket.recv())
-    await websocket.send(dumps(['judge', kwargs]))
-    kwargs['source'] = kwargs['source'].encode()
-    kwargs['tests'] = [(i.encode(), o.encode()) for i, o in kwargs['tests']]
-    kwargs['config']['callback'] = {
-        'compile': lambda *args: loop.create_task(
-            websocket.send(dumps(['compile', args], cls=JSONEncoder))
+    await websocket.send(dumps(["judge", kwargs]))
+    kwargs["source"] = kwargs["source"].encode()
+    kwargs["tests"] = [(i.encode(), o.encode()) for i, o in kwargs["tests"]]
+    kwargs["config"]["callback"] = {
+        "compile": lambda *args: loop.create_task(
+            websocket.send(dumps(["compile", args], cls=JSONEncoder))
         )
     }
     res = await loop.run_in_executor(executor, partial(judge, **kwargs))
-    await websocket.send(dumps(['done', res], cls=JSONEncoder))
+    await websocket.send(dumps(["done", res], cls=JSONEncoder))
 
 
 def main(*args):
@@ -50,8 +51,8 @@ def main(*args):
     get_event_loop().run_forever()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
-        main(*argv[1].split(':'))
+        main(*argv[1].split(":"))
     except KeyboardInterrupt:
         print()

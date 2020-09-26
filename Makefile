@@ -49,7 +49,10 @@ docker-pull:
 	./docker-pull.sh
 
 
-lint: flake8 pylint
+lint: black flake8 pylint
+
+black:
+	black --check dockerjudge test_*.py
 
 flake8:
 	flake8 dockerjudge test_*.py
