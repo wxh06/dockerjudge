@@ -13,6 +13,7 @@
 [![Python package](https://github.com/wxh06/dockerjudge/workflows/Python%20package/badge.svg)](https://github.com/wxh06/dockerjudge/actions?query=workflow%3A%22Python+package%22)
 [![Upload Python Package](https://github.com/wxh06/dockerjudge/workflows/Upload%20Python%20Package/badge.svg)](https://github.com/wxh06/dockerjudge/actions?query=workflow%3A%22Upload+Python+Package%22)
 [![Transifex](https://github.com/wxh06/dockerjudge/workflows/Transifex/badge.svg)](https://www.transifex.com/piterator/dockerjudge/)
+[![Build status](https://ci.appveyor.com/api/projects/status/qq5br83e4hp7utpo?svg=true)](https://ci.appveyor.com/project/t9n81yiq9d/dockerjudge)
 [![Build Status](https://dev.azure.com/wangxinhe/wangxinhe/_apis/build/status/wxh06.dockerjudge)](https://dev.azure.com/wangxinhe/wangxinhe/_build/latest?definitionId=1)
 [![Azure DevOps tests](https://img.shields.io/azure-devops/tests/wangxinhe/wangxinhe/1)](https://dev.azure.com/wangxinhe/wangxinhe/_test/analytics?definitionId=1)
 [![Build Status](https://travis-ci.com/wxh06/dockerjudge.svg)](https://travis-ci.com/wxh06/dockerjudge)
@@ -24,6 +25,7 @@
 [![Wheel](https://img.shields.io/pypi/wheel/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#files)
 [![License](https://img.shields.io/github/license/wxh06/dockerjudge.svg)](LICENSE)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwxh06%2Fdockerjudge.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fwxh06%2Fdockerjudge?ref=badge_shield)
+[![Code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://black.readthedocs.io/)
 
 🎌 **🇺🇸 English** | [🇨🇳 大陆简体](README.zh_Hans_CN.md)
 

@@ -13,6 +13,10 @@ Badges
 +-----------------+-------------------------------------------------------------------------------------------------------+
 | Service         | Status                                                                                                |
 +=================+=======================================================================================================+
+| AppVeyor        | .. image:: https://ci.appveyor.com/api/projects/status/qq5br83e4hp7utpo?svg=true                      |
+|                 |    :alt: Build status                                                                                 |
+|                 |    :target: https://ci.appveyor.com/project/t9n81yiq9d/dockerjudge                                    |
++-----------------+-------------------------------------------------------------------------------------------------------+
 | Azure Pipelines | .. image:: https://dev.azure.com/wangxinhe/wangxinhe/_apis/build/status/wxh06.dockerjudge             |
 |                 |    :alt: Build Status                                                                                 |
 |                 |    :target: https://dev.azure.com/wangxinhe/wangxinhe/_build/latest?definitionId=1                    |
@@ -36,6 +40,10 @@ Badges
 | GitHub Actions  | .. image:: https://github.com/wxh06/dockerjudge/workflows/Docker/badge.svg                            |
 |                 |    :alt: Docker                                                                                       |
 |                 |    :target: https://github.com/wxh06/dockerjudge/actions?query=workflow%3ADocker                      |
+|                 +-------------------------------------------------------------------------------------------------------+
+|                 | .. image:: https://github.com/wxh06/dockerjudge/workflows/Lint%20Code%20Base/badge.svg                |
+|                 |    :alt: Lint Code Base                                                                               |
+|                 |    :target: https://github.com/wxh06/dockerjudge/actions?query=workflow%3A%22Lint+Code+Base%22        |
 |                 +-------------------------------------------------------------------------------------------------------+
 |                 | .. image:: https://github.com/wxh06/dockerjudge/workflows/Python%20package/badge.svg                  |
 |                 |    :alt: Python package                                                                               |
