@@ -51,7 +51,10 @@ def judge(processor, source, tests, config=None, client=None):
         +------------------------------+-----------------+---------+----------+
     :type config: dict
     :param client: Docker client
-    :type client: docker.client.DockerClient
+    :type client: |DockerClient|_
+
+    .. |DockerClient| replace:: `docker.client.DockerClient`
+    .. _DockerClient: https://docker-py.readthedocs.io/en/stable/client.html#docker.client.DockerClient
 
     :return: Result
     :rtype: `list`
@@ -70,7 +73,7 @@ def judge(processor, source, tests, config=None, client=None):
         === =================================== =====================
         `0` :class:`~dockerjudge.status.Status` Status code
         `1` `tuple`                             `stdout` and `stderr`
-        `2` `float`                             Time used
+        `2` `float`                             Time spent
         === =================================== =====================
     """
     config = config or {}
