@@ -54,7 +54,8 @@ def judge(processor, source, tests, config=None, client=None):
     :type client: |DockerClient|_
 
     .. |DockerClient| replace:: `docker.client.DockerClient`
-    .. _DockerClient: https://docker-py.readthedocs.io/en/stable/client.html#docker.client.DockerClient
+    .. _DockerClient: https://docker-py.readthedocs.io/en/stable/client.html\
+            #docker.client.DockerClient
 
     :return: Result
     :rtype: `list`
