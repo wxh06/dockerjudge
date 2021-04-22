@@ -24,7 +24,6 @@
 [![PyPI](https://img.shields.io/pypi/v/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#history)
 [![Wheel](https://img.shields.io/pypi/wheel/dockerjudge.svg)](https://pypi.org/project/dockerjudge/#files)
 [![License](https://img.shields.io/github/license/wxh06/dockerjudge.svg)](LICENSE)
-[![FOSSA 状态](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwxh06%2Fdockerjudge.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fwxh06%2Fdockerjudge?ref=badge_shield)
 [![代码风格](https://img.shields.io/badge/code%20style-black-000000.svg)](https://black.readthedocs.io/)
 
 🎌 [🇺🇸 English](README.md) | **🇨🇳 大陆简体**
