@@ -33,7 +33,7 @@ steps:
     displayName: 'Install dependencies'
 
   - script: |
-      pip install pytest pytest-azurepipelines codecov
-      pytest
+      pip install pytest pytest-azurepipelines pytest-cov codecov
+      make pytest
       codecov
     displayName: 'pytest'
