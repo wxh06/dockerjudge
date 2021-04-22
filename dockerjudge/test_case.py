@@ -1,8 +1,8 @@
 "Test case operations"
 
-from pathlib import PurePosixPath
 import re
 import shlex
+from pathlib import PurePosixPath
 
 from docker.errors import NotFound
 

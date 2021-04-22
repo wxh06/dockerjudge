@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD013 MD033 -->
+<!-- markdownlint-disable MD013 MD033 MD041 -->
 <p align="center">
   <a href="https://github.com/piterator-org">
     <img src="https://static.piterator.com/piterator/logo.svg" alt="Piterator" width="20%">

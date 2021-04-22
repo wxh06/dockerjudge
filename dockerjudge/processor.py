@@ -60,9 +60,9 @@
 """
 # pylint: disable = missing-function-docstring, too-few-public-methods
 
+import shlex
 from enum import Enum
 from pathlib import PurePosixPath
-import shlex
 
 
 class Processor:

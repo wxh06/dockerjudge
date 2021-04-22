@@ -1,19 +1,19 @@
 "Test dockerjudge"
 # pylint: disable = C0103, C0115, C0116
 
-from time import time
 import unittest
+from time import time
 
 from dockerjudge import judge
 from dockerjudge.processor import (
+    GCC,
+    PHP,
     Bash,
     Clang,
-    GCC,
     Go,
     Mono,
     Node,
     OpenJDK,
-    PHP,
     PyPy,
     Python,
     Ruby,

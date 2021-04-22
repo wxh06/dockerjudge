@@ -6,10 +6,10 @@ from pathlib import PurePosixPath
 
 import docker
 
-from .dockerpy import exec_run, put_bin
 from . import processor as _processor
-from .status import Status
 from . import test_case
+from .dockerpy import exec_run, put_bin
+from .status import Status
 
 
 def judge(processor, source, tests, config=None, client=None):

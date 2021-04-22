@@ -3,10 +3,12 @@
 from asyncio import get_event_loop, new_event_loop, set_event_loop
 from concurrent.futures import ThreadPoolExecutor
 from functools import partial
-from json import JSONEncoder as _JSONEncoder, dumps, loads
+from json import JSONEncoder as _JSONEncoder
+from json import dumps, loads
 from sys import argv
 
 import websockets
+
 from .main import judge
 from .status import Status
 
