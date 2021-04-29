@@ -12,7 +12,7 @@ import websockets
 from .main import judge
 from .status import Status
 
-executor = ThreadPoolExecutor()  # pylint: disable = consider-using-with
+executor = ThreadPoolExecutor()  # pylint: disable = E0012, consider-using-with
 
 
 class JSONEncoder(_JSONEncoder):
