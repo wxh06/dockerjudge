@@ -41,7 +41,7 @@ test:
 	python3 -W ignore test_*.py
 
 pytest:
-	pytest --cov=dockerjudge --cov-report xml
+	pytest --cov=dockerjudge --cov-report term-missing --cov-report xml
 
 
 docker-pull:
