@@ -41,5 +41,6 @@ steps:
       pip install pytest pytest-azurepipelines pytest-cov
       make pytest
       npm test
+      coverage xml
       bash <(curl -s https://codecov.io/bash)
     displayName: 'pytest'
