@@ -8,11 +8,10 @@ import tarfile
 def tar_bin(filename, data):
     "Write the binary file `filename` into a tarfile"
     bytes_io = io.BytesIO()
-    tar = tarfile.open(mode="w", fileobj=bytes_io)
-    tarinfo = tarfile.TarInfo(filename)
-    tarinfo.size = len(data)
-    tar.addfile(tarinfo, io.BytesIO(data))
-    tar.close()
+    with tarfile.open(mode="w", fileobj=bytes_io) as tar:
+        tarinfo = tarfile.TarInfo(filename)
+        tarinfo.size = len(data)
+        tar.addfile(tarinfo, io.BytesIO(data))
     bytes_io.seek(0)
     return bytes_io.read()
 
@@ -28,8 +27,8 @@ def get_bin(container, path):
     for chunk in container.get_archive(path)[0]:
         bytes_io.write(chunk)
     bytes_io.seek(0)
-    tar = tarfile.open(mode="r", fileobj=bytes_io)
-    return tar.extractfile(path.name).read()
+    with tarfile.open(mode="r", fileobj=bytes_io) as tar:
+        return tar.extractfile(path.name).read()
 
 
 def exec_run(container, command, workdir):
