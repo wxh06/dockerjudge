@@ -33,9 +33,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8 pytest-cov codecov
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          if [ -f Makefile ]; then make docker-pull; fi
           npm ci
           npm run build --if-present
+          if [ -f Makefile ]; then make docker-pull; fi
       - name: Lint with flake8
         run: flake8 . --count --show-source --statistics
       - name: Test with pytest

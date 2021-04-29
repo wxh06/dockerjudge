@@ -26,14 +26,20 @@ steps:
       versionSpec: '$(python.version)'
     displayName: 'Use Python $(python.version)'
 
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '14.x'
+
   - script: |
       python -m pip install --upgrade pip
       pip install -r requirements.txt
+      npm ci
       make docker-pull
     displayName: 'Install dependencies'
 
   - script: |
       pip install pytest pytest-azurepipelines pytest-cov
       make pytest
+      npm test
       bash <(curl -s https://codecov.io/bash)
     displayName: 'pytest'
