@@ -3,7 +3,9 @@ const { spawn } = require('child_process');
 
 const dockerjudge = require('.');
 
-const ADDRESS = '127.0.0.1:8765';
+const HOST = process.env.HOST || '127.0.0.1';
+const PORT = process.env.PORT || 8765;
+const ADDRESS = `${HOST}:${PORT}`;
 
 const server = spawn('coverage', ['run', '-a', '-m', 'dockerjudge', ADDRESS]);
 
