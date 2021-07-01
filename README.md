@@ -7,7 +7,7 @@
   </a>
 </p>
 
-# dockerjudge
+# ![dockerjudge](https://static.dockerjudge.piterator.com/dockerjudge.svg)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/dfe666a2140cd3390e56/maintainability)](https://codeclimate.com/github/wxh06/dockerjudge/maintainability)
 [![Python package](https://github.com/wxh06/dockerjudge/workflows/Python%20package/badge.svg)](https://github.com/wxh06/dockerjudge/actions?query=workflow%3A%22Python+package%22)
